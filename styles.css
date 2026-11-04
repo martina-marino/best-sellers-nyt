@@ -169,21 +169,23 @@ button:focus-visible,
 }
 
 .hero-subtitle {
-  max-width: 740px;
-  margin-bottom: 22px;
+  max-width: 36ch;
+  text-wrap: balance;
+  margin-bottom: 14px;
   font-family: var(--fuente-titulos);
   font-size: clamp(22px, 2.4vw, 32px);
   line-height: 1.4;
 }
 
 .hero-description {
-  max-width: 650px;
+  max-width: 56ch;
   margin-bottom: 18px;
   color: #E8E0D7;
   font-size: 18px;
 }
 
 .hero-dataset {
+  margin: 22px 0 0;
   max-width: 650px;
   color: #E8D6BF;
   font-size: 14px;
@@ -248,6 +250,7 @@ button:focus-visible,
 .section-heading {
   max-width: 1050px;
   margin-bottom: 32px;
+  text-align: left;
 }
 
 .section-heading h2,
@@ -440,42 +443,67 @@ button:focus-visible,
 
 /* VIDEO */
 
-.video-section {
+.section.video-section {
   background: #ECE5D9;
-}
-
-.video-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  min-height: 300px;
-  aspect-ratio: 16 / 9;
-  padding: 30px;
-  background: linear-gradient(135deg, #33261D, #13171C);
-  color: white;
-  text-align: center;
-}
-
-.video-symbol {
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
-  place-items: center;
-  width: 70px;
-  height: 70px;
-  border: 2px solid white;
-  border-radius: 50%;
-  font-size: 25px;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  padding-block: clamp(32px, 5vh, 56px);
 }
+
+.video-section .section-heading {
+  margin: 0 0 20px;
+}
+
+
+.video-player {
+  width: min(100%, 1120px, 118vh);
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #13171C;
+}
+
+.video-player iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-credit {
+  margin: 12px auto 0;
+  text-align: center;
+  font-size: 13px;
+  color: #635950;
+}
+
+.video-credit a {
+  text-underline-offset: 3px;
+}
+
 
 /* DEFINICIÓN */
 
-.definition {
+.section.definition { padding-top: 0; }
+
+.definition-spread {
   display: grid;
   grid-template-columns: 1.1fr 0.8fr;
   align-items: center;
-  gap: 9%;
-  min-height: 600px;
+  align-content: center;
+  column-gap: 9%;
+  row-gap: clamp(24px, 4vw, 52px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-block: clamp(48px, 7vh, 80px);
+  padding-block-start: clamp(72px, 10vh, 112px);
+}
+
+.definition-copy > h2 {
+  margin-block-end: clamp(24px, 3.5vh, 40px);
 }
 
 .definition-visual {
@@ -503,15 +531,12 @@ button:focus-visible,
   font-size: 37px;
 }
 
-.ranking-lines {
-  height: 180px;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0 27px,
-    #907A61 28px,
-    transparent 29px
-  );
-}
+.ranking-paper h3 { margin-bottom: .4rem; }
+.ranking-paper ol { margin: 1rem 0 0; padding-left: 1.5rem; text-align: left; }
+.ranking-paper li { border-top: 1px solid #baaa91; padding: .45rem 0; }
+.ranking-paper cite { font-family: var(--fuente-titulos); }
+.ranking-paper small { display: block; }
+
 
 /* EMBEDS COMPLETOS, SIN RECORTE */
 
@@ -660,7 +685,7 @@ button:focus-visible,
 /* TARJETAS: TÍTULO MÁS COMPACTO */
 
 .exceptions {
-  padding-top: 35px;
+  padding-top: 15px;
   padding-bottom: 35px;
 }
 
@@ -829,6 +854,14 @@ button:focus-visible,
 
 /* RECOMENDACIONES Y CIERRE */
 
+@media (min-width: 768px) {
+  .recommendations > .flourish-cards {
+    width: 86%;
+    max-width: 1080px;
+    margin-inline: auto;
+  }
+}
+
 .recommendation-placeholder {
   display: grid;
   place-items: center;
@@ -876,7 +909,7 @@ button:focus-visible,
     gap: 40px;
   }
 
-  .definition,
+  .definition-spread,
   .explorer-layout {
     grid-template-columns: 1fr;
     gap: 45px;
@@ -966,9 +999,6 @@ button:focus-visible,
     padding-bottom: 45px;
   }
 
-  .video-placeholder {
-    min-height: 240px;
-  }
 
   .explorer-info {
     padding: 28px;
@@ -1017,14 +1047,14 @@ html {
   white-space: nowrap;
 }
 
-/* Libro completo dentro de la portada, sin cortarlo abajo */
+/* Portada de biblioteca */
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: center;
   justify-items: start;
   gap: 30px;
-  padding-bottom: 35px;
+  padding-block: clamp(76px, 10svh, 100px);
 }
 
 .opening-book {
@@ -1254,6 +1284,11 @@ html {
 /* COMPARACIÓN EDITORIAL: DE 15 A 2 SEMANAS */
 
 .duration-story {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  background: var(--crema);
   padding-top: 65px;
   padding-bottom: 65px;
 }
@@ -1547,3 +1582,509 @@ html {
 
 .embed-fallback { padding: 35px 20px; text-align: center; font-size: 16px; color: var(--texto-suave); }
 .embed-fallback a { display: block; margin-top: 10px; }
+
+@media (min-width: 760px) {
+  .authors-section .folder-stack {
+    max-width: 960px;
+    margin: 28px auto 0;
+  }
+
+  .authors-section .folder-tab {
+    min-height: 52px;
+    padding: 10px 16px;
+    font-size: 17px;
+  }
+
+  .authors-section .folder-body { padding: 16px; }
+  .authors-section .folder-reading {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .authors-section .folder-stack::before { top: 55px; }
+  .authors-section .folder-stack::after { top: 63px; }
+}
+
+/* Jerarquía editorial. Las cifras y las etiquetas conservan su escala propia. */
+:root {
+  --tipo-titulo: clamp(2.75rem, 6.4vw, 5.5rem);
+  --tipo-subtitulo-1: clamp(1.875rem, 3vw, 2.625rem);
+  --tipo-subtitulo-2: clamp(1.375rem, 2vw, 1.75rem);
+  --tipo-texto: clamp(1.0625rem, 1.4vw, 1.1875rem);
+}
+
+main .hero h1 {
+  font: 700 var(--tipo-titulo)/1.05 var(--fuente-titulos);
+}
+
+main section h2 {
+  font: 700 var(--tipo-subtitulo-1)/1.15 var(--fuente-titulos);
+}
+main .exceptions .section-heading h2,
+main .section-heading h2,
+main .duration-heading h2 {
+  font-size: var(--tipo-subtitulo-1);
+}
+
+main .hero-subtitle,
+main .duration-caption,
+main .explorer-info h3,
+main .chart-heading :is(h2, h3) {
+  font: 600 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
+}
+
+body,
+main .hero-description,
+main .section-heading p,
+main .definition-copy p:not(.source-note),
+main .duration-heading > p:last-child,
+main .duration-description,
+main .editorial-intro p,
+main .editorial-lead,
+main .folder-reading,
+main .chart-heading p {
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+.chart-heading {
+  margin: 0 0 1.25rem;
+  text-align: left;
+}
+.chart-heading :is(h2, h3) { margin: 0 0 .5rem; }
+.chart-heading p { margin: 0; color: var(--texto-suave); }
+
+
+.duration-layout.duration-stat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem clamp(1.5rem, 4vw, 4rem);
+}
+.duration-stat .duration-unit { margin-top: 0; }
+
+
+/* Dos páginas del mismo capítulo, recorridas con el scroll natural. */
+.section.duration-story {
+  display: block;
+  padding-block: 0;
+  isolation: isolate;
+}
+.era-sheet.duration-scene {
+  display: grid;
+  align-content: center;
+  gap: clamp(16px, 3vh, 32px);
+  min-height: 100svh;
+  padding: 72px 0 40px;
+  background: var(--crema);
+  border: 0;
+}
+/* La misma guía acompaña el paso de una década a la otra. */
+.era-sheet {
+  --era-inset: 0%;
+  --rail-gap: clamp(10px, 1.8vw, 28px);
+  position: relative;
+}
+.era-sheet::before,
+.era-period::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.era-sheet::before {
+  inset-block: 0;
+  left: calc(var(--era-inset) - var(--rail-gap));
+  width: 1px;
+  background: #cbbfaf;
+}
+.era-period {
+  position: relative;
+  color: var(--duration-color);
+  font: 600 1.45rem var(--fuente-titulos);
+}
+.era-period::before {
+  top: calc(50% - 4px);
+  left: calc(0px - var(--rail-gap));
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--duration-color);
+}
+
+.era-sheet header > :first-child { margin-bottom: .65rem; }
+.era-columns { display: grid; grid-template-columns: 3fr 2fr; align-items: center; gap: 3vw; }
+@media (min-width: 1000px) {
+  .era-sheet.duration-scene { --era-inset: 8%; grid-template-columns: minmax(0, 84%); justify-content: center; }
+  .era-columns {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: 0;
+  }
+  .era-columns .duration-stat { padding-right: 1.5rem; }
+}
+.era-book {
+  display: grid;
+  grid-template-columns: minmax(74px, 1fr) minmax(0, 2fr);
+  gap: clamp(10px, 1vw, 18px);
+  align-items: stretch;
+}
+.era-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 295 / 450;
+  align-self: center;
+}
+.era-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
+.era-book-copy {
+  max-width: 34ch;
+  border-left: 3px solid var(--duration-color);
+  padding-left: clamp(10px, 1.3vw, 20px);
+}
+.era-book h4 { margin: .5rem 0; font: italic 600 var(--tipo-subtitulo-2) var(--fuente-titulos); }
+.era-book a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.era-book p:last-child { margin: .7rem 0 0; }
+@media (min-width: 760px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  .era-sheet:first-child { position: sticky; top: 0; }
+  .era-sheet + .era-sheet { position: relative; }
+}
+@media (max-width: 759px) {
+  .era-columns { grid-template-columns: 1fr; gap: 1.25rem; }
+  .era-book { max-width: 100%; }
+}
+
+/* ============================================================
+   AJUSTES EDITORIALES FINALES
+   Alineación, jerarquía tipográfica y ritmo de lectura.
+   Mantener el contenido de los gráficos Flourish centrado,
+   pero sus encabezados alineados al margen general.
+   ============================================================ */
+
+/* DEFINICIÓN Y PERMANENCIA */
+#definicion {
+  padding-bottom: 0;
+}
+
+/* El encabezado se alinea con los demás títulos de capítulo. */
+#permanencia > .chart-heading {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 0 clamp(28px, 4vh, 42px);
+  text-align: left;
+}
+
+#permanencia > .chart-heading h2 {
+  max-width: 1000px;
+  margin-bottom: 16px;
+  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+#permanencia > .chart-heading p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+/* Únicamente el gráfico se mantiene centrado y contenido. */
+#frame-g01 {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+@media (min-width: 760px) {
+  #frame-g01:not(.is-expanded) {
+    max-width: min(900px, 108vh);
+  }
+
+  #frame-g01.is-expanded {
+    max-width: none;
+  }
+}
+
+#permanencia {
+  padding-bottom: clamp(25px, 4vh, 48px);
+}
+
+/* TRANSICIÓN: de la permanencia a la renovación. */
+#permanencia .story-bridge {
+  width: 100%;
+  max-width: 1000px;
+  margin: clamp(48px, 7vh, 72px) 0 0;
+  padding: 0;
+  text-align: left;
+}
+
+#permanencia .story-bridge h2 {
+  max-width: 880px;
+  margin: 0 0 18px;
+  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+#permanencia .story-bridge > p:not(.eyebrow):not(.narrative-kicker) {
+  max-width: 850px;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+#permanencia .story-bridge .bridge-link {
+  margin-top: 20px;
+}
+
+/* EL RANKING SE RENUEVA */
+#cambios {
+  /* Mismo margen que el resto de las secciones, no una
+     columna de 800px que desplaza títulos hacia el centro. */
+  padding-top: clamp(32px, 5vh, 56px);
+  padding-bottom: clamp(65px, 9vh, 105px);
+  padding-inline: max(6%, calc((100% - 1280px) / 2));
+}
+
+#cambios .section-heading {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 0 clamp(36px, 5vh, 55px);
+  text-align: left;
+}
+
+#cambios .section-heading h2 {
+  margin-bottom: 16px;
+  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: -0.025em;
+}
+
+#cambios .section-heading p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+/* Cada gráfico ocupa una fila, pero los encabezados siguen
+   el margen izquierdo de la sección. */
+#cambios .chart-grid {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(50px, 7vh, 78px);
+  align-items: start;
+}
+
+#cambios .chart-grid > * {
+  min-width: 0;
+}
+
+#cambios .chart-heading {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+#cambios .chart-heading :is(h2, h3) {
+  max-width: 940px;
+  margin: 0 0 12px;
+  font: 600 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+#cambios .chart-heading p {
+  max-width: 900px;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+/* Gráficos de Flourish centrados, sin desplazar sus títulos.
+   La altura sigue controlada por el script existente. */
+#cambios .chart-grid .fit-frame {
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+#cambios .chart-grid .embed-actions {
+  justify-content: center;
+  margin: 14px auto;
+}
+
+#cambios .reading-note {
+  width: min(920px, 100%);
+  margin: clamp(32px, 5vh, 50px) auto 0;
+  padding: 18px 0 0 22px;
+  text-align: left;
+}
+
+/* Mantener el orden y los márgenes también en pantallas chicas. */
+@media (max-width: 759px) {
+  #permanencia > .chart-heading {
+    margin-bottom: 26px;
+  }
+
+  #permanencia .story-bridge {
+    margin-top: 46px;
+  }
+
+  #cambios {
+    padding: 36px 6% 65px;
+  }
+
+  #cambios .section-heading {
+    margin-bottom: 34px;
+  }
+
+  #cambios .chart-grid {
+    gap: 54px;
+  }
+
+  #cambios .chart-heading {
+    margin-bottom: 18px;
+  }
+}
+
+
+/* ============================================================
+   SCROLLYTELLING · LA PERMANENCIA
+   El gráfico de Flourish queda fijo mientras el texto de
+   transición avanza sobre él. No requiere JavaScript adicional.
+   ============================================================ */
+
+#permanencia.sticky-story {
+  position: relative;
+  isolation: isolate;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: visible;
+}
+
+/* Bloque que se fija dentro de su propia sección. */
+#permanencia .sticky-story-pin {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100svh;
+  padding: clamp(16px, 3vh, 32px) 0;
+  background: var(--crema);
+}
+
+/* Encabezado siempre alineado al margen editorial izquierdo. */
+#permanencia .sticky-story-pin > .chart-heading {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 0 clamp(18px, 3vh, 32px);
+  text-align: left;
+}
+
+#permanencia .sticky-story-pin > .chart-heading h2 {
+  max-width: 1000px;
+  margin-bottom: 12px;
+  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: -0.025em;
+}
+
+#permanencia .sticky-story-pin > .chart-heading p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 var(--tipo-texto)/1.55 var(--fuente-textos);
+}
+
+#permanencia .sticky-story-pin .embed-actions {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+#permanencia .sticky-story-pin .source-note {
+  margin-bottom: 0;
+}
+
+/* Espacio extra para desplazar el texto mientras el gráfico queda fijo.
+   155svh = 1,55 pantallas de recorrido con el gráfico anclado. */
+#permanencia .sticky-story-scroll {
+  position: relative;
+  z-index: 2;
+  min-height: 155svh;
+  padding-top: 66svh;
+  pointer-events: none;
+}
+
+/* La transición entra como una hoja editorial sobre la visualización. */
+
+#permanencia .sticky-story-scroll .sticky-story-card {
+  position: relative;
+  z-index: 5;
+
+  width: min(700px, calc(100% - 40px));
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: clamp(28px, 4vw, 46px);
+
+  background: #F8F4EB;
+  opacity: 1;
+
+  border: 1px solid #DCD3C6;
+  border-left: 5px solid #6B0005;
+
+  box-shadow: 0 20px 55px rgba(48, 43, 41, 0.16);
+
+  text-align: left;
+  pointer-events: auto;
+}
+
+
+#permanencia .sticky-story-card h2 {
+  max-width: 18ch;
+  margin: 0 0 18px;
+  font: 700 clamp(28px, 3vw, 40px)/1.18 var(--fuente-titulos);
+  letter-spacing: -0.025em;
+}
+
+#permanencia .sticky-story-card > p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--texto-suave);
+  font: 400 clamp(17px, 1.4vw, 19px)/1.55 var(--fuente-textos);
+}
+
+#permanencia .sticky-story-card .bridge-link {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+/* En pantallas chicas/bajas se presenta en lectura normal:
+   evita recortes del Flourish y mantiene el texto accesible. */
+@media (max-width: 759px), (max-height: 700px) {
+  #permanencia .sticky-story-pin {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding: 42px 0 16px;
+  }
+
+  #permanencia .sticky-story-scroll {
+    min-height: 0;
+    padding: 26px 0 48px;
+    pointer-events: auto;
+  }
+
+  #permanencia .sticky-story-scroll .sticky-story-card {
+    width: 100%;
+    padding: 26px 22px;
+    box-shadow: 0 8px 22px rgba(48, 43, 41, 0.10);
+  }
+}

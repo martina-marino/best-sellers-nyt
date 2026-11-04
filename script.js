@@ -91,22 +91,20 @@
 
     if (!naturalHeight || !availableWidth) return;
 
-    let maxHeight = window.innerHeight * 0.78;
-
-    // Reservar espacio para el título y los controles
-    // en la sección de las tarjetas.
+    let maxHeight = Math.max(220, window.innerHeight * 0.78);
     const section = frame.closest(".exceptions");
-
     if (section) {
-      const heading = section.querySelector(".section-heading");
-
-      maxHeight = window.innerHeight - heading.offsetHeight - 150;
-      // El texto editorial precede a las tarjetas; la altura de las
-      // tarjetas se limita por separado para conservar su legibilidad.
-      maxHeight = Math.max(window.innerHeight * 0.55, maxHeight);
+      // Reservar el espacio real del texto, los controles y los márgenes.
+      const surroundingHeight = section.offsetHeight - frame.offsetHeight;
+      maxHeight = Math.max(100, window.innerHeight - surroundingHeight - 2);
     }
 
-    maxHeight = Math.max(220, maxHeight);
+    const folder = frame.closest(".folder-stack");
+    if (folder && !mobile) {
+      const controlsAndText = folder.offsetHeight - frame.offsetHeight;
+      maxHeight = Math.max(160, Math.min(window.innerHeight * 0.54,
+        window.innerHeight - controlsAndText - 48));
+    }
 
     // En celular o al ampliar, no limitar por altura.
     const fitHeight =
@@ -114,11 +112,14 @@
         ? 1
         : maxHeight / naturalHeight;
 
-    const scale = Math.min(
+    const fittedScale = Math.min(
       1,
       availableWidth / nativeWidth,
       fitHeight
     );
+
+    const compactCards = section && !mobile && !frame.classList.contains("is-expanded");
+    const scale = compactCards ? fittedScale * 0.95 : fittedScale;
 
     content.style.transform = `scale(${scale})`;
 
@@ -486,117 +487,6 @@
   updateZoom();
 })();
 
-(() => {
-  "use strict";
-
-  const scene = document.querySelector(".duration-scene");
-  if (!scene) return;
-
-  const buttons = [
-    ...scene.querySelectorAll(".duration-choice")
-  ];
-
-  const number = scene.querySelector(".duration-number");
-  const eraLabel = scene.querySelector(".duration-era-label");
-  const caption = scene.querySelector(".duration-caption");
-  const description = scene.querySelector(".duration-description");
-
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
-
-  const content = {
-    "1970": {
-      weeks: "15",
-      label: "Títulos que debutaron en los años 1970",
-      title: "Un lugar que podía sostenerse durante meses.",
-      description:
-        "Para los títulos que ingresaron en esta década, " +
-        "la mediana fue de 15 semanas acumuladas. " +
-        "Las salidas y los reingresos también forman parte de esa duración."
-    },
-
-    "2010": {
-      weeks: "2",
-      label: "Títulos que debutaron en los años 2010",
-      title: "Cuatro décadas después, el paso es mucho más breve.",
-      description:
-        "La mediana baja a 2 semanas acumuladas. " +
-        "Eso no significa que todos los libros duren lo mismo: " +
-        "describe el centro de una distribución con recorridos muy distintos."
-    }
-  };
-
-  let numberAnimation;
-  let copyAnimation;
-
-  function selectEra(era) {
-    if (scene.dataset.era === era) return;
-
-    const selected = content[era];
-    if (!selected) return;
-
-    numberAnimation?.cancel();
-    copyAnimation?.cancel();
-
-    scene.dataset.era = era;
-
-    buttons.forEach((button) => {
-      button.setAttribute(
-        "aria-pressed",
-        String(button.dataset.eraChoice === era)
-      );
-    });
-
-    number.textContent = selected.weeks;
-    eraLabel.textContent = selected.label;
-    caption.textContent = selected.title;
-    description.textContent = selected.description;
-
-    if (!reducedMotion.matches && number.animate) {
-      numberAnimation = number.animate(
-        [
-          {
-            opacity: 0,
-            transform: "translateY(18px) scale(0.88)"
-          },
-          {
-            opacity: 1,
-            transform: "translateY(0) scale(1)"
-          }
-        ],
-        {
-          duration: 650,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)"
-        }
-      );
-
-      copyAnimation = scene.querySelector(".duration-copy").animate(
-        [
-          { opacity: 0, transform: "translateY(12px)" },
-          { opacity: 1, transform: "translateY(0)" }
-        ],
-        {
-          duration: 500,
-          easing: "ease-out"
-        }
-      );
-    }
-  }
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      selectEra(button.dataset.eraChoice);
-    });
-  });
-
-  reducedMotion.addEventListener("change", () => {
-    if (reducedMotion.matches) {
-      numberAnimation?.cancel();
-      copyAnimation?.cancel();
-    }
-  });
-})();
 // Señalador de lectura y entradas editoriales.
 (() => {
   const progress = document.querySelector('.reading-progress span');
