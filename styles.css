@@ -1875,7 +1875,7 @@ main .chart-heading p {
 #cambios .chart-grid {
   width: 100%;
   grid-template-columns: minmax(0, 1fr);
-  gap: clamp(50px, 7vh, 78px);
+  gap: clamp(80px, 9vh, 100px);
   align-items: start;
 }
 
@@ -1886,7 +1886,7 @@ main .chart-heading p {
 #cambios .chart-heading {
   width: 100%;
   max-width: 1050px;
-  margin: 0 0 24px;
+  margin: 0 0 36px;
   text-align: left;
 }
 
@@ -1908,7 +1908,7 @@ main .chart-heading p {
 /* Gráficos de Flourish centrados, sin desplazar sus títulos.
    La altura sigue controlada por el script existente. */
 #cambios .chart-grid .fit-frame {
-  max-width: 920px;
+  max-width: 950px;
   margin-inline: auto;
 }
 
@@ -1918,9 +1918,10 @@ main .chart-heading p {
 }
 
 #cambios .reading-note {
-  width: min(920px, 100%);
-  margin: clamp(32px, 5vh, 50px) auto 0;
-  padding: 18px 0 0 22px;
+  width: min(900px, 100%);
+  margin: clamp(64px, 9vh, 90px) auto 0;
+  padding: 8px 0 8px 24px;
+  border-left: 3px solid var(--bordo);
   text-align: left;
 }
 
@@ -1943,11 +1944,16 @@ main .chart-heading p {
   }
 
   #cambios .chart-grid {
-    gap: 54px;
+    gap: 64px;
   }
 
   #cambios .chart-heading {
-    margin-bottom: 18px;
+    margin-bottom: 24px;
+  }
+
+  #cambios .reading-note {
+    margin-top: 48px;
+    padding-left: 18px;
   }
 }
 
@@ -2087,4 +2093,461 @@ main .chart-heading p {
     padding: 26px 22px;
     box-shadow: 0 8px 22px rgba(48, 43, 41, 0.10);
   }
+}
+/* =============================================================
+   EDICIÓN FINAL · CONTINUIDAD EDITORIAL Y EXPLORADOR DE AUTORES
+   El resto del CSS conserva los estilos interactivos existentes.
+   ============================================================= */
+
+:root {
+  --ancho-lectura: 990px;
+  --ancho-parrafo: 74ch;
+}
+
+/* Un mismo ritmo para todos los capítulos; cada gráfico conserva su centro. */
+main > .section:not(.video-section) { background-color: var(--crema); }
+.section-heading,
+.chart-heading { text-align: left; }
+.section-heading { max-width: var(--ancho-lectura); }
+.section-heading > p,
+.chart-heading > p { max-width: var(--ancho-parrafo); }
+.section-heading h2,
+.chart-heading h2,
+.chart-heading h3 { text-wrap: balance; }
+.section-heading p,
+.editorial-lead,
+.editorial-intro p { text-wrap: pretty; }
+.section:not(.duration-story):not(.definition):not(.sticky-story):not(.video-section) {
+  padding-block: clamp(64px, 8vh, 106px);
+}
+#cambios { padding-block: clamp(55px, 7vh, 88px); }
+#excepciones { padding-block: clamp(70px, 8vh, 102px); }
+#autores { padding-top: clamp(76px, 9vh, 115px); }
+#explorador, #libros { padding-top: clamp(76px, 9vh, 110px); }
+
+/* Introducción: continuidad visual en lugar de una banda aislada. */
+#video {
+  background: var(--crema);
+  border-block: 1px solid var(--linea);
+}
+#video .section-heading { max-width: var(--ancho-lectura); }
+#video .section-heading p { max-width: 77ch; }
+#video .video-player {
+  border: 1px solid #d5cabb;
+  box-shadow: 0 12px 30px rgba(48, 43, 41, .10);
+}
+#definicion .definition-copy p { max-width: 67ch; }
+.definition-visual { justify-items: center; }
+.ranking-caption {
+  margin: 25px 0 0;
+  max-width: 26ch;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--texto-suave);
+}
+.method-insert { max-width: 970px; }
+.method-insert[open] { box-shadow: 0 7px 20px rgba(48, 43, 41, .055); }
+
+/* El panel que aparece durante el scroll funciona como un párrafo del relato. */
+#permanencia .sticky-story-scroll .sticky-story-card {
+  background: var(--crema);
+  border-color: var(--linea);
+  border-left-color: var(--bordo);
+}
+#permanencia .sticky-story-card > p { text-wrap: pretty; }
+
+/* Dos gráficos, una lectura consecutiva; evitar el efecto de cuadrícula. */
+#cambios .chart-grid { gap: clamp(84px, 11vh, 135px); }
+#cambios .chart-heading { margin-bottom: clamp(24px, 4vh, 42px); }
+#cambios .reading-note { max-width: 960px; }
+#cambios .reading-note p { font-size: clamp(16px, 1.4vw, 19px); }
+
+/* La excepción se explica también con números, no solo con portadas. */
+.exception-facts {
+  max-width: 1110px;
+  margin: clamp(38px, 5vh, 64px) auto 0;
+  padding: 26px 0 0;
+  border-top: 1px solid var(--linea);
+}
+.exception-facts-intro {
+  margin-bottom: 18px;
+  font-size: clamp(17px, 1.4vw, 19px);
+  color: var(--texto-suave);
+}
+.exception-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 45px);
+}
+.exception-facts-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 0 0 16px;
+  border-bottom: 2px solid var(--linea);
+}
+.exception-facts-grid strong {
+  color: var(--bordo);
+  font: 600 clamp(36px, 4vw, 60px)/1 var(--fuente-titulos);
+  font-variant-numeric: lining-nums;
+}
+.exception-facts-grid span { font-size: 16px; color: var(--texto-suave); }
+.exception-facts .source-note { margin: 16px 0 0; }
+
+/* Autores: mantener el hilo, evitar tres párrafos repetidos. */
+#autores .section-heading { margin-bottom: 0; }
+#autores .editorial-intro { max-width: 930px; margin-top: 25px; }
+#autores .interaction-note { margin: 22px 0 25px; }
+#autores .folder-panel .chart-heading p { max-width: 72ch; }
+
+/* Explorador funcional construido únicamente sobre el CSV original. */
+#explorador { border-top: 1px solid var(--linea); }
+#explorador .editorial-lead { max-width: 79ch; }
+.author-search-form {
+  max-width: 980px;
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  padding: 23px clamp(18px, 2.5vw, 32px) 18px;
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--bordo);
+  background: #F3ECE1;
+}
+.author-search-form label {
+  display: block;
+  margin-bottom: 11px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--texto);
+}
+.author-search-row { display: flex; align-items: stretch; gap: 12px; }
+.author-search-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  border: 1px solid #BFB3A3;
+  border-radius: 3px;
+  background: #FFFDF8;
+  color: var(--texto);
+  font: 400 17px/1.4 var(--fuente-textos);
+}
+.author-search-row input:focus { outline: 2px solid var(--bordo); outline-offset: 2px; }
+.author-search-row button {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 23px;
+  border: 1px solid var(--bordo);
+  border-radius: 3px;
+  background: var(--bordo);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.author-search-row button:hover { background: #8A1014; }
+.author-search-row button:disabled { background: var(--gris); border-color: var(--gris); }
+.author-feedback { margin: 11px 0 0; font-size: 14px; color: var(--texto-suave); }
+
+#explorador .explorer-layout {
+  grid-template-columns: minmax(0, 0.91fr) minmax(0, 1.09fr);
+  gap: clamp(22px, 4vw, 54px);
+  align-items: start;
+}
+#explorador .explorer-portrait,
+#explorador .explorer-info { min-width: 0; }
+#explorador .explorer-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 540px;
+  padding: clamp(22px, 3vw, 38px);
+  border: 1px solid #D4C7B7;
+  background: #E7DDD0;
+  text-align: left;
+}
+#explorador .explorer-portrait .eyebrow { margin: 0; color: var(--bordo); }
+#explorador .explorer-portrait h3 {
+  margin: 0;
+  font: 600 clamp(25px, 2.8vw, 36px)/1.25 var(--fuente-titulos);
+  text-wrap: balance;
+}
+.author-book-collection {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  height: 315px;
+  padding: 0 3px 15px;
+  border-bottom: 12px solid #9C836A;
+  box-shadow: 0 8px 0 #C3AB90, 0 15px 20px #302B2914;
+}
+.author-book-spine {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-width: 0;
+  height: var(--spine-height, 90%);
+  padding: 10px 3px;
+  border: 1px solid rgba(255,255,255,.20);
+  border-bottom: 0;
+  border-radius: 3px 4px 0 0;
+  background: var(--spine-color, #6B0005);
+  color: #F6E9D5;
+  box-shadow: inset -5px 0 rgba(0,0,0,.15), 2px 2px 5px rgba(0,0,0,.12);
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+}
+.author-book-spine:hover,
+.author-book-spine:focus-visible { transform: translateY(-9px); filter: brightness(1.12); }
+.author-spine-title {
+  display: block;
+  max-height: 100%;
+  overflow: hidden;
+  font: 500 clamp(11px, 1vw, 13px)/1.2 var(--fuente-titulos);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-overflow: ellipsis;
+}
+.author-library-hint {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+#explorador .explorer-info {
+  padding: clamp(20px, 3vw, 38px);
+  border-top: 4px solid var(--bordo);
+  background: #F1EAE0;
+}
+#explorador .explorer-info .eyebrow { margin: 0 0 8px; color: var(--texto-suave); }
+#explorador .explorer-info h3 {
+  margin: 0 0 24px;
+  font: 600 clamp(25px, 3vw, 38px)/1.22 var(--fuente-titulos);
+  color: var(--texto);
+  text-wrap: balance;
+}
+.author-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--linea);
+}
+.author-stats > div { display: grid; align-content: start; gap: 2px; }
+.author-stats strong {
+  color: var(--bordo);
+  font: 600 clamp(27px, 3vw, 43px)/1.1 var(--fuente-titulos);
+  font-variant-numeric: lining-nums;
+}
+.author-stats span { font-size: 14px; color: var(--texto-suave); }
+.author-books-header { margin-top: 25px; }
+.author-books-header h4 {
+  margin: 0 0 5px;
+  font: 600 clamp(19px, 2vw, 24px)/1.3 var(--fuente-titulos);
+}
+.author-books-header p { margin: 0 0 15px; font-size: 14px; color: var(--texto-suave); }
+.author-books { margin: 0; padding: 0; list-style: none; }
+.author-book-row {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 6px 12px;
+  padding: 11px 6px;
+  border-bottom: 1px solid var(--linea);
+  transition: background-color .18s ease;
+}
+.author-book-row.is-highlighted { background: #E8DBC8; }
+.author-book-detail { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.author-book-title { font-size: 15px; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+.author-book-meta { font-size: 13px; color: var(--texto-suave); }
+.author-book-weeks { font-size: 14px; color: var(--bordo); white-space: nowrap; }
+.author-book-bar {
+  grid-column: 1 / -1;
+  width: 100%; height: 5px;
+  background: #DED2C2;
+}
+.author-book-bar-fill { display: block; height: 100%; background: var(--bordo); }
+.author-show-more {
+  display: inline-block;
+  margin: 18px 0 0;
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--bordo);
+  font: 600 16px var(--fuente-textos);
+  cursor: pointer;
+}
+.explorer-source { max-width: 1050px; margin-top: 28px; }
+
+/* Cierre: un final editorial y no un módulo ajeno a la página. */
+#libros .editorial-lead { max-width: 72ch; }
+#libros .closing { margin-top: clamp(72px, 10vh, 130px); }
+#libros .closing h2 { text-wrap: balance; }
+#libros .closing p { max-width: 66ch; }
+.site-footer em { font-style: italic; }
+
+@media (max-width: 1000px) {
+  #explorador .explorer-layout { grid-template-columns: 1fr; }
+  #explorador .explorer-portrait { min-height: 460px; }
+  .author-book-collection { height: 280px; }
+}
+@media (max-width: 759px) {
+  .section:not(.duration-story):not(.definition):not(.sticky-story):not(.video-section) { padding-block: 58px; }
+  #excepciones, #autores, #explorador, #libros { padding-top: 64px; }
+  #cambios .chart-grid { gap: 65px; }
+  .exception-facts-grid { grid-template-columns: 1fr; gap: 20px; }
+  .exception-facts-grid > div { flex-direction: row; align-items: baseline; gap: 15px; }
+  .exception-facts-grid strong { font-size: 34px; }
+  .exception-facts-grid span { font-size: 14px; }
+  .author-search-row { flex-direction: column; }
+  .author-search-row button { width: 100%; }
+  #explorador .explorer-portrait { min-height: 400px; }
+  .author-book-collection { height: 245px; }
+  .author-book-spine { padding: 8px 2px; }
+  .author-spine-title { font-size: 11px; }
+  #explorador .explorer-info { padding: 22px 17px; }
+  .author-stats { gap: 15px; }
+  #video .video-player { width: 100%; }
+  .ranking-caption { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .author-book-spine, .author-book-row { transition: none; }
+}
+
+
+/* ===============================================================
+   AJUSTES DE LECTURA 04/11: tarjetas, carpetas y explorador.
+   Los gráficos ajenos a estas tres escenas no cambian de escala.
+   =============================================================== */
+
+/* 1. Tarjetas: ocupar el ancho editorial, no encogerlas por alto. */
+#excepciones { padding-top: clamp(46px, 6vh, 74px); }
+#excepciones .section-heading { margin-bottom: clamp(18px, 3vh, 27px); }
+#excepciones #frame-cards { width: min(100%, 1100px); max-width: 1100px; }
+#excepciones #frame-cards .fit-content { transform-origin: top left; }
+#excepciones .embed-actions { margin-block: 9px 16px; }
+#excepciones .exception-facts { margin-top: clamp(20px, 3vh, 36px); }
+
+/* 2. Los protagonistas: una sola escena editorial por pantalla grande.
+   Encabezados y resumen compactos; el gráfico conserva una escala útil. */
+@media (min-width: 1100px) and (min-height: 750px) {
+  .section#autores { padding-top: clamp(22px, 3.5vh, 38px); padding-bottom: 24px; }
+  #autores .section-heading h2 { margin-bottom: 7px; }
+  #autores .section-heading p { max-width: none; font-size: clamp(16px, 1.2vw, 18px); }
+  #autores .editorial-intro { margin: 10px 0 13px; max-width: 1030px; }
+  #autores .editorial-intro p { margin: 0; font-size: 16px; line-height: 1.45; }
+  #autores .folder-stack { max-width: 900px; margin: 15px auto 0; }
+  #autores .folder-tab { min-height: 44px; padding: 8px 14px; font-size: 15px; }
+  #autores .folder-stack::before { top: 46px; }
+  #autores .folder-stack::after { top: 54px; }
+  #autores .folder-body { padding: 11px 18px 8px; border-top-width: 5px; }
+  #autores .folder-reading { max-width: none; margin: 0 0 8px; font-size: 15px; line-height: 1.35; }
+  #autores .folder-panel .chart-heading { margin: 0 0 7px; }
+  #autores .folder-panel .chart-heading h3 { font-size: 21px; margin-bottom: 2px; }
+  #autores .folder-panel .chart-heading p { font-size: 14px; line-height: 1.3; }
+  #autores .folder-panel .embed-actions { margin: 4px auto 0; }
+}
+
+/* 3. Explorador: liberar altura inicial sin achicar el texto de los datos. */
+@media (min-width: 1001px) {
+  #explorador { padding-top: clamp(36px, 5vh, 58px); }
+  #explorador .section-heading { margin-bottom: 14px; }
+  #explorador .section-heading h2 { margin-bottom: 7px; }
+  #explorador .editorial-lead { margin: 0 0 18px; max-width: 90ch; font-size: 17px; }
+  #explorador .author-search-form { margin-bottom: 23px; padding: 15px 23px 11px; }
+  #explorador .author-search-form label { margin-bottom: 6px; }
+  #explorador .author-search-row input { padding: 9px 14px; }
+  #explorador .author-search-row button { padding: 9px 18px; }
+  #explorador .author-feedback { margin-top: 7px; }
+  #explorador .explorer-layout { gap: 30px; }
+  #explorador .explorer-portrait { min-height: 430px; padding: 24px; }
+  #explorador .explorer-info { padding: 20px 25px; }
+  #explorador .explorer-info h3 { font-size: 27px; margin-bottom: 10px; }
+  #explorador .author-book-collection { height: 230px; }
+  #explorador .author-stats { gap: 9px 18px; padding-bottom: 12px; }
+  #explorador .author-stats strong { font-size: 29px; }
+  #explorador .author-books-header { margin-top: 14px; }
+  #explorador .author-books-header h4 { font-size: 19px; }
+  #explorador .author-books-header p { margin-bottom: 5px; }
+  #explorador .author-book-row { padding: 6px 4px; gap: 4px 8px; }
+  #explorador .author-show-more { margin-top: 9px; }
+}
+@media (max-width: 759px) {
+  #excepciones #frame-cards { width: 100%; }
+  #autores .editorial-intro { margin: 14px 0; }
+  #autores .folder-stack { margin-top: 15px; }
+  #explorador .author-search-form { padding: 18px 16px; }
+}
+
+/* Ficha compacta: las cuatro métricas en una línea en escritorio grande. */
+@media (min-width: 1100px) {
+  #explorador .author-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 15px;
+  }
+  #explorador .author-stats strong { font-size: clamp(23px, 2.1vw, 30px); }
+  #explorador .author-stats span { font-size: 12px; line-height: 1.3; }
+  #explorador .author-book-row { padding-block: 5px; }
+}
+
+/* Último ajuste de alto: resultados y buscador cerca de una pantalla. */
+@media (min-width: 1100px) and (min-height: 750px) {
+  #explorador { padding-top: 31px; padding-bottom: 29px; }
+  #explorador .section-heading { margin-bottom: 9px; }
+  #explorador .section-heading p { font-size: 17px; }
+  #explorador .editorial-lead { margin-bottom: 13px; line-height: 1.4; }
+  #explorador .author-search-form { margin-bottom: 16px; padding: 11px 20px 9px; }
+  #explorador .author-search-form label { margin-bottom: 3px; font-size: 15px; }
+  #explorador .author-feedback { margin-top: 5px; font-size: 13px; }
+  #explorador .explorer-portrait { min-height: 405px; }
+  #explorador .author-book-collection { height: 205px; }
+  #explorador .author-book-row { padding-block: 3px; }
+  #explorador .author-book-row .author-book-title { font-size: 14px; }
+  #explorador .author-book-row .author-book-meta { font-size: 12px; }
+  #explorador .explorer-source { margin-top: 17px; }
+}
+
+
+/* ================================================================
+   REFINAMIENTO FINAL 04/11 · excepciones + carpetas + validación.
+   Solo escritorio amplio: la vista mobile conserva los estilos previos.
+   ================================================================ */
+#author-results[hidden] { display: none; }
+
+@media (min-width: 1100px) and (min-height: 760px) {
+  /* Portadas a escala intermedia + estadísticas visibles debajo.
+     Se reduce el ancho del embed completo (sin recortar la interacción). */
+  #excepciones { padding-top: 28px; padding-bottom: 30px; }
+  #excepciones .section-heading { margin-bottom: 9px; }
+  #excepciones .section-heading h2 { margin-bottom: 7px; }
+  #excepciones .section-heading p {
+    max-width: 90ch;
+    font-size: 17px;
+    line-height: 1.45;
+  }
+  #excepciones #frame-cards {
+    width: min(100%, 840px);
+    max-width: 840px;
+  }
+  #excepciones .embed-actions { margin: 2px auto 7px; }
+  #excepciones .exception-facts {
+    margin-top: 10px;
+    padding-top: 12px;
+  }
+  #excepciones .exception-facts-intro { margin-bottom: 7px; font-size: 16px; }
+  #excepciones .exception-facts-grid { gap: 24px; }
+  #excepciones .exception-facts-grid > div { gap: 3px; padding-bottom: 8px; }
+  #excepciones .exception-facts-grid strong { font-size: 46px; }
+  #excepciones .exception-facts-grid span { font-size: 14px; }
+  #excepciones .exception-facts .source-note { margin-top: 8px; font-size: 12px; }
+
+  /* Carpetas: aumento sutil del área útil y del gráfico. */
+  #autores .folder-stack { max-width: 990px; margin-top: 10px; }
+  #autores .folder-body { padding: 10px 17px 6px; }
+  #autores .editorial-intro { margin-bottom: 9px; }
+  #autores .folder-panel .chart-heading { margin-bottom: 4px; }
 }

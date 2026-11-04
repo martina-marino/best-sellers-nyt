@@ -1,0 +1,20 @@
+Ajustes de noviembre 2026 — Bestsellers NYT
+
+Para reemplazar la página: copiar index.html, styles.css, script.js y autores-data.js sobre los archivos del repositorio. Conservar la carpeta portadas/ ya existente.
+
+CAMBIOS DE ESTA ENTREGA
+- Tarjetas de libros: escala proporcional al ancho, sin límite vertical que reducía las portadas.
+- Los protagonistas: presentación y carpetas condensadas para pantallas de escritorio. El tamaño final varía según la altura de la ventana y la carga de los iframe de Flourish.
+- Explorá un autor: se redujo el alto de la introducción, buscador y resultados; por defecto se muestran hasta tres títulos, con opción a desplegar el resto.
+- Sugerencias de autores: se corrigen puntos finales espurios y comillas completas, se agrupan las variantes tipográficas y se excluyen atribuciones rotas o no identificadas. El archivo autores-data.js original no fue modificado. Las coautorías siguen como aparecen en la fuente.
+
+Probar en navegador, tanto en escritorio como en móvil, al publicar: el contenido y alto de las visualizaciones Flourish dependen de un servicio externo.
+
+Git: desde el repositorio ejecutar git add index.html styles.css script.js autores-data.js && git commit -m "Ajustes finales de tarjetas, autores y buscador" && git push origin main
+
+
+REVISIÓN ADICIONAL 04/11:
+- Las portadas de Los libros que desafiaron la tendencia se reducen a un tamaño intermedio en pantallas grandes, y se compactan los márgenes y las cifras inferiores.
+- Las carpetas de Los protagonistas se amplían moderadamente sin alterar los otros gráficos.
+- El buscador de autores unifica errores puntuales (por ejemplo Step hen King → Stephen King), exige nombre exacto de una sugerencia y oculta la ficha cuando se intenta buscar un nombre no reconocido.
+- Las correcciones se aplican al catálogo mostrado, NO alteran autores-data.js.
