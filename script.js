@@ -98,19 +98,16 @@
     // Las portadas de las excepciones son el elemento principal de la escena:
     // no reducirlas para que toda la sección entre artificialmente en 1 pantalla.
     // Se ajustan al ancho disponible y la sección puede crecer naturalmente.
-    if (folder && !mobile) {
-      // Carpetas editoriales: un poco más de alto que antes, manteniendo
-      // visible el encabezado y la carpeta en una misma pantalla de escritorio.
-      maxHeight = Math.max(290, Math.min(420, window.innerHeight * 0.465));
-    }
 
     const fitHeight =
-      mobile || isCards || frame.classList.contains("is-expanded")
+      (isCards || folder) && !mobile
+        ? Infinity
+        : mobile || frame.classList.contains("is-expanded")
         ? 1
         : maxHeight / naturalHeight;
 
     const scale = Math.min(
-      1,
+      isCards && !mobile ? Infinity : 1,
       availableWidth / nativeWidth,
       fitHeight
     );
@@ -545,22 +542,17 @@
 (() => {
   'use strict';
 
-  const form = document.getElementById('author-search-form');
-  if (!form) return;
+  if (!document.getElementById('author-picks')) return;
 
   const catalog = window.NYT_AUTHORS_DATA;
-  const input = document.getElementById('author-search');
-  const suggestions = document.getElementById('author-suggestions');
-  const feedback = document.getElementById('author-feedback');
   const shelf = document.getElementById('author-book-collection');
-  const list = document.getElementById('author-books');
-  const moreButton = document.getElementById('author-show-more');
   // Unificamos únicamente errores de transcripción identificables a partir
   // del autor y de su obra; NO modificamos el dataset original.
   // Ejemplo: CUJO figura bajo «Step hen King» en una fila, pero pertenece
   // a Stephen King. Se muestra una sola ficha y se suman sus registros.
   const verifiedNameCorrections = {
     'Step hen King': 'Stephen King',
+    'James Michener': 'James A. Michener',
     'A.A. Milnei': 'A. A. Milne',
     'Elizabeth Forsythe Halley': 'Elizabeth Forsythe Hailey',
     'Maz De La Roche': 'Mazo de la Roche',
@@ -602,13 +594,149 @@
   const authorCatalog = Object.fromEntries(
     [...indexed.entries()].map(([name, byId]) => [name, [...byId.values()]])
   );
+  // El resumen aportado de King incluye cuatro títulos escritos en coautoría.
+  // Conservamos también sus entradas originales en el buscador.
+  if (authorCatalog['Stephen King']) {
+    const kingRows = new Map(authorCatalog['Stephen King'].map(row => [row[0], row]));
+    ['Stephen King and Owen King', 'Stephen King and Peter Straub', 'Stephen King and Richard Chizmar'].forEach(name => {
+      (authorCatalog[name] || []).forEach(row => kingRows.set(row[0], row));
+    });
+    authorCatalog['Stephen King'] = [...kingRows.values()];
+  }
   const names = Object.keys(authorCatalog).sort((a, b) => a.localeCompare(b, 'es'));
-  const searchableNames = names.map(name => ({name, normalized: normalized(name)}));
   const number = new Intl.NumberFormat('es-AR');
-  const motionReduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const colors = ['#6B0005', '#1B263B', '#84665B', '#775147', '#4D5361', '#7B4542', '#5C6466', '#8B7060'];
+  const profiles = {
+  "John Grisham": {
+    "slug": "grisham",
+    "source": "https://www.esquire.com/entertainment/books/a41456526/john-grisham-what-ive-learned/",
+    "bio": "Antes de ser escritor, Grisham era abogado en Mississippi, y de ahí salen sus historias de juicios y conspiraciones. Tuvo 35 libros en la lista y, sumando todos, pasó más de 15 años en ella. Casi todos llegaron al puesto número 1: 34 de los 35.",
+    "books": [
+      {
+        "title": "The Pelican Brief",
+        "cover": "assets/autores/grisham-0.jpg",
+        "description": "Dos jueces de la Corte Suprema aparecen asesinados, y una joven estudiante de derecho, Darby Shaw, escribe un informe con una teoría sobre el crimen. Sin darse cuenta, descubre un secreto tan peligroso que la convierte en el blanco de personas muy poderosas. Fue la tercera novela de Grisham y estuvo en la lista 49 semanas, casi un año entero. Años después se hizo película, con Julia Roberts y Denzel Washington."
+      },
+      {
+        "title": "The Client",
+        "cover": "assets/autores/grisham-1.jpg"
+      },
+      {
+        "title": "The Firm",
+        "cover": "assets/autores/grisham-2.jpg"
+      },
+      {
+        "title": "Skipping Christmas",
+        "cover": "assets/autores/grisham-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/grisham.jpg"
+  },
+  "Stephen King": {
+    "slug": "king",
+    "source": "https://newengland.com/yankee/magazine/stephen-king/",
+    "bio": "Nacido en Maine en 1947, King es el maestro del terror moderno, y muchas de sus novelas terminaron en cine y series. Tuvo 60 libros en la lista, que sumados representan más de 18 años, y 43 de ellos llegaron al puesto número 1.",
+    "books": [
+      {
+        "title": "The Stand",
+        "cover": "assets/autores/king-0.jpg",
+        "description": "Un virus creado en un laboratorio escapa y acaba con casi toda la humanidad. Los pocos que sobreviven empiezan a tener los mismos sueños: algunos se sienten atraídos por una anciana bondadosa, y otros por un hombre misterioso y oscuro. Todos se preparan para una batalla final entre el bien y el mal. Es una de las novelas más queridas de King, estuvo en la lista 38 semanas (casi 9 meses) y tuvo dos series de televisión."
+      },
+      {
+        "title": "It",
+        "cover": "assets/autores/king-1.jpg"
+      },
+      {
+        "title": "Firestarter",
+        "cover": "assets/autores/king-2.jpg"
+      },
+      {
+        "title": "Cujo",
+        "cover": "assets/autores/king-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/king.jpg",
+    "photoSource": "https://en.wikipedia.org/wiki/Stephen_King",
+    "photoNote": "Retrato alternativo · Wikimedia Commons"
+  },
+  "James A. Michener": {
+    "slug": "michener",
+    "source": "https://www.google.com/imgres?q=James%20A.%20Michener%3A&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FM%2FMV5BMzcyZTEwN2UtYzQzNy00YzI2LWJkYzYtMTAxODk5ODk0MjBlXkEyXkFqcGc%40._V1_.jpg&imgrefurl=https%3A%2F%2Fwww.imdb.com%2Fes-es%2Fname%2Fnm0585151%2Fbio%2F&docid=lnU4iHPGJvL6yM&tbnid=4n8FKSnL_X4y4M&vet=12ahUKEwi-nMT9s5GYAxVmqZUCHfkZMB0QnPAOegUIyQEQAA..i&w=465&h=600&hcb=2&ved=2ahUKEwi-nMT9s5GYAxVmqZUCHfkZMB0QnPAOegUIyQEQAA",
+    "bio": "Michener escribía sagas enormes que contaban la historia de un lugar entero a lo largo de siglos, como Hawái, Texas o Alaska. Ganó el premio Pulitzer en 1948. Tuvo 21 libros en la lista, y entre todos estuvieron unos 12 años y medio.",
+    "books": [
+      {
+        "title": "Hawaii",
+        "cover": "assets/autores/michener-0.jpg",
+        "description": "Michener empieza la historia mucho antes de que existiera una sola persona en las islas: con el nacimiento de Hawái por erupciones volcánicas. Después sigue a los primeros navegantes polinesios, a los misioneros que llegaron desde Nueva Inglaterra y a los inmigrantes de China y Japón. Salió el mismo año en que Hawái se convirtió en un estado de Estados Unidos, estuvo en la lista 94 semanas (casi 2 años) y también se llevó al cine."
+      },
+      {
+        "title": "The Source",
+        "cover": "assets/autores/michener-1.jpg"
+      },
+      {
+        "title": "Centennial",
+        "cover": "assets/autores/michener-2.jpg"
+      },
+      {
+        "title": "Chesapeake",
+        "cover": "assets/autores/michener-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/michener.jpg"
+  },
+  "Danielle Steel": {
+    "slug": "steel",
+    "source": "https://www.tvinsider.com/people/danielle-steel/",
+    "bio": "Nacida en Nueva York en 1947, Steel escribe novelas románticas y dramas familiares, y vendió más de 500 millones de libros. Es la que más libros colocó en la lista: 116, que sumados estuvieron más de 18 años.",
+    "books": [
+      {
+        "title": "Wanderlust",
+        "cover": "assets/autores/steel-0.jpg",
+        "description": "Audrey Driscoll es una mujer estadounidense con ganas de conocer el mundo, y sus viajes la llevan a China, Alemania, Inglaterra y el norte de África. En cada lugar se enamora y vive nuevas aventuras, pero también tiene que decidir una y otra vez entre seguir su deseo de libertad o hacer lo que su conciencia le pide. Fue la vigésima novela de Steel, llegó al puesto número 1 y se quedó en la lista más de 6 meses."
+      },
+      {
+        "title": "Changes",
+        "cover": "assets/autores/steel-1.jpg"
+      },
+      {
+        "title": "The Gift",
+        "cover": "assets/autores/steel-2.jpg"
+      },
+      {
+        "title": "Kaleidoscope",
+        "cover": "assets/autores/steel-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/steel.jpg"
+  },
+  "Herman Wouk": {
+    "slug": "wouk",
+    "source": "https://en.wikipedia.org/wiki/Herman_Wouk",
+    "bio": "Wouk escribió historias de guerra y de vida cotidiana de su época, y vivió hasta los 103 años. Solo tuvo 9 libros en la lista, pero entre todos sumaron más de 7 años. Ganó el Pulitzer por The Caine Mutiny.",
+    "books": [
+      {
+        "title": "The Caine Mutiny",
+        "cover": "assets/autores/wouk-0.jpg",
+        "description": "Durante la Segunda Guerra Mundial, un joven oficial llega a un viejo barco de la Marina de Estados Unidos, el Caine, comandado por un capitán cada vez más inestable. En medio de una tormenta, la tripulación decide quitarle el mando, y la historia termina en un juicio que plantea quién tenía la razón. Ganó el premio Pulitzer, estuvo en la lista 123 semanas (más de 2 años) y se hizo película en 1954 con Humphrey Bogart."
+      },
+      {
+        "title": "The Winds of War",
+        "cover": "assets/autores/wouk-1.jpg"
+      },
+      {
+        "title": "War and Remembrance",
+        "cover": "assets/autores/wouk-2.jpg"
+      },
+      {
+        "title": "Marjorie Morningstar",
+        "cover": "assets/autores/wouk-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/wouk.jpg"
+  }
+};
+  let selectedBooks = [];
+  let selectedBookIndex = 0;
   let currentName = '';
-  let expanded = false;
 
   function normalized(value) {
     return value.toLocaleLowerCase('es')
@@ -624,139 +752,144 @@
     return node;
   }
 
-  if (!names.length) {
-    form.querySelector('button[type="submit"]').disabled = true;
-    feedback.textContent = 'No se pudieron cargar los datos de autores. Comprobá que autores-data.js esté junto a index.html.';
-    return;
+  if (!names.length) return;
+
+  function imageNode(src, alt, className) {
+    const img = element('img', className);
+    img.src = src;
+    img.alt = alt;
+    img.loading = 'lazy';
+    img.addEventListener('error', () => {
+      img.replaceWith(element('span', 'editorial-image-fallback', alt));
+    }, { once: true });
+    return img;
   }
 
-  // No desplegar miles de nombres crudos: sugerir un máximo de doce coincidencias.
-  function updateSuggestions(query) {
-    suggestions.replaceChildren();
-    const term = normalized(query);
-    if (term.length < 2) return;
-    const matches = searchableNames
-      .filter(item => item.normalized.includes(term))
-      .sort((a, b) => {
-        const aStarts = a.normalized.startsWith(term) ? 0 : 1;
-        const bStarts = b.normalized.startsWith(term) ? 0 : 1;
-        return aStarts - bStarts || a.name.localeCompare(b.name, 'es');
-      })
-      .slice(0, 12);
-    const fragment = document.createDocumentFragment();
-    matches.forEach(({name}) => {
-      const option = document.createElement('option');
-      option.value = name;
-      fragment.appendChild(option);
+  function selectBook(index) {
+    selectedBookIndex = (index + selectedBooks.length) % selectedBooks.length;
+    const book = selectedBooks[selectedBookIndex];
+    const [, , year, weeks, rank] = book.row;
+    const cover = document.getElementById('featured-cover');
+    cover.replaceChildren(book.cover
+      ? imageNode(book.cover, `Portada de ${book.title}`, 'featured-cover-image')
+      : element('span', 'editorial-image-fallback', book.title));
+    document.getElementById('featured-title').textContent = book.title;
+    document.getElementById('featured-meta').textContent = `${currentName} · Debut en el ranking: ${year}`;
+    document.getElementById('featured-description').textContent = book.description ||
+      `Este libro forma parte del recorrido de ${currentName} por la lista de ficción de tapa dura del New York Times.`;
+    document.getElementById('featured-weeks').textContent = `${number.format(weeks)} semanas en la lista`;
+    document.getElementById('featured-rank').textContent = `Mejor puesto: #${rank}`;
+    shelf.querySelectorAll('button').forEach((button, i) => {
+      button.setAttribute('aria-pressed', String(i === selectedBookIndex));
     });
-    suggestions.appendChild(fragment);
-  }
-  input.addEventListener('input', () => updateSuggestions(input.value));
-  input.addEventListener('focus', () => updateSuggestions(input.value));
-
-  function findName(search) {
-    const term = normalized(search);
-    if (!term) return null;
-    // La búsqueda libre sugiere coincidencias, pero nunca convierte un texto
-    // parcial o mal escrito en un autor inventado. Hay que elegir el nombre
-    // completo ofrecido por el catálogo (se ignoran solo tildes/caja/punto final).
-    return searchableNames.find(item => item.normalized === term)?.name || null;
-  }
-
-  function renderRows(rows) {
-    list.replaceChildren();
-    const selectedRows = expanded ? rows : rows.slice(0, 3);
-    const maximum = Math.max(1, ...rows.map(row => row[3]));
-
-    selectedRows.forEach(row => {
-      const [id, title, year, weeks, rank] = row;
-      const item = element('li', 'author-book-row');
-      item.id = `author-title-${id}`;
-      item.tabIndex = -1;
-
-      const copy = element('div', 'author-book-detail');
-      copy.append(
-        element('span', 'author-book-title', title),
-        element('span', 'author-book-meta', `${year} · Mejor puesto: #${rank}`)
-      );
-
-      const value = element('strong', 'author-book-weeks', `${number.format(weeks)} sem.`);
-      const bar = element('div', 'author-book-bar');
-      bar.setAttribute('aria-hidden', 'true');
-      const fill = element('span', 'author-book-bar-fill');
-      fill.style.width = `${Math.max(3, (weeks / maximum) * 100)}%`;
-      bar.appendChild(fill);
-      item.append(copy, value, bar);
-      list.appendChild(item);
-    });
-    moreButton.hidden = rows.length <= 3;
-    moreButton.setAttribute('aria-expanded', String(expanded));
-    moreButton.textContent = expanded ? 'Mostrar solo tres títulos' : `Ver los ${number.format(rows.length)} títulos`;
   }
 
   function renderShelf(rows) {
+    const profile = profiles[currentName];
+    selectedBooks = profile ? profile.books.map(book => ({
+      ...book, row: rows.find(row => normalized(row[1]) === normalized(book.title))
+    })).filter(book => book.row) : rows.slice(0, 8).map(row => ({ title: row[1], row }));
     shelf.replaceChildren();
-    const maximum = Math.max(1, ...rows.map(row => row[3]));
-    rows.slice(0, 8).forEach((row, index) => {
-      const [id, title, year, weeks] = row;
-      const spine = element('button', 'author-book-spine');
-      spine.type = 'button';
-      spine.style.setProperty('--spine-color', colors[index % colors.length]);
-      spine.style.setProperty('--spine-height', `${Math.round(62 + (weeks / maximum) * 38)}%`);
-      spine.setAttribute('aria-label', `${title}, ${year}; ${number.format(weeks)} semanas. Ver en la lista`);
-      spine.appendChild(element('span', 'author-spine-title', title));
-      spine.addEventListener('click', () => {
-        const destination = document.getElementById(`author-title-${id}`);
-        if (!destination) return;
-        list.querySelectorAll('.is-highlighted').forEach(el => el.classList.remove('is-highlighted'));
-        destination.classList.add('is-highlighted');
-        destination.scrollIntoView({ behavior: motionReduced.matches ? 'auto' : 'smooth', block: 'center' });
-        destination.focus({ preventScroll: true });
-      });
-      shelf.appendChild(spine);
+    selectedBooks.forEach((book, index) => {
+      const button = element('button', 'editorial-thumbnail');
+      button.type = 'button';
+      button.setAttribute('aria-label', `Ver ${book.title}`);
+      button.setAttribute('aria-controls', 'featured-book');
+      if (book.cover) button.appendChild(imageNode(book.cover, '', 'thumbnail-cover'));
+      button.appendChild(element('span', '', book.title));
+      button.addEventListener('click', () => selectBook(index));
+      shelf.appendChild(button);
     });
+    selectBook(0);
   }
+
+  const picks = document.getElementById('author-picks');
+  Object.keys(profiles).forEach(name => {
+    const button = element('button', 'editorial-author-pick', name);
+    button.type = 'button';
+    button.addEventListener('click', () => { renderAuthor(name); });
+    picks.appendChild(button);
+  });
 
   function renderAuthor(name) {
     currentName = name;
-    expanded = false;
     document.getElementById('author-results').hidden = false;
-    input.value = name;
     const rows = [...authorCatalog[name]].sort((a, b) => b[3] - a[3] || a[1].localeCompare(b[1], 'es'));
     const weeks = rows.reduce((sum, row) => sum + row[3], 0);
-    const bestRank = Math.min(...rows.map(row => row[4]));
     const firstYear = Math.min(...rows.map(row => row[2]));
 
-    document.getElementById('author-name').textContent = name;
-    document.getElementById('author-library-heading').textContent = name;
+    const nameParts = name.split(' ');
+    const surname = nameParts.pop();
+    document.getElementById('author-name').replaceChildren(
+      element('span', 'author-name-line', nameParts.join(' ')),
+      element('span', 'author-name-line', surname)
+    );
+    const profile = profiles[name];
+    const portrait = document.getElementById('author-photo');
+    portrait.replaceChildren();
+    portrait.hidden = !profile;
+    document.getElementById('author-hero').classList.toggle('without-portrait', !profile);
+    if (profile) {
+      portrait.appendChild(imageNode(profile.photo, `Retrato de ${name}`, 'editorial-portrait-image'));
+    }
+    document.getElementById('author-bio').textContent = profile ? profile.bio :
+      `Explorá los títulos de ${name} registrados en el archivo de ficción de tapa dura del New York Times entre 1931 y 2020.`;
+    picks.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.textContent === name)));
     document.getElementById('author-title-count').textContent = number.format(rows.length);
     document.getElementById('author-week-count').textContent = number.format(weeks);
-    document.getElementById('author-best-rank').textContent = `#${bestRank}`;
     document.getElementById('author-first-year').textContent = String(firstYear);
-    renderRows(rows);
     renderShelf(rows);
-    feedback.textContent = `Mostrando ${number.format(rows.length)} ${rows.length === 1 ? 'título' : 'títulos'} registrados para ${name}.`;
   }
 
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    const name = findName(input.value);
-    if (!name) {
-      feedback.textContent = 'No encontramos ese nombre completo en el catálogo. Elegí uno de los autores sugeridos.';
-      document.getElementById('author-results').hidden = true;
-      input.focus();
-      return;
-    }
-    renderAuthor(name);
-    updateSuggestions(name);
-  });
-
-  moreButton.addEventListener('click', () => {
-    if (!currentName) return;
-    expanded = !expanded;
-    const rows = [...authorCatalog[currentName]].sort((a, b) => b[3] - a[3] || a[1].localeCompare(b[1], 'es'));
-    renderRows(rows);
-  });
-
   renderAuthor(authorCatalog['John Grisham'] ? 'John Grisham' : names[0]);
+})();
+
+// Reproducción al entrar en pantalla, sin reiniciar el video al volver.
+(() => {
+  const frame = document.getElementById('story-video');
+  if (!frame || !('IntersectionObserver' in window)) return;
+  const url = new URL(frame.src);
+  if (location.protocol === 'http:' || location.protocol === 'https:') {
+    url.searchParams.set('origin', location.origin);
+    frame.src = url.href;
+  }
+  let player;
+  let ready = false;
+  let visible = false;
+  let started = false;
+  let resume = false;
+  function syncPlayback() {
+    if (!ready) return;
+    if (visible && !document.hidden) {
+      if (!started) {
+        player.mute();
+        player.playVideo();
+        started = true;
+      } else if (resume) {
+        resume = false;
+        player.playVideo();
+      }
+    } else if (player.getPlayerState() === 1 || player.getPlayerState() === 3) {
+      resume = true;
+      player.pauseVideo();
+    }
+  }
+  const previousReady = window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady = () => {
+    if (previousReady) previousReady();
+    player = new YT.Player('story-video', {
+      events: { onReady: () => { ready = true; syncPlayback(); } }
+    });
+  };
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+    syncPlayback();
+  }, { threshold: [0, 0.35] }).observe(frame);
+  document.addEventListener('visibilitychange', syncPlayback);
+  if (window.YT && window.YT.Player) window.onYouTubeIframeAPIReady();
+  else {
+    const api = document.createElement('script');
+    api.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(api);
+  }
 })();

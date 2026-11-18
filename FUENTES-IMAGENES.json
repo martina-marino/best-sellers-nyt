@@ -1,0 +1,154 @@
+{
+  "John Grisham": {
+    "slug": "grisham",
+    "source": "https://www.esquire.com/entertainment/books/a41456526/john-grisham-what-ive-learned/",
+    "bio": "Antes de ser escritor, Grisham era abogado en Mississippi, y de ahí salen sus historias de juicios y conspiraciones. Tuvo 35 libros en la lista y, sumando todos, pasó más de 15 años en ella. Casi todos llegaron al puesto número 1: 34 de los 35.",
+    "books": [
+      {
+        "title": "The Pelican Brief",
+        "remote": "https://images.cdn1.buscalibre.com/fit-in/360x360/0e/08/0e082d8b29a58121cfc3375a16c1cee9.jpg",
+        "cover": "assets/autores/grisham-0.jpg",
+        "description": "Dos jueces de la Corte Suprema aparecen asesinados, y una joven estudiante de derecho, Darby Shaw, escribe un informe con una teoría sobre el crimen. Sin darse cuenta, descubre un secreto tan peligroso que la convierte en el blanco de personas muy poderosas. Fue la tercera novela de Grisham y estuvo en la lista 49 semanas, casi un año entero. Años después se hizo película, con Julia Roberts y Denzel Washington."
+      },
+      {
+        "title": "The Client",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4bewq5KX2nxwpyHGDFoTj2CvJe9hra71pgnMZb5wUzETeDuMkrwoKG2gf&s=10",
+        "cover": "assets/autores/grisham-1.jpg"
+      },
+      {
+        "title": "The Firm",
+        "remote": "https://http2.mlstatic.com/D_NQ_NP_955510-MLA76211754132_052024-O.webp",
+        "cover": "assets/autores/grisham-2.jpg"
+      },
+      {
+        "title": "Skipping Christmas",
+        "remote": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1347598629i/5357.jpg",
+        "cover": "assets/autores/grisham-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/grisham.jpg",
+    "photoRemote": "https://hips.hearstapps.com/hmg-prod/images/ryan-pfluger-esq100122wil001-1-1667230414.jpg?resize=1100:*"
+  },
+  "Stephen King": {
+    "slug": "king",
+    "source": "https://newengland.com/yankee/magazine/stephen-king/",
+    "bio": "Nacido en Maine en 1947, King es el maestro del terror moderno, y muchas de sus novelas terminaron en cine y series. Tuvo 60 libros en la lista, que sumados representan más de 18 años, y 43 de ellos llegaron al puesto número 1.",
+    "books": [
+      {
+        "title": "The Stand",
+        "remote": "https://m.media-amazon.com/images/I/91x78WWuiTL._AC_UF1000,1000_QL80_.jpg",
+        "cover": "assets/autores/king-0.jpg",
+        "description": "Un virus creado en un laboratorio escapa y acaba con casi toda la humanidad. Los pocos que sobreviven empiezan a tener los mismos sueños: algunos se sienten atraídos por una anciana bondadosa, y otros por un hombre misterioso y oscuro. Todos se preparan para una batalla final entre el bien y el mal. Es una de las novelas más queridas de King, estuvo en la lista 38 semanas (casi 9 meses) y tuvo dos series de televisión."
+      },
+      {
+        "title": "It",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaqToq1GXpoJX9KNV-YvKuzrgv1H-vgaqGu_8_a1lHmQ&s=10",
+        "cover": "assets/autores/king-1.jpg"
+      },
+      {
+        "title": "Firestarter",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6JTK3VRBH37Zqf6owxcb1400zmIbiXFPlynvoOhzEsg&s=10",
+        "cover": "assets/autores/king-2.jpg"
+      },
+      {
+        "title": "Cujo",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnQkPPQnj5jWOofyV7_VCJZO3Bsr-wk8X8y-dn8NeVVg&s=10",
+        "cover": "assets/autores/king-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/king.jpg",
+    "photoRemote": "https://newengland.com/wp-content/uploads/Stephen-King-585x780.jpg",
+    "replacementSource": "https://en.wikipedia.org/wiki/Stephen_King",
+    "replacementImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Stephen_King_at_the_2024_Toronto_International_Film_Festival_2_%28cropped%29.jpg/1280px-Stephen_King_at_the_2024_Toronto_International_Film_Festival_2_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+  },
+  "James A. Michener": {
+    "slug": "michener",
+    "source": "https://www.google.com/imgres?q=James%20A.%20Michener%3A&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FM%2FMV5BMzcyZTEwN2UtYzQzNy00YzI2LWJkYzYtMTAxODk5ODk0MjBlXkEyXkFqcGc%40._V1_.jpg&imgrefurl=https%3A%2F%2Fwww.imdb.com%2Fes-es%2Fname%2Fnm0585151%2Fbio%2F&docid=lnU4iHPGJvL6yM&tbnid=4n8FKSnL_X4y4M&vet=12ahUKEwi-nMT9s5GYAxVmqZUCHfkZMB0QnPAOegUIyQEQAA..i&w=465&h=600&hcb=2&ved=2ahUKEwi-nMT9s5GYAxVmqZUCHfkZMB0QnPAOegUIyQEQAA",
+    "bio": "Michener escribía sagas enormes que contaban la historia de un lugar entero a lo largo de siglos, como Hawái, Texas o Alaska. Ganó el premio Pulitzer en 1948. Tuvo 21 libros en la lista, y entre todos estuvieron unos 12 años y medio.",
+    "books": [
+      {
+        "title": "Hawaii",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSKIdas5TfsGFdW_6DLsnZe8WEf3ywzCumy5W1sE19_g&s",
+        "cover": "assets/autores/michener-0.jpg",
+        "description": "Michener empieza la historia mucho antes de que existiera una sola persona en las islas: con el nacimiento de Hawái por erupciones volcánicas. Después sigue a los primeros navegantes polinesios, a los misioneros que llegaron desde Nueva Inglaterra y a los inmigrantes de China y Japón. Salió el mismo año en que Hawái se convirtió en un estado de Estados Unidos, estuvo en la lista 94 semanas (casi 2 años) y también se llevó al cine."
+      },
+      {
+        "title": "The Source",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXuiKPFXSOtnYy47J3dG1GWv4i9FTFwHh44wmibW9HFQ&s=10",
+        "cover": "assets/autores/michener-1.jpg"
+      },
+      {
+        "title": "Centennial",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-yz2qkVQjlS4CEJf_hTRGNZLumFQ2nTGm3gVfCu29Q&s=10",
+        "cover": "assets/autores/michener-2.jpg"
+      },
+      {
+        "title": "Chesapeake",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXdwm7OiDPfENm_FinEjA13t-DhnWfqw-WOz2f9dihKg&s=10",
+        "cover": "assets/autores/michener-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/michener.jpg",
+    "photoRemote": "https://m.media-amazon.com/images/M/MV5BMzcyZTEwN2UtYzQzNy00YzI2LWJkYzYtMTAxODk5ODk0MjBlXkEyXkFqcGc@._V1_.jpg"
+  },
+  "Danielle Steel": {
+    "slug": "steel",
+    "source": "https://www.tvinsider.com/people/danielle-steel/",
+    "bio": "Nacida en Nueva York en 1947, Steel escribe novelas románticas y dramas familiares, y vendió más de 500 millones de libros. Es la que más libros colocó en la lista: 116, que sumados estuvieron más de 18 años.",
+    "books": [
+      {
+        "title": "Wanderlust",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJyW9bUMnTTNPrQAyaTttoDOjAU2I6W1IVox_IKx0grg&s=10",
+        "cover": "assets/autores/steel-0.jpg",
+        "description": "Audrey Driscoll es una mujer estadounidense con ganas de conocer el mundo, y sus viajes la llevan a China, Alemania, Inglaterra y el norte de África. En cada lugar se enamora y vive nuevas aventuras, pero también tiene que decidir una y otra vez entre seguir su deseo de libertad o hacer lo que su conciencia le pide. Fue la vigésima novela de Steel, llegó al puesto número 1 y se quedó en la lista más de 6 meses."
+      },
+      {
+        "title": "Changes",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1aVJycBGuu7Rdtp_Cav6Eklm5O_FciDj6KvEkiyWLxRcEehue4txUbL8L&s=10",
+        "cover": "assets/autores/steel-1.jpg"
+      },
+      {
+        "title": "The Gift",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj5DNkH7ctys389A4cnRweAi7gdaAeevCTvi9eH906NQ&s=10",
+        "cover": "assets/autores/steel-2.jpg"
+      },
+      {
+        "title": "Kaleidoscope",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRypzi9LrRS4IX-ajbwa2yv8G7k0c4KrdgjtSJA0PlZmg&s=10",
+        "cover": "assets/autores/steel-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/steel.jpg",
+    "photoRemote": "https://ntvb.tmsimg.com/assets/assets/1688_v9_ba.jpg"
+  },
+  "Herman Wouk": {
+    "slug": "wouk",
+    "source": "https://en.wikipedia.org/wiki/Herman_Wouk",
+    "bio": "Wouk escribió historias de guerra y de vida cotidiana de su época, y vivió hasta los 103 años. Solo tuvo 9 libros en la lista, pero entre todos sumaron más de 7 años. Ganó el Pulitzer por The Caine Mutiny.",
+    "books": [
+      {
+        "title": "The Caine Mutiny",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT9D_B9cjfQp09Cp3cz16x4EABPljgyFfBGXRsbEKcDQ&s",
+        "cover": "assets/autores/wouk-0.jpg",
+        "description": "Durante la Segunda Guerra Mundial, un joven oficial llega a un viejo barco de la Marina de Estados Unidos, el Caine, comandado por un capitán cada vez más inestable. En medio de una tormenta, la tripulación decide quitarle el mando, y la historia termina en un juicio que plantea quién tenía la razón. Ganó el premio Pulitzer, estuvo en la lista 123 semanas (más de 2 años) y se hizo película en 1954 con Humphrey Bogart."
+      },
+      {
+        "title": "The Winds of War",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSHTJCSjk5oCRnPSiDTATWiRMUtUig1tjNbWzABCvgPQ&s",
+        "cover": "assets/autores/wouk-1.jpg"
+      },
+      {
+        "title": "War and Remembrance",
+        "remote": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuxYMdzqi8aMxW7mm1Y7TjkJhFGAfuQJlA0ebE9nxVXg&s=10",
+        "cover": "assets/autores/wouk-2.jpg"
+      },
+      {
+        "title": "Marjorie Morningstar",
+        "remote": "https://pictures.abebooks.com/inventory/31579066241._SL300_.jpg",
+        "cover": "assets/autores/wouk-3.jpg"
+      }
+    ],
+    "photo": "assets/autores/wouk.jpg",
+    "photoRemote": "https://upload.wikimedia.org/wikipedia/commons/4/49/Herman_Wouk_%28cropped%29.jpg"
+  }
+}

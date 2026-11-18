@@ -109,7 +109,7 @@
           </aside>
         </div>
         <div class="duration-track" aria-hidden="true"><div class="duration-fill"></div></div>
-        <p class="duration-method">Deslizá para descubrir cómo cambió la mediana ↓</p>
+        <p class="duration-method">Deslizá para descubrir cómo cambió la mediana</p>
       </article>
       <article class="era-sheet duration-scene" data-era="2010" aria-label="2010–2019">
         <header><p class="eyebrow">De meses a semanas</p><h3 class="era-period">2010–2019</h3></header>
@@ -144,7 +144,8 @@
       </div>
       <div class="video-player">
         <iframe
-          src="https://www.youtube-nocookie.com/embed/cxvCVQdQyc8"
+          id="story-video"
+          src="https://www.youtube-nocookie.com/embed/cxvCVQdQyc8?enablejsapi=1&amp;playsinline=1"
           title="The Truth Behind the New York Times Bestseller List, de Anna David"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -365,9 +366,13 @@
       </div>
 
       <div class="editorial-intro prose-reveal">
-        <p>Pasamos de los libros a <strong>sus autores</strong>. Cada carpeta permite comparar una forma distinta de destacar en la lista. Elegí una para explorarla.</p>
+        <p>Algunas historias permanecen. Detrás de ellas, hay firmas que vuelven una y otra vez. Abrimos el archivo para seguir <strong>tres formas de dejar huella</strong>.</p>
       </div>
       <div class="folder-stack">
+        <div class="archive-cover">
+          <p class="archive-imprint">Archivo de autores<br>New York Times · 1931–2020</p>
+          <div class="archive-fastener" aria-hidden="true"><i></i><i></i></div>
+          <p class="archive-title">Las firmas<br>que perduran.</p>
         <div
           class="folder-tabs"
           role="tablist"
@@ -382,7 +387,7 @@
             aria-selected="true"
             tabindex="0"
           >
-            Más semanas en el número uno
+            <span class="archive-index">01</span> En la cima
           </button>
 
           <button
@@ -394,7 +399,7 @@
             aria-selected="false"
             tabindex="-1"
           >
-            Más títulos en el ranking
+            <span class="archive-index">02</span> Una obra tras otra
           </button>
 
           <button
@@ -406,10 +411,11 @@
             aria-selected="false"
             tabindex="-1"
           >
-            Más semanas totales
+            <span class="archive-index">03</span> A través del tiempo
           </button>
         </div>
 
+        </div>
         <div class="folder-body">
           <div
             class="folder-panel"
@@ -498,46 +504,44 @@
     <section class="section explorer-section" id="explorador">
       <div class="section-heading">
         <h2>Explorá un autor</h2>
-        <p>Buscá un autor para conocer sus títulos, su permanencia y su mejor posición en el ranking.</p>
+        <p>Los números dibujan una trayectoria. Ahora, acerquémonos a las personas y a los libros que la hicieron posible. Elegí una firma para seguir su historia.</p>
       </div>
 
-      <p class="editorial-lead prose-reveal">Elegí una firma y conocé sus obras, las semanas acumuladas y su mejor posición registrada.</p>
-
-      <form class="author-search-form" id="author-search-form" autocomplete="off">
-        <label for="author-search">Buscar por nombre de autor</label>
-        <div class="author-search-row">
-          <input id="author-search" type="search" list="author-suggestions" placeholder="Ej.: Stephen King, Danielle Steel…" value="John Grisham" spellcheck="false" required>
-          <datalist id="author-suggestions"></datalist>
-          <button type="submit">Explorar autor <span aria-hidden="true">→</span></button>
+      <nav class="editorial-author-picks" id="author-picks" aria-label="Autores destacados"></nav>
+      <div class="editorial-explorer" id="author-results">
+        <div class="editorial-author-hero" id="author-hero">
+          <div class="editorial-author-copy">
+            <p class="eyebrow">Las firmas detrás de los best sellers</p>
+            <h3 id="author-name">John Grisham</h3>
+            <p id="author-bio"></p>
+          </div>
+          <figure class="editorial-author-photo" id="author-photo"></figure>
         </div>
-        <p class="author-feedback" id="author-feedback" role="status" aria-live="polite">Podés escribir un nombre o elegirlo de la lista de sugerencias.</p>
-      </form>
-
-      <div class="explorer-layout" id="author-results">
-        <div class="explorer-portrait" aria-label="Selección visual de obras del autor">
-          <p class="eyebrow">Una biblioteca de títulos</p>
-          <h3 id="author-library-heading">John Grisham</h3>
-          <div class="author-book-collection" id="author-book-collection" aria-label="Portadas tipográficas de las obras seleccionadas"></div>
-          <p class="author-library-hint">Elegí un lomo para ver sus datos en la lista.</p>
+        <article class="editorial-featured" id="featured-book" aria-label="Libro seleccionado" aria-live="polite" aria-atomic="true">
+          <div id="featured-cover" class="editorial-featured-cover"></div>
+          <div class="editorial-featured-copy">
+            <p class="eyebrow">Una obra para descubrir</p>
+            <h4 id="featured-title"></h4>
+            <p id="featured-meta" class="editorial-book-meta"></p>
+            <p id="featured-description"></p>
+            <div class="editorial-book-facts"><span id="featured-weeks"></span><span id="featured-rank"></span></div>
+          </div>
+        </article>
+        <div class="editorial-library">
+          <div class="editorial-library-header">
+            <p>Explorá sus títulos <span>· Elegí una portada</span></p>
+          </div>
+          <div class="editorial-thumbnails" id="author-book-collection" aria-label="Selección de libros"></div>
         </div>
-        <div class="explorer-info">
-          <p class="eyebrow">Ficha del autor en el archivo</p>
-          <h3 id="author-name">John Grisham</h3>
+        <div class="editorial-archive">
+          <p class="eyebrow">Su huella en el ranking · 1931–2020</p>
           <div class="author-stats" aria-label="Estadísticas del autor">
             <div><strong id="author-title-count">—</strong><span>Títulos registrados</span></div>
             <div><strong id="author-week-count">—</strong><span>Semanas acumuladas</span></div>
-            <div><strong id="author-best-rank">—</strong><span>Mejor puesto</span></div>
             <div><strong id="author-first-year">—</strong><span>Primer debut registrado</span></div>
           </div>
-          <div class="author-books-header">
-            <h4>Sus títulos con más semanas</h4>
-            <p>Ordenados por permanencia acumulada, no necesariamente consecutiva.</p>
-          </div>
-          <ol class="author-books" id="author-books"></ol>
-          <button class="author-show-more" id="author-show-more" type="button" aria-controls="author-books" aria-expanded="false" hidden>Ver todos los títulos</button>
         </div>
       </div>
-      <p class="source-note explorer-source">Fuente: Post45 Data Collective, títulos de ficción de tapa dura (1931–2020). Se corrigieron diferencias de puntuación en los nombres; las atribuciones incompletas o sin autor se excluyeron del buscador. Las coautorías se presentan como figuran en el archivo. Las semanas de los títulos se suman sin deduplicar semanas calendario.</p>
     </section>
 
     <!-- CUADRO 10: RECOMENDACIONES Y CIERRE -->

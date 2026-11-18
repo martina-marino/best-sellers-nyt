@@ -1,0 +1,7 @@
+REVISIÓN 6
+
+Para actualizar la versión anterior, reemplazá index.html, styles.css y script.js.
+El ZIP también incluye las imágenes y los datos existentes.
+
+Cambios: archivo editorial inspirado en una carpeta con cierre de hilo; gráficos sin marcos apilados; transiciones narrativas; portadas más grandes; mejor puesto sin repetición; eliminación de separadores. Incluye los ajustes de las revisiones anteriores.
+No se publicó ni se modificó el sitio en línea.
