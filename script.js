@@ -5,57 +5,9 @@
     "(prefers-reduced-motion: reduce)"
   );
 
-  // =====================================
-  // MENÚ LATERAL
-  // =====================================
-
-  const header = document.querySelector(".floating-header");
-  const toggle = document.querySelector(".floating-toggle");
-  const nav = document.querySelector(".floating-nav");
-
-  function setMenu(open) {
-    nav.hidden = !open;
-
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute(
-      "aria-label",
-      open ? "Cerrar menú" : "Abrir menú"
-    );
-
-    toggle.firstElementChild.textContent = open ? "×" : "☰";
-  }
-
-  toggle.addEventListener("click", () => {
-    setMenu(nav.hidden);
-  });
-
-  nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) {
-      setMenu(false);
-      toggle.focus({ preventScroll: true });
-    }
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!header.contains(event.target)) {
-      setMenu(false);
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !nav.hidden) {
-      setMenu(false);
-      toggle.focus();
-    }
-  });
-
-  header.addEventListener("focusout", () => {
-    requestAnimationFrame(() => {
-      if (!header.contains(document.activeElement)) {
-        setMenu(false);
-      }
-    });
-  });
+  // Franja inferior del iframe donde Flourish pone su crédito.
+  // Se recorta acá y el crédito se da en la sección final de fuentes.
+  const FLOURISH_CREDIT = 26;
 
   // =====================================
   // AJUSTAR LOS EMBEDS SIN RECORTARLOS
@@ -87,9 +39,10 @@
       const loaded = Boolean(embed.querySelector('iframe'));
       if (fallback.hidden !== loaded) fallback.hidden = loaded;
     }
-    const naturalHeight = content.offsetHeight;
+    const hasChart = Boolean(embed.querySelector('iframe'));
+    const naturalHeight = content.offsetHeight - (hasChart ? FLOURISH_CREDIT : 0);
 
-    if (!naturalHeight || !availableWidth) return;
+    if (naturalHeight <= 0 || !availableWidth) return;
 
     let maxHeight = Math.max(220, window.innerHeight * 0.78);
     const isCards = frame.id === "frame-cards";
@@ -114,12 +67,11 @@
 
     content.style.transform = `scale(${scale})`;
 
-    content.style.left = `${
-      Math.max(
-        0,
-        (availableWidth - nativeWidth * scale) / 2
-      )
-    }px`;
+    // Los gráficos arrancan en el mismo margen que su título.
+    // Solo se centra el que lo pide con data-align="center".
+    content.style.left = frame.dataset.align === "center"
+      ? `${Math.max(0, (availableWidth - nativeWidth * scale) / 2)}px`
+      : "0px";
 
     frame.style.height =
       `${Math.ceil(naturalHeight * scale)}px`;
@@ -241,11 +193,21 @@
         tab.focus({ preventScroll: true });
       }
 
+      stack.classList.add("has-open");
       queueFit();
     }
 
+    function closeAll() {
+      tabs.forEach((item) => item.setAttribute("aria-selected", "false"));
+      panels.forEach((panel) => { panel.hidden = true; });
+      stack.classList.remove("has-open");
+    }
+
     tabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("click", () => {
+        if (tab.getAttribute("aria-selected") === "true") closeAll();
+        else select(tab);
+      });
 
       tab.addEventListener("keydown", (event) => {
         let next;
@@ -478,16 +440,14 @@
   updateZoom();
 })();
 
-// Señalador de lectura y entradas editoriales.
+// Progreso de lectura, pestañas de índice y entradas editoriales.
 (() => {
   const progress = document.querySelector('.reading-progress span');
-  const label = document.querySelector('.bookmark-chapter');
-  const bookmark = document.querySelector('.reading-bookmark');
+  const index = document.querySelector('.index-tabs');
   const sections = [...document.querySelectorAll('main > section[id]')];
-  const links = [...document.querySelectorAll('.floating-nav a')];
-  const names = new Map(links.map(link => [link.hash.slice(1), link.textContent.trim()]));
+  const links = [...document.querySelectorAll('.index-tabs a')];
   let queued = false;
-  let currentId = '';
+  let currentId = null;
   function updateReading() {
     queued = false;
     const available = document.documentElement.scrollHeight - innerHeight;
@@ -499,8 +459,7 @@
     });
     if (current && current.id !== currentId) {
       currentId = current.id;
-      label.textContent = names.get(current.id) || 'Inicio';
-      bookmark.setAttribute('aria-label', `${label.textContent}. Volver al comienzo`);
+      index.classList.toggle('is-on-cover', current === sections[0]);
       links.forEach(link => {
         if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
@@ -844,52 +803,147 @@
   renderAuthor(authorCatalog['John Grisham'] ? 'John Grisham' : names[0]);
 })();
 
-// Reproducción al entrar en pantalla, sin reiniciar el video al volver.
+// Video: empieza solo (sin sonido) cuando el capítulo entra en pantalla y queda en loop.
 (() => {
-  const frame = document.getElementById('story-video');
-  if (!frame || !('IntersectionObserver' in window)) return;
-  const url = new URL(frame.src);
-  if (location.protocol === 'http:' || location.protocol === 'https:') {
-    url.searchParams.set('origin', location.origin);
-    frame.src = url.href;
+  const player = document.getElementById('video-player');
+  if (!player) return;
+  function start() {
+    if (player.querySelector('iframe')) return;
+    const id = player.dataset.video;
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&playsinline=1&rel=0`;
+    frame.title = player.dataset.title;
+    frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.allowFullscreen = true;
+    player.appendChild(frame);
   }
-  let player;
-  let ready = false;
-  let visible = false;
-  let started = false;
-  let resume = false;
-  function syncPlayback() {
-    if (!ready) return;
-    if (visible && !document.hidden) {
-      if (!started) {
-        player.mute();
-        player.playVideo();
-        started = true;
-      } else if (resume) {
-        resume = false;
-        player.playVideo();
-      }
-    } else if (player.getPlayerState() === 1 || player.getPlayerState() === 3) {
-      resume = true;
-      player.pauseVideo();
-    }
+  if (!('IntersectionObserver' in window)) { start(); return; }
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { start(); observer.disconnect(); }
+  }, { threshold: 0.25 });
+  observer.observe(player);
+})();
+
+// De 15 a 2: la segunda década aparece con un fundido sobre la primera.
+(() => {
+  const story = document.getElementById('historia');
+  if (!story) return;
+  let queued = false;
+  function update() {
+    queued = false;
+    const rect = story.getBoundingClientRect();
+    const travel = rect.height - innerHeight;
+    const progress = travel > 0 ? Math.max(0, Math.min(1, -rect.top / travel)) : 1;
+    const t = Math.max(0, Math.min(1, (progress - 0.3) / 0.4));
+    const mix = t * t * (3 - 2 * t);
+    story.style.setProperty('--era-mix', mix.toFixed(3));
+    story.classList.toggle('is-second-era', mix > 0.5);
   }
-  const previousReady = window.onYouTubeIframeAPIReady;
-  window.onYouTubeIframeAPIReady = () => {
-    if (previousReady) previousReady();
-    player = new YT.Player('story-video', {
-      events: { onReady: () => { ready = true; syncPlayback(); } }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  update();
+})();
+
+// Los libros que desafiaron la tendencia: cada ventana muestra una sola
+// tarjeta del mismo Flourish, para poder separarlas y poner su cifra debajo.
+(() => {
+  const group = document.getElementById('book-windows');
+  if (!group) return;
+  const windows = [...group.querySelectorAll('.book-window')];
+  const native = Number(group.dataset.width || 1100);
+  const slice = native / windows.length;
+  let queued = false;
+  function fit() {
+    queued = false;
+    windows.forEach((item, index) => {
+      const frame = item.querySelector('.book-window-frame');
+      const content = item.querySelector('.book-window-content');
+      const width = frame.clientWidth;
+      if (!width) return;
+      const scale = width / slice;
+      content.style.width = `${native}px`;
+      content.style.transform = `translateX(${-index * width}px) scale(${scale})`;
+      const height = content.offsetHeight - (content.querySelector('iframe') ? 26 : 0);
+      if (height > 0) frame.style.height = `${Math.ceil(height * scale)}px`;
     });
-  };
-  new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
-    syncPlayback();
-  }, { threshold: [0, 0.35] }).observe(frame);
-  document.addEventListener('visibilitychange', syncPlayback);
-  if (window.YT && window.YT.Player) window.onYouTubeIframeAPIReady();
-  else {
-    const api = document.createElement('script');
-    api.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(api);
   }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(fit); } }
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(queue);
+    windows.forEach(item => {
+      observer.observe(item.querySelector('.book-window-frame'));
+      observer.observe(item.querySelector('.book-window-content'));
+    });
+  }
+  addEventListener('resize', queue);
+  addEventListener('load', queue);
+  fit();
+})();
+
+// Recomendaciones: la escena queda fija y el scroll vertical mueve los libros de costado.
+(() => {
+  const scroller = document.getElementById('recs-scroller');
+  if (!scroller) return;
+  const stage = scroller.querySelector('.recs-stage');
+  const heading = stage.querySelector('.section-heading');
+  const hint = stage.querySelector('.recs-hint');
+  const viewport = scroller.querySelector('.recs-viewport');
+  const track = scroller.querySelector('.recs-track');
+  const count = scroller.querySelector('.recs-count');
+  const native = Number(scroller.dataset.width);
+  const TOTAL = 20;
+  const CREDIT = 26;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let scale = 1;
+  let travel = 0;
+  let distance = 0;
+  let gutter = 0;
+  let queued = false;
+
+  function measure() {
+    const frame = track.querySelector('iframe');
+    const fallback = track.querySelector('.embed-fallback');
+    if (fallback && fallback.hidden !== Boolean(frame)) fallback.hidden = Boolean(frame);
+    const height = frame ? frame.offsetHeight - CREDIT : 560;
+    const pinned = !reduced.matches;
+    scroller.classList.toggle('is-pinned', pinned);
+    gutter = heading.getBoundingClientRect().left;
+    // Los libros ocupan todo el alto que deja libre el título.
+    const free = innerHeight - heading.offsetHeight - hint.offsetHeight - 150;
+    scale = pinned ? Math.max(0.6, Math.min(1.35, free / height)) : Math.min(1, (innerHeight * 0.7) / height);
+    track.style.width = `${native}px`;
+    viewport.style.height = `${Math.ceil(height * scale)}px`;
+    travel = Math.max(0, native * scale + gutter * 2 - innerWidth);
+    // El recorrido vertical es corto (algo más de una pantalla): los 20 libros
+    // pasan rápido y no hay que atravesar todo el ancho para seguir leyendo.
+    distance = Math.min(travel, innerHeight * 1.25);
+    scroller.style.height = pinned ? `${innerHeight + distance}px` : '';
+    if (!pinned) {
+      track.style.transform = `scale(${scale})`;
+      track.style.marginRight = `${native * (scale - 1)}px`;
+    }
+    update();
+  }
+
+  function update() {
+    queued = false;
+    if (!scroller.classList.contains('is-pinned')) return;
+    const top = scroller.getBoundingClientRect().top;
+    const x = distance > 0 ? Math.max(0, Math.min(1, -top / distance)) * travel : 0;
+    track.style.transform = `translate3d(${gutter - x}px, 0, 0) scale(${scale})`;
+    const pitch = (native / TOTAL) * scale;
+    const first = Math.min(TOTAL, Math.floor(x / pitch) + 1);
+    const last = Math.min(TOTAL, Math.floor((x + innerWidth - gutter) / pitch));
+    count.textContent = last > first ? `${first}–${last} de ${TOTAL}` : `${first} de ${TOTAL}`;
+  }
+
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', measure);
+  addEventListener('load', measure);
+  reduced.addEventListener('change', measure);
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(track);
+  measure();
 })();

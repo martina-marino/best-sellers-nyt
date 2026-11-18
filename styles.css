@@ -258,7 +258,7 @@ button:focus-visible,
   margin-bottom: 16px;
   font-size: clamp(30px, 3.3vw, 48px);
   line-height: 1.16;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.01em;
 }
 
 .section-heading p {
@@ -1425,7 +1425,7 @@ html {
   margin-bottom: 20px;
   font-size: clamp(28px, 3vw, 43px);
   line-height: 1.18;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.01em;
 }
 
 .duration-description {
@@ -1614,11 +1614,11 @@ html {
 }
 
 main .hero h1 {
-  font: 700 var(--tipo-titulo)/1.05 var(--fuente-titulos);
+  font: 400 var(--tipo-titulo)/1.05 var(--fuente-titulos);
 }
 
 main section h2 {
-  font: 700 var(--tipo-subtitulo-1)/1.15 var(--fuente-titulos);
+  font: 400 var(--tipo-subtitulo-1)/1.15 var(--fuente-titulos);
 }
 main .exceptions .section-heading h2,
 main .section-heading h2,
@@ -1630,7 +1630,7 @@ main .hero-subtitle,
 main .duration-caption,
 main .explorer-info h3,
 main .chart-heading :is(h2, h3) {
-  font: 600 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
+  font: 500 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
 }
 
 body,
@@ -1746,7 +1746,7 @@ main .chart-heading p {
   border-left: 3px solid var(--duration-color);
   padding-left: clamp(10px, 1.3vw, 20px);
 }
-.era-book h4 { margin: .5rem 0; font: italic 600 var(--tipo-subtitulo-2) var(--fuente-titulos); }
+.era-book h4 { margin: .5rem 0; font: italic 500 var(--tipo-subtitulo-2) var(--fuente-titulos); }
 .era-book a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
 .era-book p:last-child { margin: .7rem 0 0; }
 @media (min-width: 760px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
@@ -1781,8 +1781,8 @@ main .chart-heading p {
 #permanencia > .chart-heading h2 {
   max-width: 1000px;
   margin-bottom: 16px;
-  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
-  letter-spacing: -0.025em;
+  font: 400 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: 0.01em;
   text-wrap: balance;
 }
 
@@ -1825,8 +1825,8 @@ main .chart-heading p {
 #permanencia .story-bridge h2 {
   max-width: 880px;
   margin: 0 0 18px;
-  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
-  letter-spacing: -0.025em;
+  font: 400 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: 0.01em;
   text-wrap: balance;
 }
 
@@ -1859,8 +1859,8 @@ main .chart-heading p {
 
 #cambios .section-heading h2 {
   margin-bottom: 16px;
-  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
-  letter-spacing: -0.025em;
+  font: 400 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: 0.01em;
 }
 
 #cambios .section-heading p {
@@ -1893,7 +1893,7 @@ main .chart-heading p {
 #cambios .chart-heading :is(h2, h3) {
   max-width: 940px;
   margin: 0 0 12px;
-  font: 600 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
+  font: 500 var(--tipo-subtitulo-2)/1.25 var(--fuente-titulos);
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
@@ -1997,8 +1997,8 @@ main .chart-heading p {
 #permanencia .sticky-story-pin > .chart-heading h2 {
   max-width: 1000px;
   margin-bottom: 12px;
-  font: 700 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
-  letter-spacing: -0.025em;
+  font: 400 var(--tipo-subtitulo-1)/1.16 var(--fuente-titulos);
+  letter-spacing: 0.01em;
 }
 
 #permanencia .sticky-story-pin > .chart-heading p {
@@ -2057,7 +2057,7 @@ main .chart-heading p {
   max-width: 18ch;
   margin: 0 0 18px;
   font: 700 clamp(28px, 3vw, 40px)/1.18 var(--fuente-titulos);
-  letter-spacing: -0.025em;
+  letter-spacing: 0.01em;
 }
 
 #permanencia .sticky-story-card > p {
@@ -2720,3 +2720,948 @@ main > .section:not(.video-section) { background-color: var(--crema); }
  #autores .archive-fastener { top: 20%; }
  #autores .archive-title { position: relative; z-index: 1; font-size: clamp(36px,10vw,48px); }
 }
+
+/* ================================================================
+   REVISIÓN 7 · ARCHIVO EN PAPEL
+   Correcciones 13 a 23 y nueva voz gráfica: títulos didones en
+   mayúsculas, rótulos de máquina de escribir, clips y carpeta manila.
+   La estructura de la página no cambia.
+   ================================================================ */
+
+:root {
+  --fuente-titulos: "Bodoni Moda", Didot, "Bodoni MT", Georgia, serif;
+  --fuente-rotulos: "Courier Prime", "Courier New", monospace;
+  --fuente-manuscrita: "Pinyon Script", "Snell Roundhand", cursive;
+  --tinta: #1E1B19;
+  --hoja: #FBF9F3;
+  --manila: #E7D3A2;
+  --cuero: #2A201B;
+  --clip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 72' fill='none' stroke='%238E9196' stroke-width='2.3' stroke-linecap='round'%3E%3Cpath d='M8 20v34a6 6 0 0 0 12 0V12a9 9 0 0 0-18 0v44a12 12 0 0 0 24 0V20'/%3E%3C/svg%3E");
+}
+
+html { overflow-x: clip; }
+
+/* --- Tipografía --------------------------------------------------- */
+main .hero h1 {
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+main .hero-subtitle { font-weight: 400; font-style: italic; }
+main section h2,
+.era-title {
+  font: 400 var(--tipo-subtitulo-1)/1.12 var(--fuente-titulos);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+/* Número de capítulo, como rótulo de archivo. */
+main { counter-reset: capitulo; }
+main > .section { counter-increment: capitulo; }
+.section-heading h2::before,
+.era-title::before,
+.definition-copy > h2::before,
+#permanencia .sticky-story-pin .chart-heading h2::before {
+  content: "Nº " counter(capitulo, decimal-leading-zero);
+  display: block;
+  margin-bottom: 1.1em;
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.24em;
+  color: var(--bordo);
+}
+
+.eyebrow,
+.source-note,
+.embed-actions,
+.video-credit,
+.bookmark-label,
+.hero-dataset,
+.hero-scroll,
+.duration-method,
+.ranking-caption,
+.bridge-link,
+.size-toggle,
+#autores .archive-imprint,
+#explorador .editorial-book-meta,
+.author-stats span,
+.site-footer {
+  font-family: var(--fuente-rotulos);
+}
+.eyebrow { font-weight: 400; letter-spacing: 0.2em; font-size: 12px; }
+.hero-scroll, .bridge-link { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; }
+.hero-scroll span { font-size: 18px; }
+.bookmark-chapter { font-style: italic; font-size: 14px; }
+
+/* --- Menos recuadros, barritas y píldoras -------------------------- */
+.floating-toggle { width: 44px; height: 44px; border-radius: 0; box-shadow: none; font-size: 22px; }
+.floating-nav { border: 1px solid var(--tinta); border-radius: 0; box-shadow: 6px 6px 0 #1E1B1914; }
+.floating-nav a { border-radius: 0; }
+.size-toggle {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.size-toggle:hover { background: none; color: var(--tinta); }
+#video { border-block: 0; }
+#historia .era-book-copy { border-left: 0; padding-left: 0; }
+.duration-track { height: 8px; }
+.duration-number { font-weight: 400; }
+.era-period { font: italic 400 1.6rem var(--fuente-titulos); }
+#historia .era-book h4 { font-weight: 400; }
+
+#cambios .reading-note {
+  width: 100%;
+  max-width: 30em;
+  margin-inline: 0;
+  padding: 0;
+  border-left: 0;
+}
+#cambios .reading-note p {
+  color: var(--tinta);
+  font: italic 400 clamp(21px, 2vw, 28px)/1.38 var(--fuente-titulos);
+}
+
+/* --- Clip ---------------------------------------------------------- */
+.paperclip {
+  position: absolute;
+  z-index: 3;
+  top: -24px;
+  left: 44px;
+  width: 26px;
+  height: 68px;
+  background: var(--clip) center / contain no-repeat;
+  filter: drop-shadow(1px 2px 1px #0000003d);
+  pointer-events: none;
+}
+
+/* --- 13 · De 15 a 2: fundido en lugar de una hoja que sube --------- */
+.era-title { margin: 0 0 0.65rem; }
+@media (min-width: 760px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  #historia { height: 230svh; }
+  #historia .era-stage {
+    position: sticky;
+    top: 0;
+    display: grid;
+    height: 100svh;
+  }
+  #historia .era-stage > .era-sheet {
+    grid-area: 1 / 1;
+    position: relative;
+    top: auto;
+    min-height: 0;
+    height: 100svh;
+    align-content: start;
+    padding-top: clamp(84px, 15vh, 160px);
+  }
+  #historia .era-stage > .era-sheet + .era-sheet {
+    opacity: var(--era-mix, 0);
+    pointer-events: none;
+  }
+  #historia.is-second-era .era-stage > .era-sheet + .era-sheet { pointer-events: auto; }
+}
+
+/* --- 14 · Video cerrado, como una foto archivada -------------------- */
+#video .video-player {
+  position: relative;
+  width: min(100%, 720px);
+  margin-inline: 0;
+  overflow: visible;
+  padding: 10px;
+  border: 0;
+  background: var(--hoja);
+  box-shadow: 0 1px 0 #00000014, 0 14px 30px #302B291f;
+}
+#video .video-player::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -26px;
+  left: 46px;
+  width: 26px;
+  height: 68px;
+  background: var(--clip) center / contain no-repeat;
+  filter: drop-shadow(1px 2px 1px #0000003d);
+  pointer-events: none;
+}
+#video .video-player.is-open {
+  width: min(100%, 1120px, 118vh);
+  padding: 0;
+  background: #13171C;
+}
+#video .video-player.is-open::before { display: none; }
+#video .video-player:not(.is-open) { aspect-ratio: auto; }
+.video-cover {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--tinta);
+  text-align: left;
+  cursor: pointer;
+}
+.video-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #13171C;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 300ms ease;
+}
+.video-cover:hover img,
+.video-cover:focus-visible img { filter: grayscale(0.15); }
+/* Pie de foto en el margen blanco, como una copia instantánea. */
+.video-cover-label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 4px 20px;
+  padding: 16px 6px 8px;
+}
+.video-cover-kicker,
+.video-cover-action {
+  font: 400 12px/1.2 var(--fuente-rotulos);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.video-cover-kicker { grid-column: 1 / -1; color: var(--texto-suave); }
+.video-cover-title { font: italic 400 clamp(18px, 1.8vw, 23px)/1.2 var(--fuente-titulos); }
+.video-cover-action { color: var(--bordo); text-decoration: underline; text-underline-offset: 5px; white-space: nowrap; }
+@media (max-width: 559px) {
+  .video-cover-label { grid-template-columns: minmax(0, 1fr); }
+}
+#video .video-credit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 16px 0 0;
+  text-align: left;
+}
+.video-close {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bordo);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* --- Definición: lista de 1931 con clip ----------------------------- */
+.ranking-paper { position: relative; box-shadow: 0 1px 0 #00000014, 10px 14px 24px #00000018; }
+.ranking-paper .paperclip { top: -22px; left: auto; right: 38px; transform: rotate(4deg); }
+.ranking-paper span { font-style: italic; }
+.ranking-paper h3 { font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
+.ranking-paper cite { font-size: 20px; }
+.ranking-paper small { font-family: var(--fuente-rotulos); font-size: 12px; letter-spacing: 0.06em; }
+
+/* --- 15 · Cómo se cuentan las semanas: sin recuadro y centrado ------ */
+.method-insert,
+.method-insert[open] {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  text-align: center;
+}
+.method-insert summary {
+  display: inline-block;
+  padding: 14px 0;
+  list-style: none;
+  font: 400 13px/1.3 var(--fuente-rotulos);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  color: var(--bordo);
+}
+.method-insert summary::-webkit-details-marker { display: none; }
+.method-insert summary::after { content: " +"; }
+.method-insert[open] summary::after { content: " –"; }
+.method-example { max-width: 62ch; margin-inline: auto; padding: 10px 0 12px; }
+.method-example p { text-wrap: pretty; }
+.week-equation b { font-weight: 400; }
+
+/* --- 16, 18 y 20 · Gráficos alineados con su texto ------------------ */
+#permanencia #frame-g01,
+#cambios .chart-grid .fit-frame { margin-inline: 0; }
+.embed-actions,
+#cambios .chart-grid .embed-actions,
+#permanencia .sticky-story-pin .embed-actions {
+  justify-content: flex-start;
+  margin-inline: 0;
+}
+.source-note.centered { text-align: left; }
+
+/* --- 17 · Hoja que entra sobre el gráfico: sin barrita, título menor  */
+#permanencia .sticky-story-scroll .sticky-story-card {
+  width: min(520px, calc(100% - 40px));
+  padding: clamp(34px, 3.4vw, 44px) clamp(24px, 3vw, 38px) clamp(24px, 3vw, 34px);
+  border: 0;
+  background: var(--hoja);
+  box-shadow: 0 1px 0 #00000014, 0 18px 40px #302B2924;
+  transform: rotate(-0.8deg);
+}
+#permanencia .sticky-story-card h3 {
+  max-width: none;
+  margin: 0 0 12px;
+  font: italic 400 clamp(20px, 1.7vw, 24px)/1.3 var(--fuente-titulos);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+#permanencia .sticky-story-card > p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+#permanencia .sticky-story-card .bridge-link { margin-top: 16px; font-size: 12px; }
+
+/* --- 21 · Tres libros separados, cada cifra debajo del suyo --------- */
+#excepciones .section-heading { margin-bottom: clamp(26px, 4vh, 44px); }
+.book-windows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 5.5vw, 88px);
+  max-width: 1120px;
+}
+.book-window { min-width: 0; margin: 0; }
+.book-window-frame {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  background: #E9E2D5;
+}
+.book-window-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1100px;
+  transform-origin: top left;
+}
+.book-window figcaption {
+  display: grid;
+  gap: 4px;
+  margin-top: 16px;
+}
+.book-window figcaption strong {
+  color: var(--bordo);
+  font: 400 clamp(46px, 5vw, 72px)/1 var(--fuente-titulos);
+  font-variant-numeric: lining-nums;
+}
+.book-window figcaption span,
+.book-window figcaption small {
+  font: 400 12px/1.4 var(--fuente-rotulos);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.book-window figcaption em {
+  margin-top: 6px;
+  font: italic 400 clamp(18px, 1.6vw, 22px)/1.25 var(--fuente-titulos);
+  color: var(--tinta);
+}
+#excepciones .embed-actions { margin: 26px 0 6px; }
+.exception-source { margin: 0; }
+@media (max-width: 759px) {
+  .book-windows { grid-template-columns: minmax(0, 1fr); gap: 44px; max-width: 330px; margin-inline: auto; }
+}
+
+/* --- 22 · Recomendaciones de borde a borde -------------------------- */
+#libros #frame-recs {
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+}
+
+/* --- Protagonistas y explorador: misma voz -------------------------- */
+#explorador .editorial-author-copy h3 { text-transform: uppercase; letter-spacing: -0.01em; }
+#explorador .editorial-author-pick { font-size: 20px; font-style: italic; }
+#explorador .editorial-book-meta { font-size: 12px; letter-spacing: 0.14em; }
+.author-stats strong,
+.exception-facts-grid strong { font-weight: 400; }
+#explorador .editorial-archive .author-stats span { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* --- 23 · Cierre: la carpeta del archivo ---------------------------- */
+#libros { padding-bottom: 0; }
+#libros .closing {
+  isolation: isolate;
+  width: 100vw;
+  margin: clamp(72px, 10vh, 130px) 0 0 calc(50% - 50vw);
+  padding: clamp(70px, 11vh, 130px) 6vw clamp(64px, 9vh, 110px);
+  background: var(--cuero);
+  color: var(--tinta);
+  text-align: center;
+}
+.closing-folder {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(60px, 8vw, 104px) clamp(22px, 6vw, 86px) clamp(40px, 6vw, 70px);
+  border-radius: 2px 12px 3px 3px;
+  background: var(--manila);
+  box-shadow: 0 1px 0 #ffffff40 inset, 0 22px 44px #00000066;
+}
+.closing-folder::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -16px 26px 30% 10px;
+  background: #F4F1EA;
+  box-shadow: 0 2px 8px #00000040;
+  transform: rotate(-1.3deg);
+}
+.closing-tab {
+  position: absolute;
+  top: 20%;
+  right: 100%;
+  padding: 22px 9px;
+  border-radius: 0 9px 9px 0;
+  background: var(--manila);
+  box-shadow: inset -6px 0 8px -6px #00000030;
+  font: 400 11px/1 var(--fuente-rotulos);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.closing-folder .paperclip { top: -26px; left: 34%; }
+#libros .closing p { max-width: none; }
+.closing-script {
+  margin: 0 0 6px;
+  font: 400 clamp(28px, 3.2vw, 38px)/1 var(--fuente-manuscrita);
+}
+.closing-kicker,
+.closing-tagline {
+  font: 400 12px/1.7 var(--fuente-rotulos);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.closing-kicker { margin: 0 0 clamp(34px, 6vw, 68px); }
+#libros .closing-folder h2 {
+  max-width: 11ch;
+  margin: 0 auto clamp(26px, 4vw, 44px);
+  font: 400 clamp(40px, 6.6vw, 86px)/1 var(--fuente-titulos);
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.closing-tagline { margin: 0 auto clamp(40px, 6vw, 70px); max-width: 26ch; }
+.closing-copy {
+  columns: 2 260px;
+  column-gap: clamp(24px, 4vw, 48px);
+  padding-top: clamp(22px, 3vw, 32px);
+  border-top: 1px solid #1E1B1940;
+  text-align: left;
+}
+#libros .closing-copy p {
+  margin: 0 0 1em;
+  break-inside: avoid;
+  color: #3A322B;
+  font-size: 16px;
+  line-height: 1.55;
+}
+#libros .closing-folder > a {
+  margin-top: clamp(18px, 3vw, 30px);
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-underline-offset: 5px;
+}
+.site-footer { background: #1D1613; font-size: 12px; letter-spacing: 0.04em; }
+
+@media (max-width: 759px) {
+  .closing-tab { display: none; }
+  #libros .closing { padding-inline: 16px; }
+  #video .video-player::before { left: 28px; }
+  #permanencia .sticky-story-scroll .sticky-story-card { width: 100%; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-cover img { transition: none; }
+}
+
+
+/* ================================================================
+   REVISIÓN 8 · EL ARCHIVO COMO LIBRO
+   Capítulos, pestañas de índice, carpetas con cierre de hilo,
+   carrusel fijo, razones del cambio y créditos al final.
+   ================================================================ */
+
+/* --- Capítulos ------------------------------------------------------ */
+.section-heading h2::before,
+.era-title::before,
+.definition-copy > h2::before,
+#permanencia .sticky-story-pin .chart-heading h2::before { content: none; }
+.chapter-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.2em;
+  color: var(--bordo);
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+.chapter-label::after {
+  content: "";
+  flex: 0 0 56px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* --- Pestañas de índice: dónde estás -------------------------------- */
+.index-tabs {
+  position: fixed;
+  z-index: 900;
+  top: 50%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  transform: translateY(-50%);
+}
+.index-tabs a {
+  display: flex;
+  align-items: center;
+  width: 27px;
+  padding: 7px 0;
+  border-radius: 7px 0 0 7px;
+  background: #EDE4D0;
+  box-shadow: -1px 1px 3px #0000002e;
+  color: var(--tinta);
+  font: 400 11px/1 var(--fuente-rotulos);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  transition: width 200ms ease, background-color 200ms ease, color 200ms ease;
+}
+.index-tabs a b { font-weight: 400; writing-mode: horizontal-tb; }
+.index-tabs a span {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: max-height 250ms ease, opacity 200ms ease, margin 200ms ease;
+}
+.index-tabs a:hover,
+.index-tabs a:focus-visible { width: 33px; }
+.index-tabs a:hover span,
+.index-tabs a:focus-visible span,
+.index-tabs a[aria-current] span { max-height: 260px; margin-top: 9px; opacity: 1; }
+.index-tabs a[aria-current] { width: 33px; background: var(--bordo); color: var(--crema); }
+@media (max-width: 759px), (max-height: 560px) {
+  .index-tabs {
+    top: 3px;
+    left: 0;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2px;
+    padding: 0 6px;
+    transform: none;
+  }
+  .index-tabs a,
+  .index-tabs a:hover,
+  .index-tabs a[aria-current] {
+    flex: 1;
+    justify-content: center;
+    width: auto;
+    height: 25px;
+    padding: 0;
+    border-radius: 0 0 6px 6px;
+    writing-mode: horizontal-tb;
+  }
+  .index-tabs a span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .index-tabs a, .index-tabs a span { transition: none; }
+}
+
+/* --- 1 · Sin créditos dentro de los gráficos ------------------------- */
+.fit-frame { overflow: hidden; }
+
+/* --- 7 · Video en loop con el texto al costado ----------------------- */
+#video .video-player,
+#video .video-player.is-open {
+  width: 100%;
+  aspect-ratio: auto;
+  padding: 10px;
+  background: var(--hoja);
+}
+#video .video-player iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  background: #13171C;
+}
+#video .video-player:empty { aspect-ratio: 16 / 9; }
+.video-note {
+  margin-top: 18px;
+  font: 400 12px/1.5 var(--fuente-rotulos);
+  letter-spacing: 0.06em;
+}
+main .section-heading p.video-note { font: 400 12px/1.5 var(--fuente-rotulos); }
+@media (min-width: 900px) {
+  .section.video-section {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    align-items: center;
+    column-gap: clamp(36px, 5vw, 84px);
+  }
+  #video .section-heading { margin: 0; }
+}
+
+/* --- 6 · ¿Por qué cambió? -------------------------------------------- */
+.reasons-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(34px, 5vw, 64px) clamp(34px, 6vw, 96px);
+  max-width: 1080px;
+  margin: clamp(30px, 5vh, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.reasons-list li { padding-top: 18px; border-top: 1px solid var(--tinta); }
+.reason-number {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--bordo);
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.reasons-list h3 {
+  margin: 0 0 12px;
+  font: italic 400 clamp(24px, 2.3vw, 32px)/1.2 var(--fuente-titulos);
+  color: var(--tinta);
+}
+.reasons-list p { margin: 0; max-width: 52ch; color: var(--texto-suave); text-wrap: pretty; }
+.reasons-close {
+  max-width: 30em;
+  margin: clamp(44px, 7vh, 80px) 0 0;
+  color: var(--tinta);
+  font: italic 400 clamp(21px, 2vw, 28px)/1.38 var(--fuente-titulos);
+}
+@media (max-width: 759px) {
+  .reasons-list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- 4 · Protagonistas: tres carpetas con cierre de hilo -------------- */
+#autores .folder-stack { margin: clamp(28px, 4vh, 44px) 0 0; scroll-margin-top: 20px; }
+.folder-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 3vw, 40px);
+  max-width: 900px;
+}
+.folder-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #2A2A28;
+  color: #ECEAE4;
+  box-shadow: 0 2px 0 #00000030, 0 16px 30px #1E1B1938;
+  font-family: var(--fuente-textos);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 300ms ease, opacity 300ms ease, box-shadow 300ms ease;
+}
+/* Hoja que asoma cuando se abre la solapa. */
+.folder-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px 7px 7px 73.5%;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 13px, #C9BFAE 13px 14px) 0 22px / 100% calc(100% - 44px) no-repeat,
+    var(--hoja);
+}
+.folder-flap {
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 0 72%;
+  border-left: 2px solid #121211;
+  background: linear-gradient(90deg, #00000026, transparent 14%), #2D2D2B;
+  transform-origin: right center;
+  transition: transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.folder-string {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 72%;
+  width: 0;
+  height: 0;
+}
+.folder-string i {
+  position: absolute;
+  top: -13%;
+  width: clamp(18px, 2.4vw, 30px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0c0c0b 0 16%, #9c9d97 17% 27%, #1b1b1a 28%);
+  box-shadow: 0 2px 3px #00000080;
+  translate: 0 -50%;
+  transition: opacity 250ms ease;
+}
+.folder-string i:first-child { right: clamp(6px, 0.8vw, 10px); }
+.folder-string i:last-child { left: clamp(6px, 0.8vw, 10px); }
+.folder-string::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: clamp(-24px, -2vw, -14px);
+  width: clamp(28px, 4vw, 48px);
+  height: 2px;
+  background: #0b0b0a;
+  rotate: -8deg;
+  transition: opacity 200ms ease;
+}
+.folder-meta {
+  position: absolute;
+  inset: 7% 32% auto 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: clamp(9px, 0.95vw, 13px);
+  line-height: 1.25;
+  color: #C9C7C0;
+}
+.folder-name {
+  position: absolute;
+  left: 8%;
+  right: 30%;
+  bottom: 7%;
+  font-size: clamp(17px, 3.1vw, 42px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.folder-card:hover { transform: translateY(-5px); }
+.folder-card[aria-selected="true"] { transform: translateY(-10px); box-shadow: 0 2px 0 #00000030, 0 26px 36px #1E1B1945; }
+.folder-card[aria-selected="true"] .folder-flap { transform: perspective(700px) rotateY(64deg); }
+.folder-card[aria-selected="true"] .folder-string::before,
+.folder-card[aria-selected="true"] .folder-string i:last-child { opacity: 0; }
+.has-open .folder-card[aria-selected="false"] { opacity: 0.78; }
+.has-open .folder-card[aria-selected="false"]:hover { opacity: 1; }
+.folder-hint {
+  margin: 18px 0 0;
+  color: var(--texto-suave);
+  font: 400 12px/1.4 var(--fuente-rotulos);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.has-open .folder-hint { display: none; }
+#autores .folder-body { padding-top: clamp(28px, 4vh, 44px); }
+#autores .folder-reading { margin: 0 0 24px; }
+@media (max-width: 559px) {
+  .folder-meta span:first-child { display: none; }
+  .folder-meta { grid-template-columns: 1fr; inset: 7% 32% auto 9%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folder-card, .folder-flap { transition: none; }
+}
+
+/* --- 9 · Explorador: nombres siempre a mano, libros en una pantalla --- */
+#explorador .editorial-author-picks {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  margin: 26px 0 0;
+  padding: 12px 0 10px;
+  border-bottom: 1px solid var(--tinta);
+  background: var(--crema);
+}
+#explorador .editorial-explorer { border-top: 0; }
+#explorador .editorial-featured {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(26px, 5vw, 72px);
+  padding: clamp(18px, 3vh, 30px) 0 6px;
+  scroll-margin-top: 70px;
+}
+#explorador .editorial-featured-cover { min-height: 0; }
+#explorador .featured-cover-image { height: clamp(210px, 40vh, 380px); }
+#explorador .editorial-featured h4 { font-size: clamp(28px, 3.2vw, 46px); margin-bottom: 10px; }
+#explorador #featured-description { line-height: 1.5; margin-bottom: 8px; }
+#explorador .editorial-library { padding: 10px 0 24px; }
+#explorador .editorial-library-header { margin-bottom: 6px; }
+#explorador .editorial-library-header > p { font-size: 20px; font-style: italic; }
+#explorador .editorial-library-header > p .tap-hint {
+  margin-left: 14px;
+  color: var(--bordo);
+  font: 400 12px/1 var(--fuente-rotulos);
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+#explorador .tap-hint::before { content: "☞ "; font-size: 15px; letter-spacing: 0; }
+#explorador .editorial-thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  gap: clamp(14px, 2.6vw, 36px);
+  padding: 6px 0;
+}
+#explorador .editorial-thumbnail {
+  flex: 0 1 auto;
+  align-items: flex-start;
+  gap: 8px;
+  width: clamp(72px, 11vw, 124px);
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: left;
+}
+#explorador .thumbnail-cover { width: auto; max-width: 100%; height: clamp(92px, 15vh, 150px); }
+#explorador .editorial-thumbnail span { min-height: 0; }
+#explorador .editorial-thumbnail[aria-pressed="true"] .thumbnail-cover { outline: 2px solid var(--bordo); outline-offset: 4px; }
+@media (max-width: 759px), (max-height: 560px) {
+  #explorador .editorial-author-picks {
+    top: 28px;
+    flex-wrap: nowrap;
+    gap: 0 22px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  #explorador .editorial-author-pick { flex: 0 0 auto; font-size: 17px; }
+}
+@media (max-width: 650px) {
+  #explorador .editorial-featured { grid-template-columns: minmax(0, 1fr); }
+  #explorador .featured-cover-image { height: 260px; }
+  #explorador .editorial-library-header > p .tap-hint { display: block; margin: 8px 0 0; }
+}
+
+/* --- 5 · Recomendaciones: escena fija, los libros pasan de costado ---- */
+#libros { padding-top: 0; }
+.recs-scroller {
+  --margen: max(6vw, calc((100vw - 1280px) / 2));
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+.recs-stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 34px 0 20px;
+}
+.recs-scroller.is-pinned .recs-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+.recs-stage .section-heading { margin: 0 var(--margen) clamp(14px, 2.4vh, 26px); }
+.recs-viewport { position: relative; width: 100%; height: 560px; overflow: hidden; }
+.recs-track { position: absolute; top: 0; left: 0; transform-origin: top left; will-change: transform; }
+.recs-scroller:not(.is-pinned) .recs-viewport { overflow-x: auto; }
+.recs-scroller:not(.is-pinned) .recs-track { position: static; }
+.recs-hint {
+  margin: clamp(10px, 2vh, 20px) var(--margen) 0;
+  color: var(--texto-suave);
+  font: 400 12px/1.4 var(--fuente-rotulos);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.recs-count { margin-right: 18px; color: var(--bordo); }
+#libros .closing { margin-top: 0; }
+
+/* --- 8 · Créditos y fuentes ------------------------------------------ */
+.site-footer {
+  padding: clamp(54px, 8vh, 90px) max(6vw, calc((100vw - 1280px) / 2)) 44px;
+  color: #D8D1CB;
+  text-align: left;
+  font: 400 14px/1.55 var(--fuente-textos);
+  letter-spacing: 0;
+}
+.site-footer h2 {
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  color: #F4EEE2;
+  font: 400 clamp(28px, 3vw, 42px)/1.1 var(--fuente-titulos);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.credits-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 30px clamp(36px, 6vw, 96px);
+}
+.site-footer h3 {
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ffffff2e;
+  color: #E7D3A2;
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.site-footer ul + h3,
+.site-footer dl + h3 { margin-top: 34px; }
+.site-footer ul { margin: 0; padding: 0; list-style: none; }
+.site-footer li { margin: 0 0 10px; padding-left: 1.4em; text-indent: -1.4em; overflow-wrap: anywhere; }
+.site-footer dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 22px; margin: 0; }
+.site-footer dt { font: 400 12px/1.7 var(--fuente-rotulos); letter-spacing: 0.14em; text-transform: uppercase; color: #A79F97; }
+.site-footer dd { margin: 0; color: #F4EEE2; }
+.site-footer a { text-underline-offset: 3px; }
+.credits-end {
+  margin: clamp(40px, 6vw, 64px) 0 0;
+  font: 400 12px/1.5 var(--fuente-rotulos);
+  letter-spacing: 0.08em;
+  color: #A79F97;
+}
+@media (max-width: 759px) {
+  .credits-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ================================================================
+   REVISIÓN 9 · Ajustes: escena 15→2 equilibrada, dibujo entre las
+   pistas, carrusel con recorrido corto.
+   ================================================================ */
+
+/* 15 → 2: la escena queda centrada en la pantalla. Las dos décadas
+   comparten alto, así el título no salta durante el fundido. */
+@media (min-width: 760px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  #historia .era-stage > .era-sheet {
+    align-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  #historia .era-stage .era-columns { min-height: clamp(300px, 50vh, 480px); }
+  #historia .era-stage .duration-method { min-height: 3em; margin: 0; }
+}
+
+/* Pila de libros en el medio de las pistas. */
+.reasons-layout { position: relative; max-width: 1180px; }
+.reasons-layout .reasons-list {
+  max-width: none;
+  gap: clamp(34px, 5vw, 64px) clamp(220px, 26vw, 340px);
+}
+.reasons-figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(150px, 17vw, 230px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.reasons-figure svg { display: block; width: 100%; height: auto; }
+.reasons-figure figcaption {
+  margin-top: 14px;
+  color: var(--tinta);
+  font: 400 clamp(24px, 2.4vw, 34px)/1 var(--fuente-manuscrita);
+}
+@media (max-width: 899px) {
+  .reasons-figure { position: static; width: 170px; margin: 34px auto 0; transform: none; }
+  .reasons-layout .reasons-list { gap: clamp(34px, 5vw, 64px); }
+}
+
+.recs-skip { margin-left: 18px; color: var(--bordo); text-underline-offset: 4px; white-space: nowrap; }
+.site-footer .credits-grid { padding-top: 6px; }
+
+
+/* Carrusel de recomendaciones: las tarjetas quedan quietas. Se anula la
+   interacción con el Flourish para que no giren ni se abran al pasar o tocar. */
+.recs-track iframe { pointer-events: none; }

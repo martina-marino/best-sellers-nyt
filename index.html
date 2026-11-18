@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Courier+Prime:wght@400;700&family=Pinyon+Script&family=Source+Sans+3:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
@@ -26,41 +26,19 @@
 
 <body>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
-  <a class="reading-bookmark" href="#inicio" aria-label="Volver al comienzo">
-    <span class="bookmark-label">En lectura</span>
-    <span class="bookmark-chapter">Inicio</span>
-  </a>
-
-  <!-- MENÚ CIRCULAR A LA IZQUIERDA -->
-  <header class="floating-header">
-    <button
-      class="floating-toggle"
-      type="button"
-      aria-label="Abrir menú"
-      aria-expanded="false"
-      aria-controls="floating-nav"
-    >
-      <span aria-hidden="true">☰</span>
-    </button>
-
-    <nav
-      class="floating-nav"
-      id="floating-nav"
-      aria-label="Navegación principal"
-      hidden
-    >
-      <a href="#inicio">Inicio</a>
-      <a href="#historia">De meses a semanas</a>
-      <a href="#video">Detrás de un bestseller</a>
-      <a href="#definicion">¿Qué es un bestseller?</a>
-      <a href="#permanencia">La permanencia</a>
-      <a href="#cambios">El ranking se renueva</a>
-      <a href="#excepciones">Los libros excepcionales</a>
-      <a href="#autores">Los protagonistas</a>
-      <a href="#explorador">Explorá un autor</a>
-      <a href="#libros">Para seguir leyendo</a>
-    </nav>
-  </header>
+  <!-- ÍNDICE: pestañas de carpeta que marcan el capítulo en lectura -->
+  <nav class="index-tabs" aria-label="Capítulos">
+    <a href="#historia"><b>1</b><span>De meses a semanas</span></a>
+    <a href="#video"><b>2</b><span>Detrás de un bestseller</span></a>
+    <a href="#definicion"><b>3</b><span>¿Qué es un bestseller?</span></a>
+    <a href="#permanencia"><b>4</b><span>La permanencia</span></a>
+    <a href="#cambios"><b>5</b><span>El ranking se renueva</span></a>
+    <a href="#razones"><b>6</b><span>¿Por qué cambió?</span></a>
+    <a href="#excepciones"><b>7</b><span>Los libros excepcionales</span></a>
+    <a href="#autores"><b>8</b><span>Los protagonistas</span></a>
+    <a href="#explorador"><b>9</b><span>Explorá un autor</span></a>
+    <a href="#libros"><b>10</b><span>Para seguir leyendo</span></a>
+  </nav>
 
   <main>
 
@@ -79,19 +57,15 @@
           De 15 semanas a 2 <span aria-hidden="true">↓</span>
         </a>
 
-        <p class="hero-dataset">
-          Datos de Post45 Data Collective ·
-          <a href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html"
-             target="_blank" rel="noopener noreferrer" lang="en">New York Times Hardcover Fiction Bestsellers <span class="keep-together">(1931–2020)</span></a>
-        </p>
       </div>
 
     </section>
 
     <!-- CUADRO 02: COMPARACIÓN ANIMADA -->
     <section class="section duration-story" id="historia">
+      <div class="era-stage">
       <article class="era-sheet duration-scene" data-era="1970" aria-label="1970–1979">
-        <header><h2>De meses a semanas</h2><h3 class="era-period">1970–1979</h3></header>
+        <header><h2 class="era-title"><span class="chapter-label">Capítulo 1</span>De meses a semanas</h2><h3 class="era-period">1970–1979</h3></header>
         <div class="era-columns">
           <p class="duration-stat"><span class="duration-number">15</span>
             <span class="duration-unit">semanas acumuladas<small>Mediana de los títulos que debutaron en esta década</small></span>
@@ -109,10 +83,10 @@
           </aside>
         </div>
         <div class="duration-track" aria-hidden="true"><div class="duration-fill"></div></div>
-        <p class="duration-method">Deslizá para descubrir cómo cambió la mediana</p>
+        <p class="duration-method">Seguí bajando para ver cómo cambió la mediana</p>
       </article>
       <article class="era-sheet duration-scene" data-era="2010" aria-label="2010–2019">
-        <header><p class="eyebrow">De meses a semanas</p><h3 class="era-period">2010–2019</h3></header>
+        <header><p class="era-title" aria-hidden="true"><span class="chapter-label">Capítulo 1</span>De meses a semanas</p><h3 class="era-period">2010–2019</h3></header>
         <div class="era-columns">
           <p class="duration-stat"><span class="duration-number">2</span>
             <span class="duration-unit">semanas acumuladas<small>Mediana de los títulos que debutaron en esta década</small></span>
@@ -132,49 +106,32 @@
         <div class="duration-track" aria-hidden="true"><div class="duration-fill"></div></div>
         <p class="duration-method">La mediana pasa de 15 a 2 semanas: una diferencia entre décadas, no la historia de cada libro.</p>
       </article>
+      </div>
     </section>
     
     <!-- CUADRO 03: VIDEO -->
     <section class="section video-section" id="video">
       <div class="section-heading">
-        <h2>Detrás de un bestseller</h2>
+        <h2><span class="chapter-label">Capítulo 2</span>Detrás de un bestseller</h2>
         <p>
           La etiqueta «bestseller» parece explicar el éxito de un libro, pero también abre preguntas: ¿cómo se construyen estas listas y qué significa aparecer en ellas? Esta mirada en video aporta contexto antes de entrar en los datos.
         </p>
+        <p class="video-note">El video se reproduce solo y sin sonido. Activá el audio desde el reproductor.</p>
       </div>
-      <div class="video-player">
-        <iframe
-          id="story-video"
-          src="https://www.youtube-nocookie.com/embed/cxvCVQdQyc8?enablejsapi=1&amp;playsinline=1"
-          title="The Truth Behind the New York Times Bestseller List, de Anna David"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <p class="video-credit">
-        <a
-          href="https://www.youtube.com/watch?v=cxvCVQdQyc8"
-          target="_blank"
-          rel="noopener noreferrer">
-          Ver video original en YouTube ↗
-        </a>
-      </p>
+      <div class="video-player" id="video-player" data-video="cxvCVQdQyc8" data-title="The Truth Behind the New York Times Bestseller List, de Anna David"></div>
     </section>
 
     <!-- CUADRO 04: DEFINICIÓN Y TRANSICIÓN -->
     <section class="section definition" id="definicion">
       <div class="definition-spread">
         <div class="definition-copy">
-          <h2>¿Qué es un bestseller?</h2>
+          <h2><span class="chapter-label">Capítulo 3</span>¿Qué es un bestseller?</h2>
           <p>Una novela puede llevar la frase «bestseller del <em>New York Times</em>» aunque haya figurado una sola semana en el ranking. Cada puesto muestra su posición frente a otros títulos de la misma categoría en una fecha determinada. Para medir la permanencia, en cambio, necesitamos seguirla semana tras semana.</p>
           <p>Por ejemplo, <em>Two People</em>, de A. A. Milne, apareció segundo el 16 de noviembre de 1931 y tercero dos semanas después. Había perdido un puesto, pero seguía sumando apariciones. Ese seguimiento permite contar las semanas acumuladas de cada obra entre 1931 y 2020.</p>
-          <p class="source-note">Fuente de los datos: archivo compilado por Jordan Pruett y publicado en <a href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html">Post45 Data Collective</a>.</p>
         </div>
 
         <aside class="definition-visual" aria-label="Recreación editorial de los primeros puestos de la lista del 16 de noviembre de 1931">
-          <div class="ranking-paper">
+          <div class="ranking-paper"><i class="paperclip" aria-hidden="true"></i>
             <span lang="en">The New York Times</span>
             <h3 lang="en">Best Sellers</h3>
             <p>16 de noviembre de 1931</p>
@@ -208,7 +165,7 @@
       <div class="sticky-story-pin">
 
       <header class="chart-heading">
-        <h2>Los setenta marcaron el pico de permanencia</h2>
+        <h2><span class="chapter-label">Capítulo 4</span>Los setenta marcaron el pico de permanencia</h2>
         <p>La mediana de semanas acumuladas creció desde los años treinta hasta alcanzar 15 en la década de 1970. Después descendió de manera sostenida hasta llegar a 2 semanas entre los títulos debutantes de los años 2010.</p>
       </header>
       <div class="fit-frame" id="frame-g01" data-width="1100">
@@ -229,14 +186,6 @@
         >
           Ampliar para leer
         </button>
-
-        <a
-          href="https://public.flourish.studio/visualisation/30643782/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Abrir gráfico ↗
-        </a>
       </div>
 
       <p class="source-note centered">
@@ -248,8 +197,8 @@
 
       <!-- El texto entra sobre el gráfico durante el scroll -->
       <div class="sticky-story-scroll">
-      <div class="story-bridge sticky-story-card">
-        <h2>Menos permanencia. ¿Un ranking que rota más rápido?</h2>
+      <div class="story-bridge sticky-story-card"><span class="paperclip" aria-hidden="true"></span>
+        <h3>Menos permanencia. ¿Un ranking que rota más rápido?</h3>
         <p>La caída de la mediana muestra una parte del cambio. Para completar la historia, miremos otras dos señales: cuántos libros entraron por primera vez y cuántos estuvieron apenas una semana.</p>
         <a class="bridge-link" href="#cambios">Seguí las dos pistas <span aria-hidden="true">↓</span></a>
       </div>
@@ -259,7 +208,7 @@
     <!-- CUADRO 06: RENOVACIÓN -->
     <section class="section changes-section" id="cambios">
       <div class="section-heading">
-        <h2>El ranking se renueva</h2>
+        <h2><span class="chapter-label">Capítulo 5</span>El ranking se renueva</h2>
       </div>
 
       <div class="chart-grid">
@@ -277,16 +226,6 @@
               ><p class="embed-fallback">Cargando visualización… <a href="https://public.flourish.studio/visualisation/30720262/" target="_blank" rel="noopener noreferrer">Si no aparece, abrila en Flourish ↗</a></p></div>
             </div>
           </div>
-
-          <div class="embed-actions">
-            <a
-              href="https://public.flourish.studio/visualisation/30720262/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Abrir gráfico ↗
-            </a>
-          </div>
         </div>
 
         <div class="chart-container">
@@ -302,16 +241,6 @@
               ><p class="embed-fallback">Cargando visualización… <a href="https://public.flourish.studio/visualisation/30720740/" target="_blank" rel="noopener noreferrer">Si no aparece, abrila en Flourish ↗</a></p></div>
             </div>
           </div>
-
-          <div class="embed-actions">
-            <a
-              href="https://public.flourish.studio/visualisation/30720740/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Abrir gráfico ↗
-            </a>
-          </div>
         </div>
 
       </div>
@@ -321,47 +250,92 @@
       </div>
     </section>
 
+    <!-- CUADRO 06 BIS: POSIBLES RAZONES DEL CAMBIO -->
+    <section class="section reasons-section" id="razones">
+      <div class="section-heading">
+        <h2><span class="chapter-label">Capítulo 6</span>¿Por qué cambió?</h2>
+        <p>Los datos muestran que la permanencia cayó, pero no dicen por qué. Quienes estudian el mercado editorial señalan varios cambios que ayudan a entender el salto entre los setenta y los años 2010. Ninguno lo explica solo.</p>
+      </div>
+      <div class="reasons-layout">
+        <figure class="reasons-figure">
+          <svg viewBox="0 0 240 330" role="img" aria-label="Dibujo de una pila de libros" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="321" rx="112" ry="5" fill="#1E1B19" opacity=".12"/>
+            <g><rect x="18" y="278" width="204" height="40" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M31 279v38M37 279v38M209 279v38" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M83 298h73" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 304h37" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
+            <g><rect x="36" y="246.5" width="172" height="30" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M49 247.5v28M55 247.5v28M195 247.5v28" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M91 262h62" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
+            <g><rect x="24" y="209.0" width="190" height="36" rx="3" fill="#1B263B" stroke="#1E1B19" stroke-width="1.6"/><path d="M37 210.0v34M43 210.0v34M201 210.0v34" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M85 227h68" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 233h34" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
+            <g><rect x="46" y="181.5" width="150" height="26" rx="3" fill="#E7D3A2" stroke="#1E1B19" stroke-width="1.6"/><path d="M59 182.5v24M65 182.5v24M183 182.5v24" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M94 194h54" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
+            <g><rect x="30" y="146.0" width="176" height="34" rx="3" fill="#948F89" stroke="#1E1B19" stroke-width="1.6"/><path d="M43 147.0v32M49 147.0v32M193 147.0v32" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M86 163h63" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/><path d="M102 169h32" stroke="#1E1B19" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
+            <g transform="rotate(-3 120.0 130.5)"><rect x="50" y="116.5" width="140" height="28" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M63 117.5v26M69 117.5v26M177 117.5v26" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M95 130h50" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/></g>
+            <g transform="rotate(5 126.0 101.5)"><rect x="74" y="90.5" width="104" height="22" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M87 91.5v20M93 91.5v20M165 91.5v20" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M107 102h37" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
+          </svg>
+          <figcaption>Más libros,<br>menos semanas.</figcaption>
+        </figure>
+      <ol class="reasons-list">
+        <li>
+          <span class="reason-number">Pista 1</span>
+          <h3>Llegan muchos más libros</h3>
+          <p>La lista tiene pocos lugares por semana. En los setenta debutaron 324 títulos; en los años 2010, 1.994. Con seis veces más libros para los mismos puestos, cada uno tiene menos tiempo antes de que llegue el siguiente.</p>
+        </li>
+        <li>
+          <span class="reason-number">Pista 2</span>
+          <h3>Las ventas se juegan en el estreno</h3>
+          <p>Un estudio sobre los bestsellers del <em>New York Times</em> entre 2008 y 2016 encontró que las ventas llegan a su pico en las primeras semanas después del lanzamiento y después caen (Yucesoy et al., 2018). La lista registra al que vende mucho en poco tiempo: los libros que venden parejo durante años casi no aparecen (Mrva-Montoya, 2024).</p>
+        </li>
+        <li>
+          <span class="reason-number">Pista 3</span>
+          <h3>Cambió dónde se compran los libros</h3>
+          <p>El ranking se arma con las ventas que informan las librerías. Con los años, las cadenas, los locales de shopping y los grandes distribuidores ganaron peso y cambiaron qué tiendas entraban en la muestra (Miller, 2007, citada por Pruett, 2022). El método exacto del diario no es público, así que comparar décadas siempre tiene ese límite.</p>
+        </li>
+        <li>
+          <span class="reason-number">Pista 4</span>
+          <h3>Autores que publican seguido</h3>
+          <p>Algunas firmas vuelven al ranking casi todos los años: en el archivo, Danielle Steel suma 116 títulos y Stephen King, 60. Cuando un autor conocido publica seguido, cada libro nuevo compite también con el anterior.</p>
+        </li>
+      </ol>
+      </div>
+      <p class="reasons-close">Aun así, en cada década hubo libros que se quedaron mucho más que el resto.</p>
+    </section>
+
     <!-- CUADRO 07: TARJETAS -->
     <section class="section exceptions" id="excepciones">
       <div class="section-heading">
-        <h2>Los libros que desafiaron la tendencia</h2>
+        <h2><span class="chapter-label">Capítulo 7</span>Los libros que desafiaron la tendencia</h2>
         <p>En una década con una mediana de apenas dos semanas, algunas novelas acumularon decenas —e incluso más de cien—. Girá las portadas para descubrir tres historias que sobresalen del conjunto.</p>
       </div>
 
-      <div class="fit-frame" id="frame-cards" data-width="1100">
-        <div class="fit-content">
-          <div
-            class="flourish-embed flourish-cards"
-            data-src="visualisation/30726834"
-          ><p class="embed-fallback">Cargando visualización… <a href="https://public.flourish.studio/visualisation/30726834/" target="_blank" rel="noopener noreferrer">Si no aparece, abrila en Flourish ↗</a></p></div>
-        </div>
+      <div class="book-windows" id="book-windows" data-width="1100" aria-label="Tres novelas y sus semanas acumuladas en el ranking">
+        <figure class="book-window">
+          <div class="book-window-frame">
+            <div class="book-window-content">
+              <div class="flourish-embed flourish-cards" data-src="visualisation/30726834"></div>
+            </div>
+          </div>
+          <figcaption><strong>132</strong><span>semanas en la lista</span><em lang="en">All the Light We Cannot See</em><small>2014</small></figcaption>
+        </figure>
+        <figure class="book-window">
+          <div class="book-window-frame">
+            <div class="book-window-content">
+              <div class="flourish-embed flourish-cards" data-src="visualisation/30726834"></div>
+            </div>
+          </div>
+          <figcaption><strong>114</strong><span>semanas en la lista</span><em lang="en">Where the Crawdads Sing</em><small>2018</small></figcaption>
+        </figure>
+        <figure class="book-window">
+          <div class="book-window-frame">
+            <div class="book-window-content">
+              <div class="flourish-embed flourish-cards" data-src="visualisation/30726834"></div>
+            </div>
+          </div>
+          <figcaption><strong>86</strong><span>semanas en la lista</span><em lang="en">A Dance with Dragons</em><small>2011</small></figcaption>
+        </figure>
       </div>
 
-      <div class="embed-actions">
-        <a
-          href="https://public.flourish.studio/visualisation/30726834/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Abrir tarjetas ↗
-        </a>
-      </div>
-
-      <div class="exception-facts" aria-label="Semanas acumuladas en el ranking por las tres novelas">
-        <p class="exception-facts-intro">La diferencia se vuelve visible en sus semanas acumuladas:</p>
-        <div class="exception-facts-grid">
-          <div><strong>132</strong><span>semanas · <em>All the Light We Cannot See</em> (2014)</span></div>
-          <div><strong>114</strong><span>semanas · <em>Where the Crawdads Sing</em> (2018)</span></div>
-          <div><strong>86</strong><span>semanas · <em>A Dance with Dragons</em> (2011)</span></div>
-        </div>
-        <p class="source-note">Semanas acumuladas en el archivo de Post45 hasta 2020, no necesariamente consecutivas.</p>
-      </div>
     </section>
 
     <!-- CUADRO 08: CARPETAS SUPERPUESTAS -->
     <section class="section authors-section" id="autores">
       <div class="section-heading">
-        <h2>Los protagonistas</h2>
+        <h2><span class="chapter-label">Capítulo 8</span>Los protagonistas</h2>
         <p>¿Quiénes llegaron al número uno, publicaron más títulos o acumularon más semanas?</p>
       </div>
 
@@ -369,53 +343,27 @@
         <p>Algunas historias permanecen. Detrás de ellas, hay firmas que vuelven una y otra vez. Abrimos el archivo para seguir <strong>tres formas de dejar huella</strong>.</p>
       </div>
       <div class="folder-stack">
-        <div class="archive-cover">
-          <p class="archive-imprint">Archivo de autores<br>New York Times · 1931–2020</p>
-          <div class="archive-fastener" aria-hidden="true"><i></i><i></i></div>
-          <p class="archive-title">Las firmas<br>que perduran.</p>
-        <div
-          class="folder-tabs"
-          role="tablist"
-          aria-label="Rankings de autores"
-        >
-          <button
-            class="folder-tab"
-            type="button"
-            id="tab-g04"
-            role="tab"
-            aria-controls="panel-g04"
-            aria-selected="true"
-            tabindex="0"
-          >
-            <span class="archive-index">01</span> En la cima
+        <div class="folder-shelf" role="tablist" aria-label="Rankings de autores">
+          <button class="folder-card" type="button" id="tab-g04" role="tab" aria-controls="panel-g04" aria-selected="false" tabindex="0">
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 01<br>Semanas en el nº 1</span></span>
+            <span class="folder-flap" aria-hidden="true"></span>
+            <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
+            <span class="folder-name">En la<br>cima</span>
           </button>
-
-          <button
-            class="folder-tab"
-            type="button"
-            id="tab-g05"
-            role="tab"
-            aria-controls="panel-g05"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            <span class="archive-index">02</span> Una obra tras otra
+          <button class="folder-card" type="button" id="tab-g05" role="tab" aria-controls="panel-g05" aria-selected="false" tabindex="-1">
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 02<br>Títulos en el ranking</span></span>
+            <span class="folder-flap" aria-hidden="true"></span>
+            <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
+            <span class="folder-name">Una obra<br>tras otra</span>
           </button>
-
-          <button
-            class="folder-tab"
-            type="button"
-            id="tab-g06"
-            role="tab"
-            aria-controls="panel-g06"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            <span class="archive-index">03</span> A través del tiempo
+          <button class="folder-card" type="button" id="tab-g06" role="tab" aria-controls="panel-g06" aria-selected="false" tabindex="-1">
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 03<br>Semanas acumuladas</span></span>
+            <span class="folder-flap" aria-hidden="true"></span>
+            <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
+            <span class="folder-name">A través<br>del tiempo</span>
           </button>
         </div>
-
-        </div>
+        <p class="folder-hint">Tocá una carpeta para abrirla y ver su gráfico.</p>
         <div class="folder-body">
           <div
             class="folder-panel"
@@ -423,6 +371,7 @@
             role="tabpanel"
             aria-labelledby="tab-g04"
             tabindex="0"
+            hidden
           >
             <p class="folder-reading"><strong>La cima.</strong> Semanas que los libros de cada autor ocuparon el primer puesto.</p>
             <header class="chart-heading">
@@ -436,16 +385,6 @@
                   data-src="visualisation/30721328"
                 ><p class="embed-fallback">Cargando visualización… <a href="https://public.flourish.studio/visualisation/30721328/" target="_blank" rel="noopener noreferrer">Si no aparece, abrila en Flourish ↗</a></p></div>
               </div>
-            </div>
-
-            <div class="embed-actions">
-              <a
-                href="https://public.flourish.studio/visualisation/30721328/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Abrir gráfico ↗
-              </a>
             </div>
           </div>
 
@@ -469,7 +408,6 @@
             </div>
             <div class="embed-actions">
               <button class="size-toggle" type="button" aria-controls="frame-g05" aria-pressed="false">Ampliar para leer</button>
-              <a href="https://public.flourish.studio/visualisation/30727869/" target="_blank" rel="noopener noreferrer">Abrir gráfico ↗</a>
             </div>
           </div>
 
@@ -493,7 +431,6 @@
             </div>
             <div class="embed-actions">
               <button class="size-toggle" type="button" aria-controls="frame-g06" aria-pressed="false">Ampliar para leer</button>
-              <a href="https://public.flourish.studio/visualisation/30727916/" target="_blank" rel="noopener noreferrer">Abrir gráfico ↗</a>
             </div>
           </div>
         </div>
@@ -503,7 +440,7 @@
     <!-- CUADRO 09: EXPLORADOR DE AUTORES (DATOS ORIGINALES POST45) -->
     <section class="section explorer-section" id="explorador">
       <div class="section-heading">
-        <h2>Explorá un autor</h2>
+        <h2><span class="chapter-label">Capítulo 9</span>Explorá un autor</h2>
         <p>Los números dibujan una trayectoria. Ahora, acerquémonos a las personas y a los libros que la hicieron posible. Elegí una firma para seguir su historia.</p>
       </div>
 
@@ -529,7 +466,7 @@
         </article>
         <div class="editorial-library">
           <div class="editorial-library-header">
-            <p>Explorá sus títulos <span>· Elegí una portada</span></p>
+            <p>Sus títulos <span class="tap-hint">Tocá una portada para ver su historia</span></p>
           </div>
           <div class="editorial-thumbnails" id="author-book-collection" aria-label="Selección de libros"></div>
         </div>
@@ -546,60 +483,74 @@
 
     <!-- CUADRO 10: RECOMENDACIONES Y CIERRE -->
     <section class="section recommendations" id="libros">
-      <div class="section-heading">
-        <h2>Recomendaciones de lectura</h2>
-        <p>
-          Una selección editorial de libros para seguir leyendo más allá de las cifras.
-        </p>
-      </div>
-
-      <p class="editorial-lead prose-reveal">El ranking cuenta qué libros llegaron a los más vendidos; no puede decirnos qué deberíamos leer. Estas recomendaciones invitan a salir de las estadísticas y elegir la próxima historia por curiosidad.</p>
-      <div class="flourish-embed flourish-cards" data-src="visualisation/30792917">
-        <noscript>
-          <a href="https://public.flourish.studio/visualisation/30792917/">
-            <img src="https://public.flourish.studio/visualisation/30792917/thumbnail"
-                 width="100%" alt="Ver las recomendaciones de lectura en Flourish">
-          </a>
-        </noscript>
+      <div class="recs-scroller" id="recs-scroller" data-width="6560">
+        <div class="recs-stage">
+          <div class="section-heading">
+            <h2><span class="chapter-label">Capítulo 10</span>Recomendaciones de lectura</h2>
+            <p>El ranking cuenta qué libros llegaron a los más vendidos; no puede decirnos qué deberíamos leer. Veinte libros para elegir la próxima historia por curiosidad.</p>
+          </div>
+          <div class="recs-viewport" tabindex="0" aria-label="Recomendaciones de lectura: veinte libros">
+            <div class="recs-track">
+              <div class="flourish-embed flourish-cards" data-src="visualisation/30792917"><p class="embed-fallback">Cargando recomendaciones… <a href="https://public.flourish.studio/visualisation/30792917/" target="_blank" rel="noopener noreferrer">Si no aparecen, abrilas en Flourish ↗</a></p></div>
+            </div>
+          </div>
+          <p class="recs-hint"><span class="recs-count">1–5 de 20</span> Seguí bajando: los libros pasan de costado <span aria-hidden="true">→</span> <a class="recs-skip" href="#cierre">Saltar a la conclusión ↓</a></p>
+        </div>
       </div>
 
       <div class="closing" id="cierre">
-        <h2>Las historias cambian. El éxito también.</h2>
-        <p>
-          Entre los setenta y los años 2010, la mediana cayó de 15 a 2 semanas, ingresaron muchos más títulos y creció la proporción de libros que solo estuvieron una semana. Son señales de una lista que se renueva con mayor rapidez.
-        </p>
-        <p>Esas tendencias no explican por sí solas por qué cambió el ranking, ni agotan el valor de una novela. Los datos muestran su recorrido entre los más vendidos. La huella que deja en cada lector empieza en otra parte.</p>
-        <a href="#inicio">Volver al comienzo ↑</a>
+        <div class="closing-folder">
+          <span class="closing-tab" aria-hidden="true">Bestsellers NYT · 1931–2020</span>
+          <span class="paperclip" aria-hidden="true"></span>
+          <p class="closing-script">el Archivo</p>
+          <p class="closing-kicker">Conclusión</p>
+          <h2>Un bestseller dura cada vez menos</h2>
+          <p class="closing-tagline">De quince semanas a dos, en cuarenta años.</p>
+          <div class="closing-copy">
+            <p>
+              Entre los setenta y los años 2010, la mediana cayó de 15 a 2 semanas, ingresaron muchos más títulos y creció la proporción de libros que solo estuvieron una semana. Son señales de una lista que se renueva con mayor rapidez.
+            </p>
+            <p>Esas tendencias no explican por sí solas por qué cambió el ranking, ni agotan el valor de una novela. Los datos muestran su recorrido entre los más vendidos. La huella que deja en cada lector empieza en otra parte.</p>
+          </div>
+          <a href="#inicio">Volver al comienzo ↑</a>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <p>
-      Una investigación visual sobre los bestsellers de ficción de tapa dura del <em>New York Times</em>.
-    </p>
-
-    <p>
-      Dataset:
-      <a
-        href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        New York Times Hardcover Fiction Bestsellers (1931–2020)
-      </a>
-      · Post45 Data Collective.
-    </p>
-
-    <p>
-      Fotografía de biblioteca:
-      <a
-        href="https://unsplash.com/photos/photo-of-library-shelves-GWCvnsMtiBg"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Annie Spratt / Unsplash</a>.
-    </p>
+  <footer class="site-footer" id="creditos">
+    <div class="credits-grid">
+      <section aria-label="Equipo">
+        <h3>Equipo</h3>
+        <dl>
+          <dt>Realización</dt><dd>Martina Mariño, Rocío Wloch y Sebastián Wainerman</dd>
+          <dt>Materia</dt><dd>Visualización de datos</dd>
+          <dt>Universidad</dt><dd>Universidad Torcuato Di Tella (UTDT)</dd>
+        </dl>
+        <h3>Imágenes y visualizaciones</h3>
+        <ul>
+          <li>Gráficos y tarjetas interactivas hechos con <a href="https://flourish.studio/" target="_blank" rel="noopener noreferrer">Flourish</a>.</li>
+          <li>Fotografía de biblioteca: <a href="https://unsplash.com/photos/photo-of-library-shelves-GWCvnsMtiBg" target="_blank" rel="noopener noreferrer">Annie Spratt / Unsplash</a>.</li>
+          <li>Retratos y datos biográficos: <a href="https://www.esquire.com/entertainment/books/a41456526/john-grisham-what-ive-learned/" target="_blank" rel="noopener noreferrer">Esquire</a> (Grisham), <a href="https://newengland.com/yankee/magazine/stephen-king/" target="_blank" rel="noopener noreferrer">Yankee Magazine</a> y <a href="https://en.wikipedia.org/wiki/Stephen_King" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> (King), <a href="https://www.imdb.com/es-es/name/nm0585151/bio/" target="_blank" rel="noopener noreferrer">IMDb</a> (Michener), <a href="https://www.tvinsider.com/people/danielle-steel/" target="_blank" rel="noopener noreferrer">TV Insider</a> (Steel), <a href="https://en.wikipedia.org/wiki/Herman_Wouk" target="_blank" rel="noopener noreferrer">Wikipedia</a> (Wouk).</li>
+          <li>Portadas: ediciones de cada editorial.</li>
+        </ul>
+      </section>
+      <section aria-label="Bibliografía">
+        <h3>Base de datos</h3>
+        <ul>
+          <li>Pruett, J. (2022). <a href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html" target="_blank" rel="noopener noreferrer" lang="en"><em>New York Times Hardcover Fiction Bestsellers (1931–2020)</em></a>. Post45 Data Collective. https://doi.org/10.18737/CNJV1733p4520220211</li>
+        </ul>
+        <h3>Bibliografía</h3>
+        <ul>
+          <li>David, A. <a href="https://www.youtube.com/watch?v=cxvCVQdQyc8" target="_blank" rel="noopener noreferrer" lang="en"><em>The Truth Behind the New York Times Bestseller List</em></a> [video]. YouTube.</li>
+          <li>Miller, L. J. (2007). <em lang="en">Reluctant Capitalists: Bookselling and the Culture of Consumption</em>. University of Chicago Press.</li>
+          <li>Mrva-Montoya, A. (2024, 12 de agosto). <a href="https://theconversation.com/what-makes-a-book-a-bestseller-its-tricky-233092" target="_blank" rel="noopener noreferrer" lang="en">What makes a book a bestseller? It’s tricky</a>. <em>The Conversation</em>.</li>
+          <li>Yucesoy, B., Wang, X., Huang, J. y Barabási, A.-L. (2018). <a href="https://doi.org/10.1140/epjds/s13688-018-0135-y" target="_blank" rel="noopener noreferrer" lang="en">Success in books: a big data approach to bestsellers</a>. <em>EPJ Data Science</em>, 7(7).</li>
+        </ul>
+      </section>
+    </div>
+    <p class="credits-end">Una investigación visual sobre los bestsellers de ficción de tapa dura del <em>New York Times</em>.</p>
   </footer>
 
   <!-- Cargar el motor de Flourish una sola vez -->
