@@ -3665,3 +3665,7 @@ main .section-heading p.video-note { font: 400 12px/1.5 var(--fuente-rotulos); }
 /* Carrusel de recomendaciones: las tarjetas quedan quietas. Se anula la
    interacción con el Flourish para que no giren ni se abran al pasar o tocar. */
 .recs-track iframe { pointer-events: none; }
+
+/* 15 → 2: la escena fija arranca pegada al borde superior del capítulo.
+   (La sección centraba su contenido y dejaba media pantalla vacía arriba.) */
+#historia { display: block; align-content: start; }
