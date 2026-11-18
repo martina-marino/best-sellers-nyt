@@ -3669,3 +3669,35 @@ main .section-heading p.video-note { font: 400 12px/1.5 var(--fuente-rotulos); }
 /* 15 → 2: la escena fija arranca pegada al borde superior del capítulo.
    (La sección centraba su contenido y dejaba media pantalla vacía arriba.) */
 #historia { display: block; align-content: start; }
+
+/* ================================================================
+   REVISIÓN 10 · Capítulo 1 alineado con el resto, unidad en el título
+   del gráfico de permanencia, carrusel que también responde de costado.
+   ================================================================ */
+
+/* El capítulo 1 arranca en el mismo margen que los demás capítulos. */
+@media (min-width: 1000px) {
+  .era-sheet.duration-scene {
+    --era-inset: 0%;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: start;
+  }
+}
+/* El blanco propio del numeral lo corría hacia la derecha del título. */
+#historia .duration-number { margin-left: -0.065em; }
+
+/* Unidad del gráfico, discreta, al lado del título. */
+.title-unit {
+  display: inline-block;
+  margin-left: 0.6em;
+  color: var(--bordo);
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.recs-scroller.is-pinned .recs-viewport { cursor: grab; touch-action: pan-y; }
+.recs-scroller.is-pinned .recs-viewport.is-dragging { cursor: grabbing; }
+

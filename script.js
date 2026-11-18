@@ -918,7 +918,7 @@
     travel = Math.max(0, native * scale + gutter * 2 - innerWidth);
     // El recorrido vertical es corto (algo más de una pantalla): los 20 libros
     // pasan rápido y no hay que atravesar todo el ancho para seguir leyendo.
-    distance = Math.min(travel, innerHeight * 1.25);
+    distance = Math.min(travel, innerHeight * 2);
     scroller.style.height = pinned ? `${innerHeight + distance}px` : '';
     if (!pinned) {
       track.style.transform = `scale(${scale})`;
@@ -944,6 +944,40 @@
   addEventListener('resize', measure);
   addEventListener('load', measure);
   reduced.addEventListener('change', measure);
+
+  // Gestos de costado (trackpad, rueda horizontal o arrastre) también mueven los libros.
+  function moveBy(pixels) {
+    if (!travel || !scroller.classList.contains('is-pinned')) return;
+    const top = scroller.getBoundingClientRect().top + scrollY;
+    const target = scrollY + pixels * (distance / travel);
+    scrollTo({ top: Math.max(top, Math.min(top + distance, target)), behavior: 'instant' });
+  }
+  viewport.addEventListener('wheel', event => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+    event.preventDefault();
+    moveBy(event.deltaX);
+  }, { passive: false });
+  let dragX = null;
+  viewport.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch') return;
+    dragX = event.clientX;
+    viewport.setPointerCapture(event.pointerId);
+    viewport.classList.add('is-dragging');
+  });
+  viewport.addEventListener('pointermove', event => {
+    if (dragX === null) return;
+    moveBy(dragX - event.clientX);
+    dragX = event.clientX;
+  });
+  ['pointerup', 'pointercancel'].forEach(type => viewport.addEventListener(type, () => {
+    dragX = null;
+    viewport.classList.remove('is-dragging');
+  }));
+  viewport.addEventListener('keydown', event => {
+    const pitch = (native / TOTAL) * scale;
+    if (event.key === 'ArrowRight') { event.preventDefault(); moveBy(pitch); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); moveBy(-pitch); }
+  });
   if ('ResizeObserver' in window) new ResizeObserver(measure).observe(track);
   measure();
 })();
