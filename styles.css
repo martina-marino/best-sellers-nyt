@@ -3701,3 +3701,15 @@ main .section-heading p.video-note { font: 400 12px/1.5 var(--fuente-rotulos); }
 .recs-scroller.is-pinned .recs-viewport { cursor: grab; touch-action: pan-y; }
 .recs-scroller.is-pinned .recs-viewport.is-dragging { cursor: grabbing; }
 
+
+/* Capítulo 1: la portada nunca supera el alto de su fila, así no se
+   monta sobre la línea de duración que va debajo. */
+#historia .era-cover {
+  max-width: calc(44svh * 295 / 450);
+  justify-self: end;
+}
+@media (min-width: 760px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  #historia .era-stage .era-columns { min-height: clamp(280px, 46svh, 480px); }
+  #historia .era-stage > .era-sheet { gap: clamp(14px, 2.6vh, 28px); }
+}
+#historia .duration-track { margin-top: clamp(6px, 1.5vh, 16px); }
