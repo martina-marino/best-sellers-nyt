@@ -52,8 +52,12 @@
     // no reducirlas para que toda la sección entre artificialmente en 1 pantalla.
     // Se ajustan al ancho disponible y la sección puede crecer naturalmente.
 
+    // Dentro de las carpetas el gráfico se ajusta para verse entero
+    // junto con su título, sin tener que bajar.
+    if (folder) maxHeight = Math.max(260, window.innerHeight - 250);
+
     const fitHeight =
-      (isCards || folder) && !mobile
+      isCards && !mobile
         ? Infinity
         : mobile || frame.classList.contains("is-expanded")
         ? 1
@@ -193,8 +197,17 @@
         tab.focus({ preventScroll: true });
       }
 
+      const opening = !stack.classList.contains("has-open");
       stack.classList.add("has-open");
       queueFit();
+
+      // Al abrir la primera carpeta, acomodar la escena en pantalla.
+      if (opening && !focus) {
+        requestAnimationFrame(() => stack.scrollIntoView({
+          behavior: reducedMotion.matches ? "auto" : "smooth",
+          block: "start"
+        }));
+      }
     }
 
     function closeAll() {
@@ -459,7 +472,7 @@
     });
     if (current && current.id !== currentId) {
       currentId = current.id;
-      index.classList.toggle('is-on-cover', current === sections[0]);
+      index.classList.toggle('is-on-cover', current.id === 'apertura');
       links.forEach(link => {
         if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
@@ -495,7 +508,7 @@
 })();
 
 // ============================================================
-// EXPLORADOR DE AUTORES · Archivo Post45 (1931–2020)
+// EXPLORADOR DE AUTORES · Archivo Post45 (1931-2020)
 // Los datos provienen del archivo local autores-data.js.
 // ============================================================
 (() => {
@@ -577,15 +590,18 @@
       },
       {
         "title": "The Client",
-        "cover": "assets/autores/grisham-1.jpg"
+        "cover": "assets/autores/grisham-1.jpg",
+        "description": "Mark Sway, un chico de 11 años, presencia por casualidad el suicidio de un abogado de la mafia, y antes de morir el hombre le cuenta un secreto sobre dónde está escondido el cuerpo de un senador. Desde ese momento lo persiguen tanto la mafia como el FBI, y Mark solo puede confiar en una abogada, Reggie Love. Estuvo en la lista 48 semanas, casi un año, y llegó al puesto número 1. En 1994 se hizo película, con Susan Sarandon y Tommy Lee Jones."
       },
       {
         "title": "The Firm",
-        "cover": "assets/autores/grisham-2.jpg"
+        "cover": "assets/autores/grisham-2.jpg",
+        "description": "Mitch McDeere es un joven abogado recién graduado al que una firma de Memphis le ofrece un sueldo enorme, una casa y un auto. Parece el trabajo perfecto, hasta que descubre que la empresa esconde un secreto muy peligroso. Fue el libro que hizo famoso a Grisham: estuvo 47 semanas en la lista, llegó al puesto 2 y se convirtió en película con Tom Cruise."
       },
       {
         "title": "Skipping Christmas",
-        "cover": "assets/autores/grisham-3.jpg"
+        "cover": "assets/autores/grisham-3.jpg",
+        "description": "Luther y Nora Krank deciden saltearse la Navidad: nada de árbol, regalos ni fiestas, y en su lugar se van de crucero al Caribe. Pero sus vecinos no lo toman bien y hacen todo para que cambien de idea. Es una comedia, muy distinta de los thrillers que hicieron famoso a Grisham, estuvo en la lista 35 semanas (unos 8 meses) y llegó al puesto 1. En 2004 se hizo película, Christmas with the Kranks."
       }
     ],
     "photo": "assets/autores/grisham.jpg"
@@ -602,15 +618,18 @@
       },
       {
         "title": "It",
-        "cover": "assets/autores/king-1.jpg"
+        "cover": "assets/autores/king-1.jpg",
+        "description": "En el pueblo de Derry, un grupo de chicos se enfrenta a algo maligno que cambia de forma y que muchas veces aparece como un payaso llamado Pennywise. Años después, ya adultos, deben volver a reunirse para terminar lo que empezaron. Estuvo en la lista unos 8 meses, 35 semanas, y llegó al puesto número 1. Es una de las historias más famosas de King y tuvo una miniserie en 1990 y dos películas en 2017 y 2019."
       },
       {
         "title": "Firestarter",
-        "cover": "assets/autores/king-2.jpg"
+        "cover": "assets/autores/king-2.jpg",
+        "description": "Charlie McGee tiene 8 años y un poder que da miedo: puede provocar incendios con solo concentrarse. Una agencia secreta del gobierno quiere capturarla para estudiarla, y su papá, que también tiene poderes, intenta protegerla en una huida constante. Estuvo en la lista unos 8 meses, 35 semanas, llegó al puesto 1 y en 1984 se hizo película, con Drew Barrymore como la protagonista."
       },
       {
         "title": "Cujo",
-        "cover": "assets/autores/king-3.jpg"
+        "cover": "assets/autores/king-3.jpg",
+        "description": "Cujo es un perro San Bernardo, tranquilo y cariñoso, hasta que lo muerde un murciélago enfermo. Poco a poco el animal pierde el control y se vuelve peligroso. Una mujer y su hijo pequeño quedan atrapados dentro de un auto descompuesto, sin ayuda cerca, mientras Cujo los espera afuera. Estuvo en la lista más de 7 meses (33 semanas), llegó al puesto 1 y tuvo su película en 1983."
       }
     ],
     "photo": "assets/autores/king.jpg",
@@ -629,15 +648,18 @@
       },
       {
         "title": "The Source",
-        "cover": "assets/autores/michener-1.jpg"
+        "cover": "assets/autores/michener-1.jpg",
+        "description": "Un equipo de arqueólogos excava un montículo en Israel y, capa por capa, va encontrando objetos de cada época. Cada hallazgo lleva a Michener a contar la vida de quienes vivieron allí, desde los primeros pobladores hasta tiempos modernos, y a recorrer miles de años de la historia de las religiones de la región. Estuvo en la lista 71 semanas, más de un año y 4 meses, y llegó al puesto número 1."
       },
       {
         "title": "Centennial",
-        "cover": "assets/autores/michener-2.jpg"
+        "cover": "assets/autores/michener-2.jpg",
+        "description": "Centennial es un pueblo inventado de Colorado, y Michener cuenta toda su historia: desde la época en que el territorio era salvaje, pasando por los primeros pioneros y los pueblos originarios, hasta el presente. Los protagonistas son familias de distintas épocas que cambian el paisaje. Estuvo en la lista 60 semanas, más de un año, llegó al puesto 1 y se hizo una miniserie de televisión."
       },
       {
         "title": "Chesapeake",
-        "cover": "assets/autores/michener-3.jpg"
+        "cover": "assets/autores/michener-3.jpg",
+        "description": "Michener cuenta la historia de la bahía de Chesapeake, en la costa este de Estados Unidos, a lo largo de varios siglos. Sigue a varias familias de distintas épocas, entre pescadores, colonos y granjeros, cuyas vidas se cruzan en la misma bahía. Estuvo en la lista 47 semanas, casi un año, y llegó al puesto número 1."
       }
     ],
     "photo": "assets/autores/michener.jpg"
@@ -654,15 +676,18 @@
       },
       {
         "title": "Changes",
-        "cover": "assets/autores/steel-1.jpg"
+        "cover": "assets/autores/steel-1.jpg",
+        "description": "Melanie Adams es una periodista de televisión de Nueva York que viaja a Los Ángeles para filmar un documental sobre trasplantes de corazón, y ahí conoce a Peter Hallam, un cardiólogo viudo. Se enamoran, se casan y ella resigna una gran oportunidad laboral. Pero juntar dos familias bajo un mismo techo no es fácil y trae problemas inesperados. Estuvo en la lista 28 semanas, más de 6 meses, y llegó al puesto 2."
       },
       {
         "title": "The Gift",
-        "cover": "assets/autores/steel-2.jpg"
+        "cover": "assets/autores/steel-2.jpg",
+        "description": "Maribeth es una adolescente de los años 50 en un pueblo chico que queda embarazada, y su papá la manda con unas monjas hasta que nazca el bebé, que se da en adopción. Sola y asustada, se escapa y llega con un pasaje de ida a un pueblo universitario, donde termina cambiando la vida de una familia que atraviesa un gran dolor. Estuvo en la lista 26 semanas, medio año, y llegó al puesto número 1."
       },
       {
         "title": "Kaleidoscope",
-        "cover": "assets/autores/steel-3.jpg"
+        "cover": "assets/autores/steel-3.jpg",
+        "description": "Tres hermanas quedan huérfanas tras una tragedia familiar, las separan y cada una crece en un mundo muy distinto. Años después, un viejo conocido de la familia las reúne y las tres tienen que enfrentar la verdad sobre su pasado. Estuvo en la lista 26 semanas, medio año, y llegó al puesto número 1."
       }
     ],
     "photo": "assets/autores/steel.jpg"
@@ -679,15 +704,18 @@
       },
       {
         "title": "The Winds of War",
-        "cover": "assets/autores/wouk-1.jpg"
+        "cover": "assets/autores/wouk-1.jpg",
+        "description": "Sigue a la familia del oficial naval Victor Henry, desde los años previos a la Segunda Guerra Mundial hasta el ataque a Pearl Harbor. A través de sus hijos y de distintos personajes, el libro muestra cómo el mundo se va acercando a la guerra. Estuvo en la lista 65 semanas, más de un año, y llegó al puesto número 1. En 1983 se convirtió en una miniserie de televisión."
       },
       {
         "title": "War and Remembrance",
-        "cover": "assets/autores/wouk-2.jpg"
+        "cover": "assets/autores/wouk-2.jpg",
+        "description": "Es la continuación de The Winds of War y retoma a la familia Henry después de Pearl Harbor, para acompañarla hasta el final de la guerra. Entre los temas que cuenta está el Holocausto. Estuvo en la lista 61 semanas, más de un año, y llegó al puesto 1. Tuvo una miniserie en 1988 y 1989."
       },
       {
         "title": "Marjorie Morningstar",
-        "cover": "assets/autores/wouk-3.jpg"
+        "cover": "assets/autores/wouk-3.jpg",
+        "description": "Marjorie es una joven de una familia judía de Nueva York que sueña con ser actriz y no quiere la vida tranquila que sus padres imaginan para ella. Se enamora de Noel Airman, un compositor carismático pero poco confiable, y la historia sigue cómo cambian sus sueños con el tiempo. Estuvo en la lista más de 8 meses, 37 semanas, llegó al puesto 1 y se hizo película en 1958 con Natalie Wood."
       }
     ],
     "photo": "assets/autores/wouk.jpg"
@@ -862,10 +890,12 @@
       const content = item.querySelector('.book-window-content');
       const width = frame.clientWidth;
       if (!width) return;
-      const scale = width / slice;
+      // Cada tarjeta trae un borde claro propio: se recorta un 2,5 % por lado.
+      const inset = slice * 0.025;
+      const scale = width / (slice - inset * 2);
       content.style.width = `${native}px`;
-      content.style.transform = `translateX(${-index * width}px) scale(${scale})`;
-      const height = content.offsetHeight - (content.querySelector('iframe') ? 26 : 0);
+      content.style.transform = `translateX(${-(index * slice + inset) * scale}px) scale(${scale})`;
+      const height = content.offsetHeight - (content.querySelector('iframe') ? 36 : 0);
       if (height > 0) frame.style.height = `${Math.ceil(height * scale)}px`;
     });
   }
@@ -936,7 +966,7 @@
     const pitch = (native / TOTAL) * scale;
     const first = Math.min(TOTAL, Math.floor(x / pitch) + 1);
     const last = Math.min(TOTAL, Math.floor((x + innerWidth - gutter) / pitch));
-    count.textContent = last > first ? `${first}–${last} de ${TOTAL}` : `${first} de ${TOTAL}`;
+    count.textContent = last > first ? `${first} a ${last} de ${TOTAL}` : `${first} de ${TOTAL}`;
   }
 
   function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
@@ -980,4 +1010,115 @@
   });
   if ('ResizeObserver' in window) new ResizeObserver(measure).observe(track);
   measure();
+})();
+
+// Apertura y final: el libro se abre al entrar y se cierra al terminar de leer.
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const index = document.querySelector('.index-tabs');
+
+  const opening = document.getElementById('apertura');
+  if (opening) {
+    const video = opening.querySelector('video');
+    const play = opening.querySelector('.opening-play');
+    const open = () => opening.classList.add('is-open');
+    function start() {
+      opening.classList.remove('is-open', 'no-video');
+      play.hidden = true;
+      try { video.currentTime = 0; } catch (error) { /* aún sin datos */ }
+      const attempt = video.play();
+      if (attempt) attempt.catch(() => { play.hidden = false; });
+    }
+    video.addEventListener('ended', open);
+    video.addEventListener('error', () => { opening.classList.add('no-video'); open(); });
+    play.addEventListener('click', start);
+    if (reduced.matches) { opening.classList.add('no-video'); open(); }
+    else if (scrollY > innerHeight * 0.6) { opening.classList.add('no-video'); open(); }
+    else start();
+    // «Volver a abrir el libro»: la apertura se reproduce de nuevo.
+    document.querySelectorAll('a[href="#apertura"]').forEach(link => link.addEventListener('click', () => {
+      if (!reduced.matches) setTimeout(start, 500);
+    }));
+  }
+
+  const ending = document.getElementById('final');
+  if (ending && 'IntersectionObserver' in window) {
+    const video = ending.querySelector('video');
+    let playing = false;
+    video.addEventListener('ended', () => ending.classList.add('is-closed'));
+    new IntersectionObserver(([entry]) => {
+      if (index) index.classList.toggle('is-on-ending', entry.intersectionRatio > 0.3);
+      if (entry.intersectionRatio >= 0.6 && !playing) {
+        playing = true;
+        if (reduced.matches) { ending.classList.add('is-closed'); return; }
+        const attempt = video.play();
+        if (attempt) attempt.catch(() => ending.classList.add('is-closed'));
+      } else if (entry.intersectionRatio === 0 && playing) {
+        // Al volver a subir, el libro queda listo para cerrarse otra vez.
+        playing = false;
+        ending.classList.remove('is-closed');
+        video.pause();
+        video.load();
+      }
+    }, { threshold: [0, 0.3, 0.6] }).observe(ending);
+  }
+})();
+
+// Entradas: los bloques aparecen al llegar a ellos y las cifras cuentan hasta su valor.
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduced.matches || !('IntersectionObserver' in window)) return;
+  const root = document.documentElement;
+  const groups = [
+    '.hero-content > *',
+    'main .section-heading',
+    '.definition-copy', '.definition-visual', '.method-insert',
+    '#video .video-player',
+    '#cambios .chart-container',
+    '.reasons-list li', '.reasons-close',
+    '.book-window',
+    '.folder-shelf',
+    '.editorial-author-hero', '.editorial-featured', '.editorial-library', '.editorial-archive',
+    '.credits-grid > section'
+  ];
+  const watched = [];
+  groups.forEach(selector => {
+    const byParent = new Map();
+    document.querySelectorAll(selector).forEach(element => {
+      // Nada dentro de escenas fijas: ya tienen su propio movimiento.
+      if (element.closest('.recs-stage, .sticky-story-pin, .era-stage')) return;
+      const order = byParent.get(element.parentElement) || 0;
+      byParent.set(element.parentElement, order + 1);
+      element.dataset.reveal = '';
+      element.style.setProperty('--i', order);
+      watched.push(element);
+    });
+  });
+  document.querySelectorAll('.reasons-figure, #historia').forEach(element => {
+    element.dataset.watch = '';
+    watched.push(element);
+  });
+  root.classList.add('js-motion');
+
+  function countUp(node) {
+    const target = Number(node.textContent);
+    if (!Number.isFinite(target) || target <= 0) return;
+    const began = performance.now();
+    const duration = 1300;
+    function tick(now) {
+      const t = Math.min(1, (now - began) / duration);
+      node.textContent = String(Math.round(target * (1 - Math.pow(1 - t, 3))));
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    node.textContent = '0';
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-in');
+    entry.target.querySelectorAll('figcaption strong').forEach(countUp);
+    observer.unobserve(entry.target);
+  }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  watched.forEach(element => observer.observe(element));
 })();

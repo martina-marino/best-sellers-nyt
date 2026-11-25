@@ -2982,7 +2982,7 @@ main > .section { counter-increment: capitulo; }
 }
 .method-insert summary::-webkit-details-marker { display: none; }
 .method-insert summary::after { content: " +"; }
-.method-insert[open] summary::after { content: " –"; }
+.method-insert[open] summary::after { content: " -"; }
 .method-example { max-width: 62ch; margin-inline: auto; padding: 10px 0 12px; }
 .method-example p { text-wrap: pretty; }
 .week-equation b { font-weight: 400; }
@@ -3713,3 +3713,230 @@ main .section-heading p.video-note { font: 400 12px/1.5 var(--fuente-rotulos); }
   #historia .era-stage > .era-sheet { gap: clamp(14px, 2.6vh, 28px); }
 }
 #historia .duration-track { margin-top: clamp(6px, 1.5vh, 16px); }
+
+/* ================================================================
+   REVISIÓN 11 · El libro se abre y se cierra, hoja con epígrafe,
+   carpetas y gráficos en una pantalla, cierre más chico, créditos
+   sobre papel y entradas animadas.
+   ================================================================ */
+
+/* --- 1 y 2 · Apertura: video del libro y hoja con el epígrafe ------- */
+.opening,
+.ending {
+  position: relative;
+  height: 100svh;
+  min-height: 460px;
+  overflow: hidden;
+  background: #050505;
+}
+.opening-video,
+.ending-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+/* En pantallas verticales el libro se ve más grande y centrado. */
+@media (max-aspect-ratio: 4/5) {
+  .opening-video,
+  .ending-video { width: 215vw; height: auto; max-width: none; }
+}
+.opening-sheet {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: clamp(30px, 6vh, 60px);
+  padding: 8vh 9vw;
+  color: #2A2520;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1400ms ease, visibility 0s linear 1400ms;
+}
+.opening.is-open .opening-sheet { opacity: 1; visibility: visible; transition-delay: 0s; }
+/* Sin video (o en vertical) la hoja trae su propio papel. */
+.opening.no-video .opening-sheet,
+.ending.is-static { background: radial-gradient(ellipse at center, #D8CFBC 0%, #CFC6B3 55%, #A8A08D 100%); }
+@media (max-aspect-ratio: 4/5) {
+  .opening-sheet { background: radial-gradient(ellipse at center, #D8CFBC 0%, #CFC6B3 55%, #A8A08D 100%); }
+}
+.epigraph { max-width: min(860px, 84vw); margin: 0; }
+.epigraph p {
+  margin: 0 0 1.1em;
+  font: italic 400 clamp(26px, 3.6vw, 50px)/1.22 var(--fuente-titulos);
+  text-wrap: balance;
+}
+.epigraph footer {
+  font: 400 12px/1.5 var(--fuente-rotulos);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.epigraph cite { font-style: normal; }
+.epigraph p,
+.epigraph footer,
+.opening-next {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+.opening.is-open .epigraph p { opacity: 1; transform: none; transition-delay: 500ms; }
+.opening.is-open .epigraph footer { opacity: 1; transform: none; transition-delay: 1100ms; }
+.opening.is-open .opening-next { opacity: 1; transform: none; transition-delay: 1700ms; }
+.opening-next,
+.opening-skip,
+.opening-play,
+.ending-copy a {
+  font: 400 12px/1 var(--fuente-rotulos);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-underline-offset: 5px;
+}
+.opening-next { color: #5A0A0E; }
+.opening-skip {
+  position: absolute;
+  right: clamp(18px, 4vw, 48px);
+  bottom: clamp(18px, 4vh, 40px);
+  color: #D9D2C2;
+  transition: opacity 400ms ease;
+}
+.opening.is-open .opening-skip { opacity: 0; pointer-events: none; }
+.opening-play {
+  position: absolute;
+  left: 50%;
+  bottom: 12vh;
+  padding: 14px 22px;
+  border: 1px solid #C9A961;
+  background: #050505cc;
+  color: #E9D9A8;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+/* --- 10 · Final: el libro se cierra --------------------------------- */
+.ending-copy {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 22px;
+  color: #D9BE7B;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1200ms ease 300ms;
+}
+.ending.is-closed .ending-copy { opacity: 1; }
+.ending-copy p {
+  margin: 0;
+  font: italic 400 clamp(40px, 6vw, 76px)/1 var(--fuente-titulos);
+}
+.ending-copy a { color: #D9BE7B; }
+.ending:not(.is-closed) .ending-copy a { pointer-events: none; }
+
+/* Las pestañas de índice no tapan la apertura ni el final. */
+.index-tabs { transition: opacity 300ms ease; }
+.index-tabs.is-on-cover,
+.index-tabs.is-on-ending { opacity: 0; pointer-events: none; }
+
+/* --- 4 · Protagonistas: carpetas a un costado, gráfico entero al lado  */
+.folder-shelf { max-width: 520px; }
+.folder-name { font-size: clamp(15px, 2.6vw, 26px); }
+#autores .chart-heading h3 { font-size: clamp(22px, 2.2vw, 30px); }
+#autores .chart-heading p { font-size: 16px; }
+#autores .folder-reading { margin-bottom: 14px; font-size: 16px; }
+@media (min-width: 1000px) {
+  #autores .folder-stack {
+    --carpeta: clamp(112px, min(12vw, calc((100svh - 150px) / 4)), 170px);
+    display: grid;
+    grid-template-columns: var(--carpeta) minmax(0, 1fr);
+    column-gap: clamp(30px, 4vw, 60px);
+    align-items: start;
+  }
+  #autores .folder-shelf {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    max-width: none;
+  }
+  #autores .folder-hint,
+  #autores .folder-body { grid-column: 2; }
+  #autores .folder-body { padding-top: 0; }
+  #autores .folder-hint {
+    align-self: center;
+    max-width: 16em;
+    margin: calc(var(--carpeta) * 1.1) 0 0;
+    color: var(--tinta);
+    font: italic 400 clamp(24px, 2.4vw, 34px)/1.25 var(--fuente-titulos);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  #autores .folder-hint::before { content: "← "; color: var(--bordo); font-style: normal; }
+  #autores .folder-name { font-size: clamp(14px, 1.45vw, 20px); bottom: 8%; }
+  #autores .folder-meta { grid-template-columns: 1fr; inset: 8% 32% auto 9%; font-size: 10px; }
+  #autores .folder-meta span:first-child { display: none; }
+  #autores .folder-card:hover { transform: translateX(5px); }
+  #autores .folder-card[aria-selected="true"] { transform: translateX(12px); }
+}
+
+/* --- 7 · Conclusión: carpeta más chica ------------------------------ */
+#libros .closing { padding-block: clamp(56px, 9vh, 96px) clamp(50px, 8vh, 84px); }
+.closing-folder {
+  max-width: 680px;
+  padding: clamp(46px, 6vw, 72px) clamp(22px, 5vw, 62px) clamp(34px, 4vw, 52px);
+}
+.closing-kicker { margin-bottom: clamp(24px, 4vw, 42px); }
+#libros .closing-folder h2 { font-size: clamp(34px, 5vw, 62px); margin-bottom: clamp(20px, 3vw, 32px); }
+.closing-tagline { margin-bottom: clamp(28px, 4vw, 44px); }
+#libros .closing-copy p { font-size: 15px; }
+
+/* --- 9 · Créditos sobre el mismo papel que el resto ------------------ */
+.site-footer { background: var(--crema); color: var(--texto); }
+.site-footer h3 { border-bottom-color: #1E1B1933; color: var(--bordo); }
+.site-footer dt,
+.credits-end { color: var(--texto-suave); }
+.site-footer dd { color: var(--tinta); }
+
+/* --- 8 · Entradas ---------------------------------------------------- */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 800ms ease calc(var(--i, 0) * 110ms),
+    transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i, 0) * 110ms);
+}
+.js-motion [data-reveal].is-in { opacity: 1; transform: none; }
+/* La línea del rótulo de capítulo se dibuja al entrar. */
+.js-motion [data-reveal] .chapter-label::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms ease 350ms;
+}
+.js-motion [data-reveal].is-in .chapter-label::after { transform: scaleX(1); }
+/* La pila de libros se arma de abajo hacia arriba. */
+.js-motion .reasons-figure .pile-book {
+  opacity: 0;
+  transform: translateY(-46px);
+  transition:
+    opacity 300ms ease calc(var(--b) * 130ms + 200ms),
+    transform 520ms cubic-bezier(0.3, 1.3, 0.5, 1) calc(var(--b) * 130ms + 200ms);
+}
+.js-motion .reasons-figure.is-in .pile-book { opacity: 1; transform: none; }
+.js-motion .reasons-figure figcaption { opacity: 0; transition: opacity 700ms ease 1300ms; }
+.js-motion .reasons-figure.is-in figcaption { opacity: 1; }
+/* La barra de duración crece al llegar al capítulo 1. */
+.js-motion #historia:not(.is-in) .duration-fill { transform: scaleX(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-sheet, .epigraph p, .epigraph footer, .opening-next, .ending-copy { transition: none; }
+}
+
+@media (max-aspect-ratio: 4/5) {
+  .ending-copy { padding: 0 24vw; }
+  .ending-copy a { letter-spacing: 0.12em; line-height: 1.6; }
+}

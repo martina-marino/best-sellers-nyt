@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="Una historia visual sobre los bestsellers de ficción de tapa dura del New York Times, basada en datos de 1931–2020."
+    content="Una historia visual sobre los bestsellers de ficción de tapa dura del New York Times, basada en datos de 1931-2020."
   >
 
   <title>¿Cuánto dura un bestseller?</title>
@@ -42,14 +42,28 @@
 
   <main>
 
+    <!-- APERTURA: el libro se abre y queda una hoja con el epígrafe -->
+    <section class="opening" id="apertura" aria-label="Apertura">
+      <video class="opening-video" src="assets/video/apertura.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+      <div class="opening-sheet">
+        <blockquote class="epigraph">
+          <p>Un clásico es un libro que nunca termina de decir lo que tiene que decir.</p>
+          <footer>Italo Calvino, <cite>Por qué leer los clásicos</cite></footer>
+        </blockquote>
+        <a class="opening-next" href="#inicio">Empezar a leer <span aria-hidden="true">↓</span></a>
+      </div>
+      <button class="opening-play" type="button" hidden>Abrir el libro</button>
+      <a class="opening-skip" href="#inicio">Saltar <span aria-hidden="true">↓</span></a>
+    </section>
+
     <!-- CUADRO 01: PORTADA -->
     <section class="hero" id="inicio">
       <div class="hero-content">
-        <p class="eyebrow hero-eyebrow">Ficción de tapa dura · 1931–2020</p>
+        <p class="eyebrow hero-eyebrow">Ficción de tapa dura · 1931-2020</p>
 
         <h1>¿Cuánto dura<br>un bestseller?</h1>
 
-        <p class="hero-subtitle">Algunos libros pasan una semana entre los más vendidos. Otros se mantienen —o regresan— durante años.</p>
+        <p class="hero-subtitle">Algunos libros pasan una semana entre los más vendidos. Otros se mantienen, o regresan, durante años.</p>
 
         <p class="hero-description">Seguimos las huellas de miles de títulos en la lista de ficción de tapa dura del <em>New York Times</em>. ¿Cambió con el tiempo la duración de un éxito?</p>
 
@@ -64,8 +78,8 @@
     <!-- CUADRO 02: COMPARACIÓN ANIMADA -->
     <section class="section duration-story" id="historia">
       <div class="era-stage">
-      <article class="era-sheet duration-scene" data-era="1970" aria-label="1970–1979">
-        <header><h2 class="era-title"><span class="chapter-label">Capítulo 1</span>De meses a semanas</h2><h3 class="era-period">1970–1979</h3></header>
+      <article class="era-sheet duration-scene" data-era="1970" aria-label="1970-1979">
+        <header><h2 class="era-title"><span class="chapter-label">Capítulo 1</span>De meses a semanas</h2><h3 class="era-period">1970-1979</h3></header>
         <div class="era-columns">
           <p class="duration-stat"><span class="duration-number">15</span>
             <span class="duration-unit">semanas acumuladas<small>Mediana de los títulos que debutaron en esta década</small></span>
@@ -85,8 +99,8 @@
         <div class="duration-track" aria-hidden="true"><div class="duration-fill"></div></div>
         <p class="duration-method">Seguí bajando para ver cómo cambió la mediana</p>
       </article>
-      <article class="era-sheet duration-scene" data-era="2010" aria-label="2010–2019">
-        <header><p class="era-title" aria-hidden="true"><span class="chapter-label">Capítulo 1</span>De meses a semanas</p><h3 class="era-period">2010–2019</h3></header>
+      <article class="era-sheet duration-scene" data-era="2010" aria-label="2010-2019">
+        <header><p class="era-title" aria-hidden="true"><span class="chapter-label">Capítulo 1</span>De meses a semanas</p><h3 class="era-period">2010-2019</h3></header>
         <div class="era-columns">
           <p class="duration-stat"><span class="duration-number">2</span>
             <span class="duration-unit">semanas acumuladas<small>Mediana de los títulos que debutaron en esta década</small></span>
@@ -254,13 +268,13 @@
         <figure class="reasons-figure">
           <svg viewBox="0 0 240 330" role="img" aria-label="Dibujo de una pila de libros" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="120" cy="321" rx="112" ry="5" fill="#1E1B19" opacity=".12"/>
-            <g><rect x="18" y="278" width="204" height="40" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M31 279v38M37 279v38M209 279v38" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M83 298h73" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 304h37" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
-            <g><rect x="36" y="246.5" width="172" height="30" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M49 247.5v28M55 247.5v28M195 247.5v28" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M91 262h62" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
-            <g><rect x="24" y="209.0" width="190" height="36" rx="3" fill="#1B263B" stroke="#1E1B19" stroke-width="1.6"/><path d="M37 210.0v34M43 210.0v34M201 210.0v34" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M85 227h68" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 233h34" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
-            <g><rect x="46" y="181.5" width="150" height="26" rx="3" fill="#E7D3A2" stroke="#1E1B19" stroke-width="1.6"/><path d="M59 182.5v24M65 182.5v24M183 182.5v24" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M94 194h54" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
-            <g><rect x="30" y="146.0" width="176" height="34" rx="3" fill="#948F89" stroke="#1E1B19" stroke-width="1.6"/><path d="M43 147.0v32M49 147.0v32M193 147.0v32" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M86 163h63" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/><path d="M102 169h32" stroke="#1E1B19" stroke-width="1" stroke-linecap="round" opacity=".7"/></g>
-            <g transform="rotate(-3 120.0 130.5)"><rect x="50" y="116.5" width="140" height="28" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M63 117.5v26M69 117.5v26M177 117.5v26" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M95 130h50" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/></g>
-            <g transform="rotate(5 126.0 101.5)"><rect x="74" y="90.5" width="104" height="22" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M87 91.5v20M93 91.5v20M165 91.5v20" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M107 102h37" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g>
+            <g class="pile-book" style="--b:0"><g><rect x="18" y="278" width="204" height="40" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M31 279v38M37 279v38M209 279v38" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M83 298h73" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 304h37" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g></g>
+            <g class="pile-book" style="--b:1"><g><rect x="36" y="246.5" width="172" height="30" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M49 247.5v28M55 247.5v28M195 247.5v28" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M91 262h62" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g></g>
+            <g class="pile-book" style="--b:2"><g><rect x="24" y="209.0" width="190" height="36" rx="3" fill="#1B263B" stroke="#1E1B19" stroke-width="1.6"/><path d="M37 210.0v34M43 210.0v34M201 210.0v34" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M85 227h68" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/><path d="M102 233h34" stroke="#F3EBDD" stroke-width="1" stroke-linecap="round" opacity=".7"/></g></g>
+            <g class="pile-book" style="--b:3"><g><rect x="46" y="181.5" width="150" height="26" rx="3" fill="#E7D3A2" stroke="#1E1B19" stroke-width="1.6"/><path d="M59 182.5v24M65 182.5v24M183 182.5v24" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M94 194h54" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g></g>
+            <g class="pile-book" style="--b:4"><g><rect x="30" y="146.0" width="176" height="34" rx="3" fill="#948F89" stroke="#1E1B19" stroke-width="1.6"/><path d="M43 147.0v32M49 147.0v32M193 147.0v32" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M86 163h63" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/><path d="M102 169h32" stroke="#1E1B19" stroke-width="1" stroke-linecap="round" opacity=".7"/></g></g>
+            <g class="pile-book" style="--b:5"><g transform="rotate(-3 120.0 130.5)"><rect x="50" y="116.5" width="140" height="28" rx="3" fill="#6B0005" stroke="#1E1B19" stroke-width="1.6"/><path d="M63 117.5v26M69 117.5v26M177 117.5v26" stroke="#F3EBDD" stroke-width="1.1" opacity=".75"/><path d="M95 130h50" stroke="#F3EBDD" stroke-width="1.6" stroke-linecap="round"/></g></g>
+            <g class="pile-book" style="--b:6"><g transform="rotate(5 126.0 101.5)"><rect x="74" y="90.5" width="104" height="22" rx="3" fill="#F3EBDD" stroke="#1E1B19" stroke-width="1.6"/><path d="M87 91.5v20M93 91.5v20M165 91.5v20" stroke="#1E1B19" stroke-width="1.1" opacity=".75"/><path d="M107 102h37" stroke="#1E1B19" stroke-width="1.6" stroke-linecap="round"/></g></g>
           </svg>
           <figcaption>Más libros,<br>menos semanas.</figcaption>
         </figure>
@@ -294,7 +308,7 @@
     <section class="section exceptions" id="excepciones">
       <div class="section-heading">
         <h2><span class="chapter-label">Capítulo 7</span>Los libros que desafiaron la tendencia</h2>
-        <p>En una década con una mediana de apenas dos semanas, algunas novelas acumularon decenas —e incluso más de cien—. Girá las portadas para descubrir tres historias que sobresalen del conjunto.</p>
+        <p>En una década con una mediana de apenas dos semanas, algunas novelas acumularon decenas, e incluso más de cien. Girá las portadas para descubrir tres historias que sobresalen del conjunto.</p>
       </div>
 
       <div class="book-windows" id="book-windows" data-width="1100" aria-label="Tres novelas y sus semanas acumuladas en el ranking">
@@ -339,19 +353,19 @@
       <div class="folder-stack">
         <div class="folder-shelf" role="tablist" aria-label="Rankings de autores">
           <button class="folder-card" type="button" id="tab-g04" role="tab" aria-controls="panel-g04" aria-selected="false" tabindex="0">
-            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 01<br>Semanas en el nº 1</span></span>
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931-2020</span><span>Carpeta 01<br>Semanas en el nº 1</span></span>
             <span class="folder-flap" aria-hidden="true"></span>
             <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
             <span class="folder-name">En la<br>cima</span>
           </button>
           <button class="folder-card" type="button" id="tab-g05" role="tab" aria-controls="panel-g05" aria-selected="false" tabindex="-1">
-            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 02<br>Títulos en el ranking</span></span>
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931-2020</span><span>Carpeta 02<br>Títulos en el ranking</span></span>
             <span class="folder-flap" aria-hidden="true"></span>
             <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
             <span class="folder-name">Una obra<br>tras otra</span>
           </button>
           <button class="folder-card" type="button" id="tab-g06" role="tab" aria-controls="panel-g06" aria-selected="false" tabindex="-1">
-            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931–2020</span><span>Carpeta 03<br>Semanas acumuladas</span></span>
+            <span class="folder-meta"><span>Archivo de autores<br>NYT · 1931-2020</span><span>Carpeta 03<br>Semanas acumuladas</span></span>
             <span class="folder-flap" aria-hidden="true"></span>
             <span class="folder-string" aria-hidden="true"><i></i><i></i></span>
             <span class="folder-name">A través<br>del tiempo</span>
@@ -465,11 +479,11 @@
           <div class="editorial-thumbnails" id="author-book-collection" aria-label="Selección de libros"></div>
         </div>
         <div class="editorial-archive">
-          <p class="eyebrow">Su huella en el ranking · 1931–2020</p>
+          <p class="eyebrow">Su huella en el ranking · 1931-2020</p>
           <div class="author-stats" aria-label="Estadísticas del autor">
-            <div><strong id="author-title-count">—</strong><span>Títulos registrados</span></div>
-            <div><strong id="author-week-count">—</strong><span>Semanas acumuladas</span></div>
-            <div><strong id="author-first-year">—</strong><span>Primer debut registrado</span></div>
+            <div><strong id="author-title-count"></strong><span>Títulos registrados</span></div>
+            <div><strong id="author-week-count"></strong><span>Semanas acumuladas</span></div>
+            <div><strong id="author-first-year"></strong><span>Primer debut registrado</span></div>
           </div>
         </div>
       </div>
@@ -488,13 +502,13 @@
               <div class="flourish-embed flourish-cards" data-src="visualisation/30792917"><p class="embed-fallback">Cargando recomendaciones… <a href="https://public.flourish.studio/visualisation/30792917/" target="_blank" rel="noopener noreferrer">Si no aparecen, abrilas en Flourish ↗</a></p></div>
             </div>
           </div>
-          <p class="recs-hint"><span class="recs-count">1–5 de 20</span> Bajá o arrastrá: los libros pasan de costado <span aria-hidden="true">→</span> <a class="recs-skip" href="#cierre">Saltar a la conclusión ↓</a></p>
+          <p class="recs-hint"><span class="recs-count">1-5 de 20</span> Bajá o arrastrá: los libros pasan de costado <span aria-hidden="true">→</span> <a class="recs-skip" href="#cierre">Saltar a la conclusión ↓</a></p>
         </div>
       </div>
 
       <div class="closing" id="cierre">
         <div class="closing-folder">
-          <span class="closing-tab" aria-hidden="true">Bestsellers NYT · 1931–2020</span>
+          <span class="closing-tab" aria-hidden="true">Bestsellers NYT · 1931-2020</span>
           <span class="paperclip" aria-hidden="true"></span>
           <p class="closing-script">el Archivo</p>
           <p class="closing-kicker">Conclusión</p>
@@ -533,10 +547,11 @@
       <section aria-label="Bibliografía">
         <h3>Base de datos</h3>
         <ul>
-          <li>Pruett, J. (2022). <a href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html" target="_blank" rel="noopener noreferrer" lang="en"><em>New York Times Hardcover Fiction Bestsellers (1931–2020)</em></a>. Post45 Data Collective. https://doi.org/10.18737/CNJV1733p4520220211</li>
+          <li>Pruett, J. (2022). <a href="https://data.post45.org/posts/nyt_hardcover_fiction_bestsellers/index.html" target="_blank" rel="noopener noreferrer" lang="en"><em>New York Times Hardcover Fiction Bestsellers (1931-2020)</em></a>. Post45 Data Collective. https://doi.org/10.18737/CNJV1733p4520220211</li>
         </ul>
         <h3>Bibliografía</h3>
         <ul>
+          <li>Calvino, I. (1992). <em>Por qué leer los clásicos</em> (A. Bernárdez, trad.). Tusquets.</li>
           <li>David, A. <a href="https://www.youtube.com/watch?v=cxvCVQdQyc8" target="_blank" rel="noopener noreferrer" lang="en"><em>The Truth Behind the New York Times Bestseller List</em></a> [video]. YouTube.</li>
           <li>Miller, L. J. (2007). <em lang="en">Reluctant Capitalists: Bookselling and the Culture of Consumption</em>. University of Chicago Press.</li>
           <li>Mrva-Montoya, A. (2024, 12 de agosto). <a href="https://theconversation.com/what-makes-a-book-a-bestseller-its-tricky-233092" target="_blank" rel="noopener noreferrer" lang="en">What makes a book a bestseller? It’s tricky</a>. <em>The Conversation</em>.</li>
@@ -546,6 +561,15 @@
     </div>
     <p class="credits-end">Una investigación visual sobre los bestsellers de ficción de tapa dura del <em>New York Times</em>.</p>
   </footer>
+
+  <!-- FINAL: al seguir bajando, el libro se cierra -->
+  <section class="ending" id="final" aria-label="Cierre del libro">
+    <video class="ending-video" src="assets/video/cierre.mp4" muted playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+    <div class="ending-copy">
+      <p>Fin</p>
+      <a href="#apertura">Volver a abrir el libro <span aria-hidden="true">↑</span></a>
+    </div>
+  </section>
 
   <!-- Cargar el motor de Flourish una sola vez -->
   <script src="https://public.flourish.studio/resources/embed.js"></script>
